@@ -12,12 +12,18 @@ Explore the description of the Science Projects on the dedicated [webpage](https
 
 ## User guide 
 
+In progress. 
 
 ## Developer guide 
 
 If you want to look at how we manage our K8s cluster and the remote storage eleements, navigate the wiki section of the **vre** repo. 
 
 ## Resources 
+- [Jupyterhub cluster](https://nb-vre.cern.ch/)
+- [IAM dashboard]()
+- [Monitoring dashboard](https://monit-grafana.cern.ch/d/PJ65OqBVz/vre-rucio-events?orgId=51)
+- [Reana cluster]()
 
-Reana cluster: soon to be released
-Jupyterhub cluster: https://nb-vre.cern.ch/
+## Contact
+
+To contact the team, join the [Slack channel](https://eosc-escape.slack.com/archives/C03Q65M1U5V) or email us at *escape-cern-ops@cern.ch*. 
