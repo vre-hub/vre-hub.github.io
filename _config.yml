@@ -1,3 +1,5 @@
 theme: jekyll-theme-minimal
 title: The VRE
-description: Teh Virtual Research Environment landing page. Links to resources, user documentation and service administrators user guide. 
+description: Follow on [Github](https://github.com/vre-hub)
+github:
+  is_project_page: false
