@@ -1,6 +1,6 @@
 # Jupyterhub interface
 
-This service provides the end-user with a Notebook ready-to-be-used and fully integrated with the ESCAPE Data Lake. The service is hosted [here](https://nb-vre.cern.ch/). 
+This service provides the end-user with a Notebook ready-to-be-used and fully integrated with the ESCAPE Data Lake. The service is hosted [here](https://escape-notebook.cern.ch). 
 
 ## Authentication
 Authenticate to IAM. Once you log into the service for the first time, everything will be configured for the OpenID connect by default. You will be able to modify it later and make it persistent.
