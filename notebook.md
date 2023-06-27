@@ -1,6 +1,6 @@
 # Jupyterhub interface
 
-This service provides the end-user with a Notebook ready-to-be-used and fully integrated with the ESCAPE Data Lake. The service is hosted [here](https://nb-vre.cern.ch/). 
+This service provides the end-user with a Notebook ready-to-be-used and fully integrated with the ESCAPE Data Lake. The service is hosted [here](https://jhub-vre.cern.ch/). 
 
 ## Authentication
 Authenticate to IAM. Once you log into the service for the first time, everything will be configured for the OpenID connect by default. You will be able to modify it later and make it persistent.
@@ -61,7 +61,7 @@ If you want to use a specific data set, you will need to make it available and a
     - If you want to see all the files that starts with a specific term in a specific scope your sintaxis will be ```SCOPE:TERM*``` (Example: ```ATLAS_OD_EDU:data*```).
     - If you want to see a specific file type the complete DID: ```SCOPE:NAME``` (Example: ```ATLAS_OD_EDU:data_B.GamGam.root```).
 
-    If you want to know if there is a replication attached to that file, you need to click on the Availability button and you will be redirected to the [Rucio WebUI](https://escape-rucio-webui.cern.ch/). This availability button has some difererent states: Available, Not Available, Collection is empty, Something went wrong... If the state is Not Available you will need to make it Available. Once done you can add it to your notebook.
+    If you want to know if there is a replication attached to that file, you need to click on the Availability button and you will be redirected to the [Rucio WebUI](https://vre-rucio-ui.cern.ch/). This availability button has some difererent states: Available, Not Available, Collection is empty, Something went wrong... If the state is Not Available you will need to make it Available. Once done you can add it to your notebook.
 
 * **NOTEBOOK**:
     Here you will be able to see all the files you added to the notebook and are ready to be used.
