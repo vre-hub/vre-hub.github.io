@@ -15,6 +15,7 @@ The Virtual Research Environment’s main components are:
 3. A **computing** cluster supplying the processing power to run full analyses with Reana, a re-analysis software
 4. An enhanced **notebook interface** with containerised environments to hide the infrastructure’s complexity from the user. 
 
+![image](images/vre-bubble.png)
 ![image](images/VRE-diagram.png)
 
 The deployment of the Virtual Research Environment is open-source and modular, in order to make it easily reproducible by partner institutions; it is publicly accessible and kept up to date by taking advantage of state of the art IT-infrastructure technologies.
@@ -31,4 +32,6 @@ If you want to deploy the VRE on your own infrastructure, of you want to submit 
  
 ### Contact
 
-To contact the team at CERN working on the implementatin of the VRE, join the [Slack channel](https://eosc-escape.slack.com/archives/C03Q65M1U5V) or email us at *escape-cern-ops@cern.ch*. 
+- To contact the team at CERN working on the implementatin of the VRE, join the **[Slack channel](https://eosc-escape.slack.com/archives/C03Q65M1U5V)** or email us at *escape-cern-ops@cern.ch*. 
+- To participate to the **VRE working-group monthly meetings**, join here: https://indico.cern.ch/category/17065/. These are intended for developers and system administrators who are supporting scientific infrastructures. It is an informal space to stimulate discussion and keep all the members up to date with the latest news and hot topics on the development and deployment of tools and services within the broad field of scientific analysis platforms.
+- If you are a user of the VRE and you are experiencing technical issues, please join the **VRE users bi-weekly meetings on Tuesdays at 14 CET** at: https://indico.in2p3.fr/category/1033/
