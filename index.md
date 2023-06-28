@@ -32,10 +32,10 @@ If you are a scientist or a new user curious to use the above resources, please 
 If you want to deploy the VRE on your own infrastructure, of you want to submit an issue to help us improve the platform, please follow the [developer documentation](docs/developer.md). 
  
 ### Contact
-To contact the team at CERN working on the implementatin of the VRE, join the **[Slack channel](https://eosc-escape.slack.com/archives/C03Q65M1U5V)** or email us at *escape-cern-ops@cern.ch*. 
+To contact the CERN team working on the implementatin of the VRE, join the **[Slack channel](https://eosc-escape.slack.com/archives/C03Q65M1U5V)** or email us at *escape-cern-ops@cern.ch*. Please also email us if you want to have access to the Indico category for the meetings below, if you want to view the monitoring dashboards and you do not have a CERN account, or for any other questions/suggestions you may have. 
 
 ### Join the community 
 There are two recurrent meetings open to all scientists/researchers/developers interested in the VRE. 
 
-- The [**VRE working-group monthly meetings**](https://indico.cern.ch/category/17065/) are intended for developers and system administrators who are supporting scientific infrastructures. They constitute an informal space to stimulate discussion and keep all the members up to date with the latest news and hot topics on the development and deployment of tools and services within the broad field of scientific analysis platforms.
-- The [**VRE users bi-weekly meetings on Tuesdays at 14 CET**](https://indico.in2p3.fr/category/1033/) are intended for users of the VRE who are experiencing technical issues, want to learn more about the VRE deployment, are in need of extra resources or want their software to be included in the VRE. 
+- The **VRE working-group monthly meetings** are intended for developers and system administrators who are supporting scientific infrastructures. They constitute an informal space to stimulate discussion and keep all the members up to date with the latest news and hot topics on the development and deployment of tools and services within the broad field of scientific analysis platforms. Join [here](https://indico.cern.ch/category/17065/). 
+- The **VRE users bi-weekly meetings on Tuesdays at 14 CET** are intended for users of the VRE who are experiencing technical issues, want to learn more about the VRE deployment, are in need of extra resources or want their software to be included in the VRE. Join [here](https://indico.in2p3.fr/category/1033/). 
