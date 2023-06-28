@@ -60,7 +60,7 @@ account = <your_account>
 request_retries = 3
 oidc_issuer = escape
 auth_oidc_refresh_activate = true
-oidc_scope = openid profile offline_access wlcg wlcg.groups
+oidc_scope = openid profile offline_access wlcg.groups
 oidc_polling = true
 
 [policy]
