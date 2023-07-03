@@ -5,12 +5,13 @@ An overview of the available Rucio Storage Elements (RSEs) can be foudn in the [
 
 ![image](../images/monit.png)
 
-If you do not have access to the dashboard, register with a CERN SSO account, them email us at _escape-cern-ops@cern.ch_. 
-The location of the storage elemtns is shown on the map. 
+If you do not have access to the dashboard, register with a CERN SSO account, please get in touch through the **[Slack channel](https://eosc-escape.slack.com/archives/C03Q65M1U5V)**.
+The location of the storage elements, which are provided and maintained by European partner institutions, is shown on the map. 
 
 ![image](../images/staticmap.png)
 
 This guide takes a look at how to install the Rucio client environment in two different ways. 
+
 1. Installing the required packages on your local machine
 2. Using a Docker container. Docker technologies mitigate dependency and platform specific issues, and are therefore recommended; however, if you want to upload large data that are present on your system, you will need to copy them inside the Docker container, and then upload them on the Rucio DataLake. This might be cumbersome, especially if you are dealing with large files. 
 
@@ -24,22 +25,19 @@ The `rucio.cfg` file is usually place in the `/opt/rucio/etc/` directory.
 
 ```console
 [client]
-rucio_host = https://escape-rucio.cern.ch
-auth_host = https://escape-rucio-auth.cern.ch
+rucio_host = https://vre-rucio.cern.ch
+auth_host = https://vre-rucio-auth.cern.ch
 ca_cert = /etc/pki/tls/certs/CERN-bundle.pem
 auth_type = x509_proxy
-username =
-password =
 account = <myrucioaccount>
 client_cert = .globus/usercert.pem
 client_key = .globus/userkey.pem
-client_x509_proxy = /tmp/x509_up #(or check where the voms-proxy-init command saves the proxy file!)
-request_retries = 3
+client_x509_proxy = /tmp/x509up_u0 #(or check where the voms-proxy-init command saves the proxy file!)
 
 [policy]
-permission = generic
-schema = generic
-lfn2pfn_algorithm_default = hash
+permission = escape 
+schema = escape  
+lfn2pfn_algorithm_default = hash 
 support = https://github.com/rucio/rucio/issues/
 support_rucio = https://github.com/rucio/rucio/issues/
 ```
@@ -50,25 +48,22 @@ The `rucio.cfg` file is usually place in the `/opt/rucio/etc/` directory.
 
 ```console
 [client]
-rucio_host = https://escape-rucio.cern.ch
-auth_host = https://escape-rucio-auth.cern.ch
+rucio_host = https://vre-rucio.cern.ch
+auth_host = https://vre-rucio-auth.cern.ch
 ca_cert = /etc/pki/tls/certs/CERN-bundle.pem
 auth_type = oidc
-username =
-password =
-account = <your_account>
+account = <myrucioaccount>
+oidc_audience = rucio
+oidc_scope = openid profile offline_access wlcg wlcg.groups fts:submit-transfer
 request_retries = 3
 oidc_issuer = escape
-auth_oidc_refresh_activate = true
-oidc_scope = openid profile offline_access wlcg.groups
 oidc_polling = true
+auth_oidc_refresh_activate = true
 
 [policy]
-permission = escape
-schema = escape
-lfn2pfn_algorithm_default = hash
-support = https://github.com/rucio/rucio/issues/
-support_rucio = https://github.com/rucio/rucio/issues/
+permission = escape 
+schema = escape  
+lfn2pfn_algorithm_default = hash 
 ```
 
 ## 1. Manual installation 
@@ -141,36 +136,30 @@ $ rucio whoami
 ```
 You should see your username being recognised. If it is your first time using tokens, you will be redirected to a link starting with  'https://escape-rucio-auth.cern.ch/auth/...', click on it and choose the duration of your token. You should be all set up to run your rucio commands!
 
-## 2. Docker installation 
+## 2. Docker image installation 
 
 Docker needs to be installed following the [Docker installation](https://docs.docker.com/get-docker/) instructions. The procedure will change depending on your operating system. 
 The Docker file will extend the Rucio image and will enable the user to interact with the Data Lake. Further information can be found [here](https://github.com/cern-vre/containers/tree/main/rucio-client). 
-The Docker image for this project can be pulled and tagged with:
+The Docker image for this project can be pulled with:
 
 ```console
-$ docker pull projectescape/rucio-client:latest
-$ docker tag projectescape/rucio-client rucio-client
+$ docker pull ghcr.io/vre-hub/vre-rucio-client:latest
 ```
-Alternatively, to build your own image locally, clone the repository linked above and follow the instructions in the ‘Build image’ section of the [README](https://github.com/cern-vre/containers/tree/main/rucio-client) file. 
+The image is hosted [here](https://github.com/cern-vre/containers/tree/main/rucio-client).
 
 A default Rucio `/opt/rucio/etc/rucio.cfg` file is incorporated into the image and supplied to the container when it is run. The values from this default can be partially or fully overridden by either specifying parameters as environment variables or by mounting a bespoke configuration file. 
-<!-- Examples of both methods are discussed in the [README](https://github.com/ESCAPE-WP2/Rucio-Client-Containers/blob/master/rucio-client-container/README.md) file. -->
 
-Note that if you are uploading data from the host machine where the Docker container is running, you will need to bind that directory for it to be accessible inside the container.
-<!-- If you are on a HPC cluster, or somewhere where Docker is not usable, try running the container with [Singularity](### Singularity installation).  -->
+Note that if you are uploading data from the host machine where the Docker container is running, you will need to bind that directory as a volume mount for it to be accessible inside the container.
 
 ### X509 authentication
 
 Assuming that your X509 certificate is in the `.globus` directory, they must now be volume bound to `/opt/rucio/etc/` in the container on initialisation. The following command will link the key pairs from the local path to the rucio path:
 
 ```console
-$ docker run -e RUCIO_CFG_ACCOUNT=<myrucioaccount> -v ~/.globus/usercert.pem:/opt/rucio/etc/usercert.pem -v ~/.globus/userkey.pem:/opt/rucio/etc/userkey.pem -it --name=rucio-client rucio-client
+$ docker run --user root -e RUCIO_CFG_ACCOUNT=<myrucioaccount> -v ~/.globus/usercert.pem:/opt/rucio/etc/client.crt -v ~/.globus/userkey.pem:/opt/rucio/etc/client.key -it --name=rucio-client ghcr.io/vre-hub/vre-rucio-client
 ```
-Replace \< myrucioaccount \> with your IAM username. If you encounter permission problems, execute the above command with root permission:
+Take the `--user root` option away if you encounter problems.
 
-```console
-$ docker run --user root -e RUCIO_CFG_ACCOUNT=<myrucioaccount> -v ~/.globus/usercert.pem:/opt/rucio/etc/usercert.pem -v ~/.globus/userkey.pem:/opt/rucio/etc/userkey.pem -it --name=rucio-client rucio-client
-```
 The -v option is a volume mount, which mounts your certificates from your local directory into the docker container. 
 Make sure to specify the correct origin folder for the certificates, otherwise the command will generate an empty directory inside the container!
 
@@ -209,8 +198,29 @@ $ voms-proxy-init --voms escape --cert /opt/rucio/etc/client.crt --key /opt/ruci
 If you want to access the `rucio-client container` with OpenID Token authentication, execute:
 
 ```console
-docker run --user root -e RUCIO_CFG_ACCOUNT=<myrucioaccount> -it --name=rucio-client rucio-client
+$ docker run --user root -e RUCIO_CFG_ACCOUNT=<myrucioaccount> -it --name=rucio-client ghcr.io/vre-hub/vre-rucio-client
 cd /opt/rucio/etc/
+```
+and replace the `rucio.cfg` file with :
+
+```console
+[client]
+rucio_host = https://vre-rucio.cern.ch
+auth_host = https://vre-rucio-auth.cern.ch
+ca_cert = /etc/pki/tls/certs/CERN-bundle.pem
+auth_type = oidc
+account = <myrucioaccount>
+oidc_audience = rucio
+oidc_scope = openid profile offline_access wlcg wlcg.groups fts:submit-transfer
+request_retries = 3
+oidc_issuer = escape
+oidc_polling = true
+auth_oidc_refresh_activate = true
+
+[policy]
+permission = escape 
+schema = escape  
+lfn2pfn_algorithm_default = hash 
 ```
 
 **General note:** To access the rucio-client Docker container in the future, always use this command from the machine where you have Docker installed:
@@ -220,23 +230,6 @@ $ sudo docker exec -it rucio-client /bin/bash
 ```
 Take a look at some [Rucio CLI Quickstart commands](https://docs.google.com/document/d/1LKJu56VMg7jkh19BtWoS3xSNYPf_kJN2xRKQrankfB8/edit#heading=h.avprao92dhlc) to get you familiarised with the main concepts. 
 
-<!-- ### Singularity installation   
-
-To use the client in [Singularity](https://sylabs.io/guides/3.3/user-guide/quick_start.html#quick-installation-steps), first create a Singularity image based on the Docker version
-```console
-$ n
-```
-Then, create a directory and add your credentials as follows. You will have to replace \< myrucioaccount \> with your IAM username. 
-
-```console
-$ mkdir -p ${HOME}/.rucio
-$ export RUCIO_CFG_ACCOUNT=<myrucioaccount>
-$ singularity run -B ${HOME}/.rucio/:/opt/rucio/etc -B ${HOME}/.globus/client.crt:/opt/rucio/etc/client.crt -B ${HOME}/.globus/client.key:/opt/rucio/etc/client.key rucio-cli.simg
-```
-When running the containerised client, the directory that contains the configuration files should be writable at run time. 
-This means that you have to bind it to the container. 
-Note that this will cause the configuration to be kept between runs, as opposed to running the client in a Docker container which will write a new configuration file at run time (this means that setting the RUCIO_CFG_ACCOUNT variable will only be needed during the first run). 
-If for any reason you want to reset the configuration, just erase the rucio.cfg in the configuration directory (in the example: $HOME/.rucio). -->
 ## Uploading data on the Data Lake
 
 In order to uplaod data on the Data Lake, and supposing that you want to organise your data into data sets, you will need to choose an RSE (Rucio Storage Element), a Scope name and a Dataset name. 
@@ -298,6 +291,7 @@ You can visualize which data and rules are associated to your account by navigat
 
 Have a look at the [rucio client documentation](https://rucio.readthedocs.io/en/latest/man/rucio.html) to perform more actions on your recently uploaded data. 
 You can also upload your data in a more user-friendly way using the [DLaaS](dlaas.md###1. File Browser).   
+
 <!-- 
 ## Rucio RESTful APIs    
 
