@@ -1,10 +1,10 @@
 # Jupyterhub interface
 
-This service provides the end-user with a Notebook ready-to-be-used and fully integrated with the ESCAPE Data Lake. The service is hosted [here](https://escape-notebook.cern.ch). 
+This service provides the end-user with a Notebook ready-to-be-used and fully integrated with the ESCAPE Data Lake. The service is hosted [here](https://jhub-vre.cern.ch/). 
 
 ## Authentication
 Authenticate to IAM. Once you log into the service for the first time, everything will be configured for the OpenID connect by default. You will be able to modify it later and make it persistent.
-If you don't have an IAM account already, see the [authentication](index.md) section.
+If you don't have an IAM account already, see the [authentication](docs/auth.md) section.
 Contact the responsible of the service if you are still having troubles running your notebook using a new account.
 
 <!-- ## DLaaS structure 
@@ -12,7 +12,7 @@ Contact the responsible of the service if you are still having troubles running 
 ![DLaaS architechture](img/dlaas_diagram.png) -->
 
 ## Server Options
-Select your server option based on your requirements by selecting the environment that suits you best. Each environment has been wrapped in a Docker image, some examples can be found [here](https://gitlab.cern.ch/escape-wp2/docker-images). If you want to stop the service and use a different one, go to 'File' in top left corner and select 'Hub control panel'; you can stop the server from there.
+Select your server option based on your requirements by selecting the environment that suits you best. Each environment has been wrapped in a Docker image, some examples can be found [here](https://github.com/vre-hub/environments). If you want to stop the service and use a different one, go to 'File' in top left corner and select 'Hub control panel'; you can stop the server from there.
 
 ## Service Usage
 Once you are inside the service, you will find 5 panels in the left part menu.
@@ -24,7 +24,7 @@ It enables you to work with the files and directories on your sistem. You can fi
 In case you want to **upload a file**, click on the 'Upload Files' button and choose the local files you want to upload into the notebook. The size is limited to 1 MB. This will upload your files during the session, but will NOT upload them on the Data Lake. 
 
 To upload your files on the Data Lake and be protected by replication rules, right click on the folder or file and choose "Upload File(s) to Rucio". 
-The 'Destination RSE' is the physical storage where your files will be uploaded, so try to choose one named after your institution. If the upload fails, the RSE you have chosen might not support your authentication method, so choose another one. You can check [here](https://wiki.escape2020.de/index.php/WP2_-_DIOS#2_Datalake_Architecture) which authentication method each RSE supports. 
+The 'Destination RSE' is the physical storage where your files will be uploaded, so try to choose one named after your institution. 
 The 'Lifetime' refers to the time window during which the file will be available on the Data Lake, so if you always want a copy of it, leave it blank. 
 The 'Scope' name is in the format _Experiment_Institute_Project_ (e.g. ATLAS_LAPP_SP, the EOSC-Future Science Project). You cannot create a new scope unless you are administrator. If you are, you can type in the terminal:
 
@@ -34,16 +34,16 @@ rucio-admin scope add --account=<your_username> --scope <Experiment_Institute_Pr
 rucio-admin scopes list
 ```
 
-Alternatively, you could specify the most general --account=root tag, but you might not have the privileges to do so. 
-Otherwise, contact escape-cern@cern.ch to ask for the creation of a new scope that fits your needs. 
+Alternatively, you could specify the most general `--account=root` tag, but you might not have the privileges to do so. 
+Otherwise, contact the VRE team on the **[Slack channel](https://eosc-escape.slack.com/archives/C03Q65M1U5V)** to ask for the creation of a new scope that fits your needs. 
 If you have multiple files that you would like to organise into a dataset, click on the 'Add files to a dataset' option, choose the correct scope name and a name for your data set. The data set name should identify what kind of data is inside, so please use this format: _ProjectType.DataDescription.DataType_ (DM.LeptonResonance.Data20015_10TeV, the ProjectType for EOSC-Future is either DM or EU). 
 
 **There are two directories which allow you to store files in the DLaaS, and you should be aware of their memeory limitations.**
 
 1. **/home/jovyan**: shared between all users, capacity of 800GB, it is never cleaned and should be only used to upload upload documents and certificates. 
-2. **/scratch/your_username**: the /scratch is shared between users, and is intended to temporarily store large files before they are uploaded on the Data Lake. It is cleaned every day at 00.00 CET. 
+2. **/eos/escape**: correspons to the CERN-EOS RSE, with TB of space. This is the reason why when you 'make availabel' a file that you know is already in that RSE, the Jupyterlab will tell you it is immediately available (you do not have to *replicate* it from a far-away storage, as it is already close to you!). **We therefore strongly recommend to upload on the `CERN-EOS` RSE the files that you know you will be using on the Jupyterhub.** 
 
-**It is always a better practice to upload large data files on the Data Lake directly from the terminal by using the rucio-client commands, as described in the [previous section](rucio_cli.md), in order not to fill up the communal space.**
+**It is always a better practice to upload large data files on the Data Lake directly from the terminal by using the rucio-client commands, as described in the [previous section](docs/rucio.md), in order not to fill up the communal space.**
 
 When working in a notebook, in order to easily work with Data Lake files, expand the file you need on the rucio extension panel on the left part of the screen, click on 'add to notebook' under the blue eye icon and assign to it an arbitrary variable. In the jupyter notebook, type the variable in a shell, run it and check that Rucio automatically finds the file and outputs its specific storage location.  
 
@@ -61,7 +61,7 @@ If you want to use a specific data set, you will need to make it available and a
     - If you want to see all the files that starts with a specific term in a specific scope your sintaxis will be ```SCOPE:TERM*``` (Example: ```ATLAS_OD_EDU:data*```).
     - If you want to see a specific file type the complete DID: ```SCOPE:NAME``` (Example: ```ATLAS_OD_EDU:data_B.GamGam.root```).
 
-    If you want to know if there is a replication attached to that file, you need to click on the Availability button and you will be redirected to the [Rucio WebUI](https://escape-rucio-webui.cern.ch/). This availability button has some difererent states: Available, Not Available, Collection is empty, Something went wrong... If the state is Not Available you will need to make it Available. Once done you can add it to your notebook.
+    If you want to know if there is a replication attached to that file, you need to click on the Availability button and you will be redirected to the [Rucio WebUI](https://vre-rucio-ui.cern.ch/). This availability button has some difererent states: Available, Not Available, Collection is empty, Something went wrong... If the state is Not Available you will need to make it Available. Once done you can add it to your notebook.
 
 * **NOTEBOOK**:
     Here you will be able to see all the files you added to the notebook and are ready to be used.
@@ -73,5 +73,6 @@ If you want to use a specific data set, you will need to make it available and a
         - X.509 Proxy Certificate
         - Username & Password
     If you change the default OpenID connect token method, you will have to close the notebook and authenticate again for the full settings to take place. 
+
 ##### 5. Extension manager
 You can use this panel in case you want to manage your extensions. This is an option you will mostly not need.
