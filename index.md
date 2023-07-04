@@ -24,18 +24,24 @@ The deployment of the Virtual Research Environment is open-source and modular, i
 The Science Projects which are using the VRE are described [here](https://escape2020.pages.in2p3.fr/virtual-environment/home/). 
 
 If you are a scientist or a new user curious to use the above resources, please refer to the following documentation:  
-1. [AAI](docs/auth.md)
-2. [Rucio Data Lake](docs/rucio.md)
-3. [Reana cluster](docs/reana.md)
-4. [Notebook service](docs/notebook.md)
+1. **[AAI](docs/auth.md)**
+2. **[Rucio Data Lake](docs/rucio.md)**
+3. **[Reana cluster](docs/reana.md)**
+4. **[Notebook service](docs/notebook.md)**
 
 If you want to deploy the VRE on your own infrastructure, of you want to submit an issue to help us improve the platform, please follow the [developer documentation](docs/developer.md). 
  
-### Contact
+## Contact
 To contact the CERN VRE team with questions, doubts, problems accessing the meetings Indico category or the monitoring dashboards, please join the **[Slack channel](https://eosc-escape.slack.com/archives/C03Q65M1U5V)**. For more formal requests, i.e. conferences, webinars and events presentations, please email us at *escape-cern-ops@cern.ch*. 
 
-### Join the community 
+## Join the community 
 There are two recurrent meetings open to all scientists/researchers/developers interested in the VRE. 
 
 - The **VRE working-group monthly meetings** are intended for developers and system administrators who are supporting scientific infrastructures. They constitute an informal space to stimulate discussion and keep all the members up to date with the latest news and hot topics on the development and deployment of tools and services within the broad field of scientific analysis platforms. Join [here](https://indico.cern.ch/category/17065/). 
 - The **VRE users bi-weekly meetings on Tuesdays at 14 CET** are intended for users of the VRE who are experiencing technical issues, want to learn more about the VRE deployment, are in need of extra resources or want their software to be included in the VRE. Join [here](https://indico.in2p3.fr/category/1033/). 
+
+## Resources 
+- Gazzarrini, E., Garcia, E., Gosein, D., Vendrell Moya, A., Kounelis, A., and Espinal, X., “The Virtual Research Environment: towards a comprehensive analysis platform”, <i>arXiv e-prints</i>, 2023. [doi:10.48550/arXiv.2305.10166](https://arxiv.org/abs/2305.10166).
+- [plenary talk](https://indico.jlab.org/event/459/contributions/11671/) at *26th International Conference on Computing in High Energy & Nuclear Physics (CHEP2023)*
+- [presentation](https://indico.cern.ch/event/1106990/contributions/4991200/) at *21st International Workshop on Advanced Computing and Analysis Techniques in Physics Research, Bari 2022*
+- [presentation](https://projectescape.eu/sites/default/files/1.EnriqueGarcia_VRE_ESCAPE-Bruxels_Nov2022_v2.pdf) at *ESCAPE to the Future, Brussels 2022* 
