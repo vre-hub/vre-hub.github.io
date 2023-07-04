@@ -1,6 +1,8 @@
 # Jupyterhub interface
 
-This service provides the end-user with a Notebook ready-to-be-used and fully integrated with the ESCAPE Data Lake. The service is hosted [here](https://jhub-vre.cern.ch/). 
+This service provides the end-user with a Notebook ready-to-be-used and fully integrated with the ESCAPE Data Lake. The service is hosted [here](https://jhub-vre.cern.ch/).
+
+In some cases, it can happen that you land in the tree view. To change to the default lab view, change the URL to: `https://jhub-vre.cern.ch/user/<you-username>/lab`.
 
 ## Authentication
 Authenticate to IAM. Once you log into the service for the first time, everything will be configured for the OpenID connect by default. You will be able to modify it later and make it persistent.
