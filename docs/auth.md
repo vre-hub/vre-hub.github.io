@@ -48,10 +48,10 @@ From the .globus directory, execute the following shell commands:
 ```console
 $ rm -f client.crt
 $ rm -f client.key
-$ openssl pkcs12 -in <your_cert>.p12 -clcerts -nokeys -out client.crt
-$ openssl pkcs12 -in <your_cert>.p12 -nocerts -nodes -out client.key
-$ chmod 644 client.crt
-$ chmod 400 client.key
+$ openssl pkcs12 -in <your_cert>.p12 -clcerts -nokeys -out usercert.pem
+$ openssl pkcs12 -in <your_cert>.p12 -nocerts -nodes -out userkey.pem
+$ chmod 644 usercert.pem
+$ chmod 400 userkey.pem
 ```
 This completes the X.509 certificate set-up for ESCAPE.
 
