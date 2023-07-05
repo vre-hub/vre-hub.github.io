@@ -2,7 +2,7 @@
 layout: default
 ---
 
-**Find the uptime status of the VRE services at CERN [here](https://vre-hub.github.io/status).**
+**🟩 Experiencing issues? Check the [service uptime status page](https://vre-hub.github.io/status) 🟩**
 
 # The Virtual Research Environment
 
