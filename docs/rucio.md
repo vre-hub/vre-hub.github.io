@@ -151,14 +151,7 @@ A default Rucio `/opt/rucio/etc/rucio.cfg` file is incorporated into the image a
 
 Note that if you are uploading data from the host machine where the Docker container is running, you will need to bind that directory as a volume mount for it to be accessible inside the container.
 
-### X509 authentication
 
-Assuming that your X509 certificate is in the `.globus` directory, they must now be volume bound to `/opt/rucio/etc/` in the container on initialisation. The following command will link the key pairs from the local path to the rucio path:
-
-```console
-$ docker run --user root -e RUCIO_CFG_ACCOUNT=<myrucioaccount> -v ~/.globus/usercert.pem:/opt/rucio/etc/client.crt -v ~/.globus/userkey.pem:/opt/rucio/etc/client.key -it --name=rucio-client ghcr.io/vre-hub/vre-rucio-client
-```
-Take the `--user root` option away if you encounter problems.
 
 The -v option is a volume mount, which mounts your certificates from your local directory into the docker container. 
 Make sure to specify the correct origin folder for the certificates, otherwise the command will generate an empty directory inside the container!
@@ -170,6 +163,14 @@ $ docker ps -a
 ```
 The command should show the `rucio-client` container running. 
 
+### Run with X.509 authentication
+
+Have your certificate ready and divided into two files named ~/.globus/userkey.pem and ~/.globus/usercert.pem. 
+
+```bash
+docker run --user root -e RUCIO_CFG_CLIENT_X509_PROXY=/tmp/x509up -e RUCIO_CFG_AUTH_TYPE=x509_proxy -e RUCIO_CFG_ACCOUNT=<myrucioname> -v ~/.globus/usercert.pem:/opt/rucio/etc/client.crt -v /.globus/userkey.pem:/opt/rucio/etc/client.key -it --name=rucio-client ghcr.io/vre-hub/vre-rucio-client
+```
+Take the `--user root` option away if you encounter problems.
 If you cannot log in as root and you get permission errors, add your user account to the docker group:
 
 ```console
@@ -182,45 +183,26 @@ Sometimes you will still need to give the /var/run/docker.sock socket and /var/r
 $ sudo chown root:docker /var/run/docker.sock
 $ sudo chown -R root:docker /var/run/docker
 ```
-Place your original X509 complete certificate in your `.globus/` directory and run the following command:
 
-```console
-$ docker run --user "$(id -u):$(id -g)" -e RUCIO_CFG_ACCOUNT=<myrucioaccount> --mount "type=bind,src=$(pwd)/.globus,dst=/opt/rucio/etc" --workdir /opt/rucio/etc -it --name=rucio-client rucio-client
+Once you are inside the container, generate the proxy:
+
 ```
-You will be automatically logged into the Docker container, within a Rucio environment. 
-Once this command brings you inside the docker container, execute the following to allow all the VOMs to take place. **Without the following you will not be abel to execute uploads and downloads!**
-
-```console
-$ voms-proxy-init --voms escape --cert /opt/rucio/etc/client.crt --key /opt/rucio/etc/client.key
+$ voms-proxy-init --voms escape --cert /opt/rucio/etc/client.crt --key /opt/rucio/etc/client.key --out /tmp/x509up --debug
 ```
+**Without the above command you will not be abel to execute uploads and downloads!**
 
-#### OIDC token authentication
-If you want to access the `rucio-client container` with OpenID Token authentication, execute:
+After having run it, run `rucio whoami` to check you are authenticated against the server. 
 
-```console
-$ docker run --user root -e RUCIO_CFG_ACCOUNT=<myrucioaccount> -it --name=rucio-client ghcr.io/vre-hub/vre-rucio-client
-cd /opt/rucio/etc/
+## Run with token authentication
+You only need to run the container specifying that you want to be authenticated with tokens. You will need to click on a link that authenticates you against the server and you are set to go. 
+
 ```
-and replace the `rucio.cfg` file with :
+docker run --user root -e RUCIO_CFG_AUTH_TYPE=oidc -e RUCIO_CFG_ACCOUNT=<myrucioname> -it --name=rucio-client ghcr.io/vre-hub/vre-rucio-client
+```
+## Run with userpass authentication
 
-```console
-[client]
-rucio_host = https://vre-rucio.cern.ch
-auth_host = https://vre-rucio-auth.cern.ch
-ca_cert = /etc/pki/tls/certs/CERN-bundle.pem
-auth_type = oidc
-account = <myrucioaccount>
-oidc_audience = rucio
-oidc_scope = openid profile offline_access wlcg wlcg.groups fts:submit-transfer
-request_retries = 3
-oidc_issuer = escape
-oidc_polling = true
-auth_oidc_refresh_activate = true
-
-[policy]
-permission = escape 
-schema = escape  
-lfn2pfn_algorithm_default = hash 
+```bash
+$ docker run -e RUCIO_CFG_ACCOUNT=<myrucioaccount> -e RUCIO_CFG_AUTH_TYPE=userpass -e RUCIO_CFG_USERNAME=<myrucioname> -e RUCIO_CFG_PASSWORD=<myruciopassword> -it --name=rucio-client ghcr.io/vre-hub/vre-rucio-client
 ```
 
 **General note:** To access the rucio-client Docker container in the future, always use this command from the machine where you have Docker installed:
