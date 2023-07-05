@@ -2,6 +2,8 @@
 layout: default
 ---
 
+**Find the uptime status of the VRE services at CERN [here](https://vre-hub.github.io/status).**
+
 # The Virtual Research Environment
 
 The Virtual Research Environment is an analysis platform developed at **CERN** serving the needs of scientific communities involved in European Projects. 
