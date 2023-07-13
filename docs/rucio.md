@@ -1,7 +1,7 @@
 # The Rucio Data Lake 
 
 The Data Lake infrastructure is made up of distributed Storge Elements adn of a reliable framework to upload and transfer data between them. 
-An overview of the available Rucio Storage Elements (RSEs) can be foudn in the [Grafana monitoring dashboard](https://monit-grafana.cern.ch/d/PJ65OqBVz/vre-rucio-events?orgId=51), which are useful to inspect the RSE transfer details. 
+An overview of the available Rucio Storage Elements (RSEs) can be foudn in the [Grafana monitoring dashboard](https://monit-grafana-open.cern.ch/d/PJ65OqBVz/vre-rucio-events?orgId=16), which are useful to inspect the RSE transfer details. 
 
 ![image](../images/monit.png)
 
