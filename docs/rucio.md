@@ -219,6 +219,18 @@ In order to uplaod data on the Data Lake, and supposing that you want to organis
 The Scope name follows the formatting _Experiment_Institute_Project_ (e.g. ATLAS_LAPP_SP, the EOSC-Future Science Project)
 The Dataset name follows the formatting _ProjectType.DataDescription.DataType_ (DM.LeptonResonance.Data20015_10TeV, the ProjectType for EOSC-Future is either DM or EU). 
 
+You can list the current scopes with:
+
+```
+rucio list-scopes
+```
+The current ones are: 
+
+|  SCOPE (_Experiment_Institute_Project_) | Description |
+| ----------- | ----------- |
+| **test**     | for the admins of the cluster       |
+| **ET_OSB_MDC1**  |  _Einstein Telescope_Observational Science Board_Mock Data Challenge 1_    |
+
 To add a scope, you need to have administrator rights. If you don't have them, ask the system administrators to create a scope for you. 
 
 ```console
