@@ -241,8 +241,10 @@ You can either upload single files, create a dataset, and attach the files to th
 
 Example of how to upload single files:
 ```console
-$ rucio upload --scope ATLAS_LAPP_SP --rse EULAKE-1 DM.LeptonResonance.Data20015_10TeV.root
+$ rucio upload --register-after-upload --scope ATLAS_LAPP_SP --rse EULAKE-1 DM.LeptonResonance.Data20015_10TeV.root
 ```
+The `--register-after-upload` flag is important; if you omit it and the upload fails, you will not be able to use the same file name to upload it, you will have to rename it. 
+
 Example of how to create a dataset:
 ```console
 $ rucio add-dataset ATLAS_LAPP_SP:DM.LeptonResonance.Data20015_10TeV
@@ -253,7 +255,7 @@ $ rucio attach ATLAS_LAPP_SP:DM.LeptonResonance.Data20015_10TeV ATLAS_LAPP_SP:DM
 ```
 Example of how to upload a whole file folder (cannot contain a folder within it):
 ```console
-$ rucio -v upload --rse EULAKE-1 --scope ATLAS_LAPP_SP --recursive ./folder_name/
+$ rucio -v upload --register-after-upload --rse EULAKE-1 --scope ATLAS_LAPP_SP --recursive ./folder_name/
 ```
 To inspect all the datasets within a scope:
 ```console
