@@ -259,7 +259,7 @@ $ rucio -v upload --register-after-upload --rse EULAKE-1 --scope ATLAS_LAPP_SP -
 ```
 To inspect all the datasets within a scope:
 ```console
-$ rucio list-dids ATLAS_LAPP_SP:*
+$ rucio list-dids --filter 'type=all' ATLAS_LAPP_SP:*
 ```
 To display changes of files within one dataset:
 ```console
