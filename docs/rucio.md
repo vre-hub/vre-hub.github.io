@@ -8,7 +8,7 @@ An overview of the available Rucio Storage Elements (RSEs) can be foudn in the [
 If you do not have access to the dashboard, register with a CERN SSO account, please get in touch through the **[Slack channel](https://eosc-escape.slack.com/archives/C03Q65M1U5V)**.
 The location of the storage elements, which are provided and maintained by European partner institutions, is shown on the map. 
 
-![image](../images/staticmap.png)
+![image](../images/rucio_vre_rse_map.png)
 
 This guide takes a look at how to install the Rucio client environment in two different ways. 
 
