@@ -230,6 +230,7 @@ The current ones are:
 | ----------- | ----------- |
 | **test**     | for the admins of the cluster       |
 | **ET_OSB_MDC1**  |  _Einstein Telescope_Observational Science Board_Mock Data Challenge 1_    |
+| **ATLAS_LAPP_SP**  |  _ATLAS_Laboratoire d'Annecy de Physique des Particules_MScienceProject_    |
 
 To add a scope, you need to have administrator rights. If you don't have them, ask the system administrators to create a scope for you. 
 
