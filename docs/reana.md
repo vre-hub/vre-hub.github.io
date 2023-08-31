@@ -1,11 +1,9 @@
 # Reana cluster
 
-Connect to the cluster by navigating [here](https://reana.cern.ch/). You can use your X509 certificate to authenticate through IAM. 
+Connect to the cluster by navigating [here](https://reana-vre.cern.ch/). You can use your X509 certificate to authenticate through IAM. 
 Explore Reana on the software's [official documentation](https://docs.reana.io/). 
 
 You can find other examples of differen workflow languages on the [official Reana documentation](https://docs.reana.io/advanced-usage/access-control/rucio/).
-
-
 
 # Reana - Rucio integration
 
@@ -17,7 +15,7 @@ In order to take advantage of this, follow [these](https://docs.reana.io/advance
 
 
 ```
-$ export REANA_SERVER_URL=https://reana.cern.ch
+$ export REANA_SERVER_URL=https://reana-vre.cern.ch
 $ export REANA_ACCESS_TOKEN=xxxxxxxxxxxxxxxxxxx
 $ reana-client secrets-add --env VONAME=escape \
                            --env VOMSPROXY_FILE=x509up_u1000 \
@@ -42,11 +40,11 @@ workflow:
       - name: fetchdata
         voms_proxy: true
         rucio: true
-        environment: 'projectescape/rucio-client'
+        environment: 'ghcr.io/vre-hub/vre-rucio-client:v0.1.2-1-0487cc0'
         commands:
         - rucio get <SCOPE_NAME:FILE_NAME>
       - name: fitdata
-        environment: <link_to_gitlab_registry_or_dockerhub_image>
+        environment: <link_to_github_registry_or_dockerhub_image>
         commands:
         - <your_commands>
       - name: uploaddata
@@ -66,4 +64,4 @@ $ reana-client upload
 $ reana-client start      
 $ reana-client status
 ```
-5. Check the state of your workflow on https://reana.cern.ch/. 
+5. Check the state of your workflow on https://reana-vre.cern.ch/. 
