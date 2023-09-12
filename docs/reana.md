@@ -50,7 +50,7 @@ workflow:
       - name: uploaddata
         voms_proxy: true
         rucio: true
-        environment: 'projectescape/rucio-client'
+        environment: 'ghcr.io/vre-hub/vre-rucio-client:v0.1.2-1-0487cc0'
         commands:
         - rucio upload --scope SCOPE_NAME --rse RSE_NAME <your_result_named_as_ProjectType.DataDescription.DataType>
 ```
