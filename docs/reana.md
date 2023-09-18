@@ -13,15 +13,17 @@ In order to take advantage of this, follow [these](https://docs.reana.io/advance
 
 - Execute from terminal:
 
-
 ```
 $ export REANA_SERVER_URL=https://reana-vre.cern.ch
 $ export REANA_ACCESS_TOKEN=xxxxxxxxxxxxxxxxxxx
 $ reana-client secrets-add --env VONAME=escape \
                            --env VOMSPROXY_FILE=x509up_u1000 \
                            --file /tmp/x509up_u1000 \
-                           --env RUCIO_USERNAME=<your_rucio_username>
+                           --env RUCIO_USERNAME=<your_rucio_username> \
+                           --env RUCIO_RUCIO_HOST= https://vre-rucio.cern.ch \
+                           --env RUCIO_AUTH_HOST=https://vre-rucio-auth.cern.ch
 ```
+
 The VOMSPROXY_FILE is the temporary file that you need to generate after having split the x509 into `client.crt` and `client.key`. Execute: with the command:
 
 ```
@@ -29,7 +31,33 @@ $ voms-proxy-init --voms escape --cert /opt/rucio/etc/client.crt --key /opt/ruci
 ```
 and note where the proxy file gets saved, the default path should be `/tmp/x509up_u1000`. 
 
-- Move to the directory where you have your **reana.yaml** file, which should follow this template (with Rucio and ESCAPE VOMS set to true): 
+### Connect to a custom Rucio instance
+
+The VRE Rucio instance is only one of the many instances existing around the world. In order to connect to a custom Rucio instance, you need an x509 certificate to use with the VOMS of your organisation. Once you have it, you can import it in the [jhub-vre.cern.ch](jhub-vre.cern.ch). You can then run the `voms-proxy-init` with any VO by first sourcing the CVMFS file:
+
+```
+$ source /cvmfs/grid.cern.ch/centos7-ui-160522/etc/profile.d/setup-c7-ui-example.sh 
+```
+
+Now, based on your VO organisation, run (for example, if you are part of ATLAS): 
+
+```
+$ voms-proxy-init --voms atlas --cert /opt/rucio/etc/client.crt --key /opt/rucio/etc/client.key
+```
+And then, the appropriate secrets for the `reana-client`:
+
+```
+$ reana-client secrets-add --env VONAME=atlas \
+                           --env VOMSPROXY_FILE=x509up_u1000 \
+                           --file /tmp/x509up_u1000 \
+                           --env RUCIO_USERNAME=<your_rucio_username>
+                           --env RUCIO_RUCIO_HOST= https://voatlasrucio-server-prod.cern.ch \
+                           --env RUCIO_AUTH_HOST=https://voatlasrucio-auth-prod.cern.ch
+```
+
+# Dispatch the workflow
+
+Move to the directory where you have your **reana.yaml** file, which should follow this template (with Rucio and ESCAPE VOMS set to true): 
 
 ```
 version: 0.6.0
