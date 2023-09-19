@@ -149,12 +149,10 @@ The image is hosted [here](https://github.com/cern-vre/containers/tree/main/ruci
 
 A default Rucio `/opt/rucio/etc/rucio.cfg` file is incorporated into the image and supplied to the container when it is run. The values from this default can be partially or fully overridden by either specifying parameters as environment variables or by mounting a bespoke configuration file. 
 
-Note that if you are uploading data from the host machine where the Docker container is running, you will need to bind that directory as a volume mount for it to be accessible inside the container.
-
-
-
 The -v option is a volume mount, which mounts your certificates from your local directory into the docker container. 
 Make sure to specify the correct origin folder for the certificates, otherwise the command will generate an empty directory inside the container!
+
+**To UPLOAD data from the local machine where the Docker container is running to the Rucio Data Lake, you will need to add that directory as a volume mount (with the -v tag) to the container for it to be accessible inside the container. Follow the commands that follow.** 
 
 To see whether you initialized the Docker container correctly, refer to the [Docker documentation](https://docs.docker.com/get-started/). For example, you could run: 
 
@@ -163,12 +161,12 @@ $ docker ps -a
 ```
 The command should show the `rucio-client` container running. 
 
-### Run with X.509 authentication
+### a. Run with X.509 authentication
 
 Have your certificate ready and divided into two files named ~/.globus/userkey.pem and ~/.globus/usercert.pem. 
 
 ```bash
-docker run --user root -e RUCIO_CFG_CLIENT_X509_PROXY=/tmp/x509up -e RUCIO_CFG_AUTH_TYPE=x509_proxy -e RUCIO_CFG_ACCOUNT=<myrucioname> -v ~/.globus/usercert.pem:/opt/rucio/etc/client.crt -v /.globus/userkey.pem:/opt/rucio/etc/client.key -it --name=rucio-client ghcr.io/vre-hub/vre-rucio-client
+docker run --user root -e RUCIO_CFG_CLIENT_X509_PROXY=/tmp/x509up -e RUCIO_CFG_AUTH_TYPE=x509_proxy -e RUCIO_CFG_ACCOUNT=<myrucioname> -v ~/.globus/usercert.pem:/opt/rucio/etc/client.crt -v /.globus/userkey.pem:/opt/rucio/etc/client.key -v ./<path_to_local_data_directory>:/home/<path_to_local_data_directory> -it --name=rucio-client ghcr.io/vre-hub/vre-rucio-client
 ```
 Take the `--user root` option away if you encounter problems.
 If you cannot log in as root and you get permission errors, add your user account to the docker group:
@@ -193,16 +191,16 @@ $ voms-proxy-init --voms escape --cert /opt/rucio/etc/client.crt --key /opt/ruci
 
 After having run it, run `rucio whoami` to check you are authenticated against the server. 
 
-## Run with token authentication
+## b. Run with token authentication
 You only need to run the container specifying that you want to be authenticated with tokens. You will need to click on a link that authenticates you against the server and you are set to go. 
 
 ```
-docker run --user root -e RUCIO_CFG_AUTH_TYPE=oidc -e RUCIO_CFG_ACCOUNT=<myrucioname> -it --name=rucio-client ghcr.io/vre-hub/vre-rucio-client
+docker run --user root -e RUCIO_CFG_AUTH_TYPE=oidc -e RUCIO_CFG_ACCOUNT=<myrucioname> -v ./<path_to_local_data_directory>:/home/<path_to_local_data_directory> -it --name=rucio-client ghcr.io/vre-hub/vre-rucio-client
 ```
-## Run with userpass authentication
+## c. Run with userpass authentication
 
 ```bash
-$ docker run -e RUCIO_CFG_ACCOUNT=<myrucioaccount> -e RUCIO_CFG_AUTH_TYPE=userpass -e RUCIO_CFG_USERNAME=<myrucioname> -e RUCIO_CFG_PASSWORD=<myruciopassword> -it --name=rucio-client ghcr.io/vre-hub/vre-rucio-client
+$ docker run -e RUCIO_CFG_ACCOUNT=<myrucioaccount> -e RUCIO_CFG_AUTH_TYPE=userpass -e RUCIO_CFG_USERNAME=<myrucioname> -e RUCIO_CFG_PASSWORD=<myruciopassword> -v ./<path_to_local_data_directory>:/home/<path_to_local_data_directory> -it --name=rucio-client ghcr.io/vre-hub/vre-rucio-client
 ```
 
 **General note:** To access the rucio-client Docker container in the future, always use this command from the machine where you have Docker installed:
@@ -230,8 +228,9 @@ The current ones are:
 | ----------- | ----------- |
 | **test**     | for the admins of the cluster       |
 | **ET_OSB_MDC1**  |  _Einstein Telescope_Observational Science Board_Mock Data Challenge 1_    |
-| **ATLAS_LAPP_SP**  |  _ATLAS_Laboratoire d'Annecy de Physique des Particules_MScienceProject_    | 
-| **KM3NET_ECAP_SP**  |  _Cubic Kilometre Neutrino Telescope_Erlangen Centre for Astroparticle Physics_MScienceProject_    |
+| **ATLAS_LAPP_SP**  |  _ATLAS_Laboratoire d'Annecy de Physique des Particules_ScienceProject_    | 
+| **KM3NET_ECAP_SP**  |  _Cubic Kilometre Neutrino Telescope_Erlangen Centre for Astroparticle Physics_ScienceProject_ |
+| **EGO_INFN_GW**  |  _European Gravitational Observatory_Istituto Nazionale Fisica Nucleare_Gravitational Waves_ |
 
 To add a scope, you need to have administrator rights. If you don't have them, ask the system administrators to create a scope for you. 
 
