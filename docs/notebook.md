@@ -45,8 +45,9 @@ If you have multiple files that you would like to organise into a dataset, click
 
 **There are two directories which allow you to store files in the DLaaS, and you should be aware of their memeory limitations.**
 
-1. **/home/jovyan**: shared between all users, capacity of 800GB, it is never cleaned and should be only used to upload upload documents and certificates. 
-2. **/eos/escape**: correspons to the CERN-EOS RSE, with TB of space. This is the reason why when you 'make availabel' a file that you know is already in that RSE, the Jupyterlab will tell you it is immediately available (you do not have to *replicate* it from a far-away storage, as it is already close to you!). **We therefore strongly recommend to upload on the `CERN-EOS` RSE the files that you know you will be using on the Jupyterhub.** 
+1. **/home/jovyan**: shared between all users, capacity of 800GB, it is never cleaned and should be only used to upload documents and certificates. 
+2. **/eos/cern-eos-rse**: corresponds to the CERN-EOS RSE. This is the reason why when you 'make available' a file that you know is already in that RSE, the Jupyterlab will tell you it is immediately available (you do not have to *replicate* it from far-away storage, as it is already close to you!). **We therefore strongly recommend uploading on the `CERN-EOS` RSE the files that you know you will be using on the Jupyterhub.**
+3. **/eos/scratch-space**: Scratch space on the CERN EOS, which can be used to store temporary files.
 
 **It is always a better practice to upload large data files on the Data Lake directly from the terminal by using the rucio-client commands, as described in the [previous section](docs/rucio.md), in order not to fill up the communal space.**
 
