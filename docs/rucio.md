@@ -294,9 +294,8 @@ You should keep in mind that the scope will not get deleted from the Rucio memor
 You can visualize which data and rules are associated to your account by navigating to the [Rucio UI](https://vre-rucio-ui.cern.ch) platform. 
 
 Have a look at the [rucio client documentation](https://rucio.readthedocs.io/en/latest/man/rucio.html) to perform more actions on your recently uploaded data. 
-You can also upload your data in a more user-friendly way using the [DLaaS](dlaas.md###1. File Browser).   
+You can also upload your data in a more user-friendly way using the [Jupyterhub interface](notebook.md###1. File Browser).   
 
-<!-- 
 ## Rucio RESTful APIs    
 
 Interacting with the client environment can be done through the Docker container, or through the RestAPI. This is a way for developers to be able to integrate any kind of scripts into the environment without the need of installing all the Rucio CLI dependencies.
@@ -309,16 +308,16 @@ To get the token, run the command:
 ```console
 $ curl -i --key ~/.globus/userkey.pem --cert ~/.globus/usercert.pem -H "X-Rucio-Account: <myrucioaccount>" -X GET https://escape-rucio-auth.cern.ch/auth/x509 | sed -n -e 's/^.*X-Rucio-Auth-Token: //p'
 ```
-The \< myrucioaccount \> instance needs to be replaced with your Rucio UI account name, the same as your IAM account (but you can also find it by navigating [here](https://escape-rucio-webui.cern.ch/) and selecting the ‘Account management’ option under the Admin scroll-down menu). 
+The \< myrucioaccount \> instance needs to be replaced with your Rucio UI account name, the same as your IAM account (but you can also find it by navigating [here](https://vre-rucio-webui.cern.ch/) and selecting the ‘Account management’ option under the Admin scroll-down menu). 
 
-*Note: Using curl with the --insecure option allows curl to make insecure connections (i.e. curl does not verify the certificate), bypassing: curl: (60) SSL certificate problem: self signed certificate in certificate chain. Another solution is proposed [here](https://escape-rucio-webui.cern.ch/).*
+*Note: Using curl with the --insecure option allows curl to make insecure connections (i.e. curl does not verify the certificate), bypassing: curl: (60) SSL certificate problem: self signed certificate in certificate chain.*
 
 Create a variable by copying the token which has been generated and running in the command line:
 
 ```console
 $ token="<your_token>"
 ```
-Do not forget the “ symbol. 
+Do not forget the `“` symbol. 
 
 After the token has been saved, you can run any Rest Api command, for example listing all the available RSEs or all the scopes:
 
@@ -336,5 +335,4 @@ $ curl -i --key ~/.globus/userkey.pem --cert ~/.globus/usercert.pem -H "X-Rucio-
 ```
 Again, using curl with the --insecure option might be useful. Follow the same steps as above to make Rest API requests. 
 
-To find all the Rucio REST API commands, navigate [here](https://rucio.readthedocs.io/en/latest/rest.html).
- -->
+To find all the Rucio REST API commands, navigate [here](https://rucio.github.io/documentation/html/rest_api_doc.html).
