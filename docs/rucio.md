@@ -306,7 +306,7 @@ Now that you have the VOMS in place, you will just need to add your token, which
 To get the token, run the command:
 
 ```console
-$ curl -i --key ~/.globus/userkey.pem --cert ~/.globus/usercert.pem -H "X-Rucio-Account: <myrucioaccount>" -X GET https://escape-rucio-auth.cern.ch/auth/x509 | sed -n -e 's/^.*X-Rucio-Auth-Token: //p'
+$ curl -i --key ~/.globus/userkey.pem --cert ~/.globus/usercert.pem -H "X-Rucio-Account: <myrucioaccount>" -X GET https://vre-rucio-auth.cern.ch/auth/x509 | sed -n -e 's/^.*X-Rucio-Auth-Token: //p'
 ```
 The \< myrucioaccount \> instance needs to be replaced with your Rucio UI account name, the same as your IAM account (but you can also find it by navigating [here](https://vre-rucio-webui.cern.ch/) and selecting the ‘Account management’ option under the Admin scroll-down menu). 
 
@@ -322,8 +322,8 @@ Do not forget the `“` symbol.
 After the token has been saved, you can run any Rest Api command, for example listing all the available RSEs or all the scopes:
 
 ```console
-$ curl -X GET -H "X-Rucio-Auth-Token: $token" https://escape-rucio.cern.ch/rses/
-$ curl -X GET -H "X-Rucio-Auth-Token: $token" https://escape-rucio.cern.ch/scopes/
+$ curl -X GET -H "X-Rucio-Auth-Token: $token" https://vre-rucio.cern.ch/rses/
+$ curl -X GET -H "X-Rucio-Auth-Token: $token" https://vre-rucio.cern.ch/scopes/
 ```
 
 #### *Proxy generation*
@@ -331,7 +331,7 @@ $ curl -X GET -H "X-Rucio-Auth-Token: $token" https://escape-rucio.cern.ch/scope
 The proxy generation with the x509 certificate works in the same way, the only difference is the command to get the token: 
 
 ```console
-$ curl -i --key ~/.globus/userkey.pem --cert ~/.globus/usercert.pem -H "X-Rucio-Account: <myrucioaccount>" -X GET https://escape-rucio-auth.cern.ch/auth/x509_proxy | sed -n -e 's/^.*X-Rucio-Auth-Token: //p'
+$ curl -i --key ~/.globus/userkey.pem --cert ~/.globus/usercert.pem -H "X-Rucio-Account: <myrucioaccount>" -X GET https://vre-rucio-auth.cern.ch/auth/x509_proxy | sed -n -e 's/^.*X-Rucio-Auth-Token: //p'
 ```
 Again, using curl with the --insecure option might be useful. Follow the same steps as above to make Rest API requests. 
 
