@@ -308,7 +308,7 @@ To get the token, run the command:
 ```console
 $ curl -i --key ~/.globus/userkey.pem --cert ~/.globus/usercert.pem -H "X-Rucio-Account: <myrucioaccount>" -X GET https://vre-rucio-auth.cern.ch/auth/x509 | sed -n -e 's/^.*X-Rucio-Auth-Token: //p'
 ```
-The \< myrucioaccount \> instance needs to be replaced with your Rucio UI account name, the same as your IAM account (but you can also find it by navigating [here](https://vre-rucio-webui.cern.ch/) and selecting the ‘Account management’ option under the Admin scroll-down menu). 
+The \< myrucioaccount \> instance needs to be replaced with your Rucio UI account name, the same as your IAM account (but you can also find it by navigating [here](https://vre-rucio-ui.cern.ch/) and selecting the ‘Account management’ option under the Admin scroll-down menu). 
 
 *Note: Using curl with the --insecure option allows curl to make insecure connections (i.e. curl does not verify the certificate), bypassing: curl: (60) SSL certificate problem: self signed certificate in certificate chain.*
 
