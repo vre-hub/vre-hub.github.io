@@ -6,7 +6,18 @@ An overview of the available Rucio Storage Elements (RSEs) can be foudn in the [
 ![image](../images/monit.png)
 
 If you do not have access to the dashboard, register with a CERN SSO account, please get in touch through the **[Slack channel](https://eosc-escape.slack.com/archives/C03Q65M1U5V)**.
-The location of the storage elements, which are provided and maintained by European partner institutions, is shown on the map. 
+The location of the storage elements, which are provided and maintained by European partner institutions, is shown on the map, and a list of them is reported in the table. 
+
+| _Rucio Storage Element (site-technology)_ | Location |
+| ------------ | ----------- |
+| **CC_DCACHE**  | Centre de Calcul, (IN2P3), Lyon, FR    |
+| **CERN-EOS**  | European Organization for Nuclear Research, Meyrin, CH  |
+| **CESNET-S3**  |  Czech Education and Scientific NETwork, Prague, CZ  | 
+| **CNAF-STORM**  |  Istituto Nazionale di Fisica Nucleare, Bologna, IT |
+| **DESY-DCACHE**  | Deutsches Elektronen-Synchrotron, Hamburg, DE |
+| **IN2P3_LAPP-DCACHE**  | Laboratoire d'Annecy de Physique des Particules (CNRS/IN2P3), Annecy, FR |
+| **INFN_NAPOLI-DCACHE**  | Istituto Nazionale di Fisica Nucleare, Napoli, IT |
+| **PIC-DCACHE**  |  Port d’Informació Científica, Barcelona, ES |
 
 ![image](../images/rses.png)
 
