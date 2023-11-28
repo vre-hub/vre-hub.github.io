@@ -20,7 +20,7 @@ $ reana-client secrets-add --env VONAME=escape \
                            --env VOMSPROXY_FILE=x509up_u1000 \
                            --file /tmp/x509up_u1000 \
                            --env RUCIO_USERNAME=<your_rucio_username> \
-                           --env RUCIO_RUCIO_HOST= https://vre-rucio.cern.ch \
+                           --env RUCIO_RUCIO_HOST=https://vre-rucio.cern.ch \
                            --env RUCIO_AUTH_HOST=https://vre-rucio-auth.cern.ch
 ```
 
