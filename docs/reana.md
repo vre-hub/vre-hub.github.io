@@ -51,7 +51,7 @@ $ reana-client secrets-add --env VONAME=atlas \
                            --env VOMSPROXY_FILE=x509up_u1000 \
                            --file /tmp/x509up_u1000 \
                            --env RUCIO_USERNAME=<your_rucio_username>
-                           --env RUCIO_RUCIO_HOST= https://voatlasrucio-server-prod.cern.ch \
+                           --env RUCIO_RUCIO_HOST=https://voatlasrucio-server-prod.cern.ch \
                            --env RUCIO_AUTH_HOST=https://voatlasrucio-auth-prod.cern.ch
 ```
 
