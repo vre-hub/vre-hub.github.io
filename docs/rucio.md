@@ -1,7 +1,7 @@
 # The Rucio Data Lake 
 
-The Data Lake infrastructure is made up of distributed Storge Elements adn of a reliable framework to upload and transfer data between them. 
-An overview of the available Rucio Storage Elements (RSEs) can be foudn in the [Grafana monitoring dashboard](https://monit-grafana-open.cern.ch/d/PJ65OqBVz/vre-rucio-events?orgId=16), which are useful to inspect the RSE transfer details. 
+The Data Lake infrastructure is made up of distributed Storage Elements and of a reliable framework to upload and transfer data between them. 
+An overview of the available Rucio Storage Elements (RSEs) can be found in the [Grafana monitoring dashboard](https://monit-grafana-open.cern.ch/d/PJ65OqBVz/vre-rucio-events?orgId=16), which are useful to inspect the RSE transfer details. 
 
 ![image](../images/monit.png)
 
@@ -23,8 +23,8 @@ The location of the storage elements, which are provided and maintained by Europ
 
 This guide takes a look at how to install the Rucio client environment in two different ways. 
 
-1. Installing the required packages on your local machine
-2. Using a Docker container. Docker technologies mitigate dependency and platform specific issues, and are therefore recommended; however, if you want to upload large data that are present on your system, you will need to copy them inside the Docker container, and then upload them on the Rucio DataLake. This might be cumbersome, especially if you are dealing with large files. 
+1. Installing the required packages on your local machine.
+2. Using a Docker container. Docker technologies mitigate dependency and platform specific issues, and are therefore recommended; however, if you want to upload large data that are present on your system, you will need to copy them inside the Docker container, and then upload them on the Rucio Data Lake. This might be cumbersome, especially if you are dealing with large files. 
 
 
 In general, there are two main ways to authenticate to the Rucio instance: via X509 certificates and via OIDC tokens. These two ways require different configuration files for Rucio. 
@@ -32,7 +32,7 @@ In general, there are two main ways to authenticate to the Rucio instance: via X
 ### X509 Rucio configuration 
 
 The X509 certificate is placed in the `.globus/` directory. 
-The `rucio.cfg` file is usually place in the `/opt/rucio/etc/` directory. 
+The `rucio.cfg` file is usually placed in the `/opt/rucio/etc/` directory. 
 
 ```console
 [client]
@@ -55,7 +55,7 @@ support_rucio = https://github.com/rucio/rucio/issues/
 
 ### OIDC token Rucio configuration 
 
-The `rucio.cfg` file is usually place in the `/opt/rucio/etc/` directory. 
+The `rucio.cfg` file is usually placed in the `/opt/rucio/etc/` directory. 
 
 ```console
 [client]
@@ -79,7 +79,7 @@ lfn2pfn_algorithm_default = hash
 
 ## 1. Manual installation 
 
-We assume you are running the commands from a CentOS Linux distribution, in our case a `CS8 - x86_64` image. Run the commands int he following order:
+We assume you are running the commands from a CentOS Linux distribution, in our case a `CS8 - x86_64` image. Run the commands in the following order:
 
 ```console
 yum install -y epel-release.noarch && \
@@ -133,7 +133,7 @@ Have your `rucio.cfg` file ready in `/opt/rucio/etc/` and run:
 ```console
 export RUCIO_CONFIG=/opt/rucio/etc/rucio.cfg
 ```
-If you use X509 verification, you will alo need the command: 
+If you use X509 verification, you will also need the command: 
 
 ```console
 voms-proxy-init --voms escape --cert .globus/usercert.pem --key .globus/userkey.pem 
@@ -145,25 +145,25 @@ By typing in the terminal:
 ```console
 $ rucio whoami
 ```
-You should see your username being recognised. If it is your first time using tokens, you will be redirected to a link starting with  'https://escape-rucio-auth.cern.ch/auth/...', click on it and choose the duration of your token. You should be all set up to run your rucio commands!
+you should see your username being recognised. If it is your first time using tokens, you will be redirected to a link starting with  'https://escape-rucio-auth.cern.ch/auth/...'; click on it and choose the duration of your token. You should be all set up to run your rucio commands!
 
 ## 2. Docker image installation 
 
 Docker needs to be installed following the [Docker installation](https://docs.docker.com/get-docker/) instructions. The procedure will change depending on your operating system. 
-The Docker file will extend the Rucio image and will enable the user to interact with the Data Lake. Further information can be found [here](https://github.com/cern-vre/containers/tree/main/rucio-client). 
+The Docker file will extend the Rucio image and will enable the user to interact with the Data Lake. Further information can be found [here](https://github.com/vre-hub/vre/blob/main/containers/rucio-client). 
 The Docker image for this project can be pulled with:
 
 ```console
 $ docker pull ghcr.io/vre-hub/vre-rucio-client:latest
 ```
-The image is hosted [here](https://github.com/cern-vre/containers/tree/main/rucio-client).
+The image is hosted [here](https://github.com/vre-hub/vre/pkgs/container/vre-rucio-client).
 
 A default Rucio `/opt/rucio/etc/rucio.cfg` file is incorporated into the image and supplied to the container when it is run. The values from this default can be partially or fully overridden by either specifying parameters as environment variables or by mounting a bespoke configuration file. 
 
 The -v option is a volume mount, which mounts your certificates from your local directory into the docker container. 
 Make sure to specify the correct origin folder for the certificates, otherwise the command will generate an empty directory inside the container!
 
-**To UPLOAD data from the local machine where the Docker container is running to the Rucio Data Lake, you will need to add that directory as a volume mount (with the -v tag) to the container for it to be accessible inside the container. Follow the commands that follow.** 
+**To UPLOAD data from the local machine where the Docker container is running to the Rucio Data Lake, you will need to add that directory as a volume mount (with the -v tag) to the container for it to be accessible inside the container. Follow the commands that below.** 
 
 To see whether you initialized the Docker container correctly, refer to the [Docker documentation](https://docs.docker.com/get-started/). For example, you could run: 
 
@@ -198,7 +198,7 @@ Once you are inside the container, generate the proxy:
 ```
 $ voms-proxy-init --voms escape --cert /opt/rucio/etc/client.crt --key /opt/rucio/etc/client.key --out /tmp/x509up --debug
 ```
-**Without the above command you will not be abel to execute uploads and downloads!**
+**Without the above command you will not be able to execute uploads and downloads!**
 
 After having run it, run `rucio whoami` to check you are authenticated against the server. 
 
