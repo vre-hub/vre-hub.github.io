@@ -13,7 +13,7 @@ In order to take advantage of this, follow [these](https://docs.reana.io/advance
 
 - Execute from terminal:
 
-```
+```bash title="/src/components/HelloCodeTitle.js"
 $ export REANA_SERVER_URL=https://reana-vre.cern.ch
 $ export REANA_ACCESS_TOKEN=xxxxxxxxxxxxxxxxxxx
 $ reana-client secrets-add --env VONAME=escape \
@@ -26,27 +26,27 @@ $ reana-client secrets-add --env VONAME=escape \
 
 The VOMSPROXY_FILE is the temporary file that you need to generate after having split the x509 into `client.crt` and `client.key`. Execute: with the command:
 
-```
+```bash
 $ voms-proxy-init --voms escape --cert /opt/rucio/etc/client.crt --key /opt/rucio/etc/client.key
 ```
 and note where the proxy file gets saved, the default path should be `/tmp/x509up_u1000`. 
 
 ### Connect to a custom Rucio instance
 
-The VRE Rucio instance is only one of the many instances existing around the world. In order to connect to a custom Rucio instance, you need an x509 certificate to use with the VOMS of your organisation. Once you have it, you can import it in the [jhub-vre.cern.ch](jhub-vre.cern.ch). You can then run the `voms-proxy-init` with any VO by first sourcing the CVMFS file:
+The VRE Rucio instance is only one of the many instances existing around the world. In order to connect to a custom Rucio instance, you need an x509 certificate to use with the VOMS of your organisation. Once you have it, you can import it in the [jhub-vre.cern.ch](https://jhub-vre.cern.ch). You can then run the `voms-proxy-init` with any VO by first sourcing the CVMFS file:
 
-```
+```bash
 $ source /cvmfs/grid.cern.ch/centos7-ui-160522/etc/profile.d/setup-c7-ui-example.sh 
 ```
 
 Now, based on your VO organisation, run (for example, if you are part of ATLAS): 
 
-```
+```bash
 $ voms-proxy-init --voms atlas --cert /opt/rucio/etc/client.crt --key /opt/rucio/etc/client.key
 ```
 And then, the appropriate secrets for the `reana-client`:
 
-```
+```bash
 $ reana-client secrets-add --env VONAME=atlas \
                            --env VOMSPROXY_FILE=x509up_u1000 \
                            --file /tmp/x509up_u1000 \
@@ -59,7 +59,7 @@ $ reana-client secrets-add --env VONAME=atlas \
 
 Move to the directory where you have your **reana.yaml** file, which should follow this template (with Rucio and ESCAPE VOMS set to true): 
 
-```
+```yaml
 version: 0.6.0
 workflow:
   type: serial
@@ -85,7 +85,7 @@ workflow:
 WARNING: note that the `rucio get` command creates a directory named after the scope_name and places the files you are looking for inside it. 
 
 - Execute:
-```
+```bash
 $ reana-client create -w <name_of_your_workflow>
 $ export REANA_WORKON=<name_of_your_workflow>
 $ reana-client upload         

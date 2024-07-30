@@ -1,7 +1,26 @@
-[![pages-build-deployment](https://github.com/vre-hub/vre-hub.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/vre-hub/vre-hub.github.io/actions/workflows/pages/pages-build-deployment)
+[![Deploy to GitHub Pages](https://github.com/Soap2G/vre-hub/actions/workflows/deploy.yaml/badge.svg)](https://github.com/Soap2G/vre-hub/actions/workflows/deploy.yaml)
+# Website
 
-# The VRE Documentation
+This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
 
-Repository to publish the VRE landing page and documentation.
+### Installation
 
-**Visit on: https://vre-hub.github.io/**
+```
+$ npm
+```
+
+### Local Development
+
+```
+$ npm start
+```
+
+This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+
+### Build
+
+```
+$ npm run build
+```
+
+This command generates static content into the `build` directory and can be served using any static contents hosting service.
