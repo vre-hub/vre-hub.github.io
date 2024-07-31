@@ -1,4 +1,12 @@
-[![Deploy to GitHub Pages](https://github.com/Soap2G/vre-hub/actions/workflows/deploy.yaml/badge.svg)](https://github.com/Soap2G/vre-hub/actions/workflows/deploy.yaml)
+[![pages-build-deployment](https://github.com/vre-hub/vre-hub.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/vre-hub/vre-hub.github.io/actions/workflows/pages/pages-build-deployment)
+
+# The VRE Documentation
+
+Repository to publish the VRE landing page and documentation.
+
+**Visit on: https://vre-hub.github.io/**
+
+
 # Website
 
 This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.

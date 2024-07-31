@@ -20,17 +20,32 @@ const sidebars = {
   GetStarted: [
     // 'intro',
     // 'hello',
-    {
-      type: 'category',
-      label: 'Get started',
-      items: [
-        'auth',
-        'developer',
-        'notebook',
-        'reana',
-        'rucio',
-      ],
-    },
+    // {
+    //   type: 'category',
+    //   label: 'ATLAS and the Large Hadron Collider',
+    //   link: {
+    //     type: 'doc',
+    //     id: '/'
+    //   },
+    //   items: [
+    //     'auth',
+    //     'developer',
+    //     'notebook',
+    //     'reana',
+    //     'rucio',
+    //       ],
+    // },
+    // {
+    //   type: 'category',
+    //   label: 'Get started',
+    //   items: [
+    //     'auth',
+    //     'developer',
+    //     'notebook',
+    //     'reana',
+    //     'rucio',
+    //   ],
+    // },
   ],
 };
 
