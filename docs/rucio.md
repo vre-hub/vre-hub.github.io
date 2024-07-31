@@ -34,7 +34,7 @@ In general, there are two main ways to authenticate to the Rucio instance: via X
 The X509 certificate is placed in the `.globus/` directory. 
 The `rucio.cfg` file is usually placed in the `/opt/rucio/etc/` directory. 
 
-```console
+```yaml
 [client]
 rucio_host = https://vre-rucio.cern.ch
 auth_host = https://vre-rucio-auth.cern.ch
@@ -57,7 +57,7 @@ support_rucio = https://github.com/rucio/rucio/issues/
 
 The `rucio.cfg` file is usually placed in the `/opt/rucio/etc/` directory. 
 
-```console
+```yaml
 [client]
 rucio_host = https://vre-rucio.cern.ch
 auth_host = https://vre-rucio-auth.cern.ch
@@ -81,7 +81,7 @@ lfn2pfn_algorithm_default = hash
 
 We assume you are running the commands from a CentOS Linux distribution, in our case a `CS8 - x86_64` image. Run the commands in the following order:
 
-```console
+```bash
 yum install -y epel-release.noarch && \
     yum clean all && \
     rm -rf /var/cache/yum
@@ -104,7 +104,7 @@ yum -y install https://repo.ius.io/ius-release-el7.rpm && \
 Then, install the certificates for the VOMS validation:
 
 
-```console
+```bash
 curl -Lo /etc/yum.repos.d/EGI-trustanchors.repo https://repository.egi.eu/sw/production/cas/1/current/repo-files/EGI-trustanchors.repo && yum -y update && yum -y install ca-certificates ca-policy-egi-core fetch-crl && yum clean all && rm -rf /var/cache/yum
 
 curl -Lo /etc/pki/tls/certs/CERN-bundle.pem https://gitlab.cern.ch/plove/rucio/-/raw/7121c7200257a4c537b56ce6e7e438f0b35c6e48/etc/web/CERN-bundle.pem
@@ -117,7 +117,7 @@ mkdir -p /etc/grid-security/vomsdir/escape \
 
 Next, you need the python rucio-client. We suggest to do this in a fresh virtual environment. 
 
-```console
+```bash
 # Latest version of Rucio 
 export RUCIO_LATEST=1.30.0
 
@@ -130,19 +130,19 @@ python3.6 -m pip install --no-cache-dir --pre rucio-clients==${RUCIO_LATEST} && 
 python3.6 -m pip install --no-cache-dir jinja2 j2cli pyyaml
 ```   
 Have your `rucio.cfg` file ready in `/opt/rucio/etc/` and run:
-```console
+```bash
 export RUCIO_CONFIG=/opt/rucio/etc/rucio.cfg
 ```
 If you use X509 verification, you will also need the command: 
 
-```console
+```bash
 voms-proxy-init --voms escape --cert .globus/usercert.pem --key .globus/userkey.pem 
 ```
 Otherwise, if you use tokens, you are good to go. 
 
 By typing in the terminal:
 
-```console
+```bash
 $ rucio whoami
 ```
 you should see your username being recognised. If it is your first time using tokens, you will be redirected to a link starting with  'https://escape-rucio-auth.cern.ch/auth/...'; click on it and choose the duration of your token. You should be all set up to run your rucio commands!
@@ -153,7 +153,7 @@ Docker needs to be installed following the [Docker installation](https://docs.do
 The Docker file will extend the Rucio image and will enable the user to interact with the Data Lake. Further information can be found [here](https://github.com/vre-hub/vre/blob/main/containers/rucio-client). 
 The Docker image for this project can be pulled with:
 
-```console
+```bash
 $ docker pull ghcr.io/vre-hub/vre-rucio-client:latest
 ```
 The image is hosted [here](https://github.com/vre-hub/vre/pkgs/container/vre-rucio-client).
@@ -167,7 +167,7 @@ Make sure to specify the correct origin folder for the certificates, otherwise t
 
 To see whether you initialized the Docker container correctly, refer to the [Docker documentation](https://docs.docker.com/get-started/). For example, you could run: 
 
-```console
+```bash
 $ docker ps -a
 ```
 The command should show the `rucio-client` container running. 
@@ -182,13 +182,13 @@ docker run --user root -e RUCIO_CFG_CLIENT_X509_PROXY=/tmp/x509up -e RUCIO_CFG_A
 Take the `--user root` option away if you encounter problems.
 If you cannot log in as root and you get permission errors, add your user account to the docker group:
 
-```console
+```bash
 $ sudo groupadd docker
 $ sudo gpasswd -a $USER docker
 ```
 Sometimes you will still need to give the /var/run/docker.sock socket and /var/run/docker directory the proper permissions to make it work:
 
-```console
+```bash
 $ sudo chown root:docker /var/run/docker.sock
 $ sudo chown -R root:docker /var/run/docker
 ```
@@ -216,7 +216,7 @@ $ docker run -e RUCIO_CFG_ACCOUNT=<myrucioaccount> -e RUCIO_CFG_AUTH_TYPE=userpa
 
 **General note:** To access the rucio-client Docker container in the future, always use this command from the machine where you have Docker installed:
 
-```console
+```bash
 $ sudo docker exec -it rucio-client /bin/bash
 ```
 Take a look at some [Rucio CLI Quickstart commands](https://docs.google.com/document/d/1LKJu56VMg7jkh19BtWoS3xSNYPf_kJN2xRKQrankfB8/edit#heading=h.avprao92dhlc) to get you familiarised with the main concepts. 
@@ -246,7 +246,7 @@ The current ones are:
 
 To add a scope, you need to have administrator rights. If you don't have them, ask the system administrators to create a scope for you. 
 
-```console
+```bash
 $ rucio-admin scope add --account=<your_IAM_account_name> --scope <Experiment_Institute_Project>
 $ rucio-admin scope list
 ```
@@ -260,41 +260,41 @@ rucio list-rses
 You can either upload single files, create a dataset, and attach the files to the dataset, or you can directly upload your folder (and the command will automatically create a dataset):
 
 Example of how to upload single files to the CERN RSE:
-```console
+```bash
 $ rucio upload --register-after-upload --scope ATLAS_LAPP_SP --rse CERN-EOS DM.LeptonResonance.Data20015_10TeV.root
 ```
 The `--register-after-upload` flag is important; if you omit it and the upload fails, you will not be able to use the same file name to upload it, you will have to rename it. 
 
 Example of how to create a dataset:
-```console
+```bash
 $ rucio add-dataset ATLAS_LAPP_SP:DM.LeptonResonance.Data20015_10TeV
 ```
 Example of how to attach files to your dataset:
-```console
+```bash
 $ rucio attach ATLAS_LAPP_SP:DM.LeptonResonance.Data20015_10TeV ATLAS_LAPP_SP:DM.LeptonResonance.Data20015_10TeV.root
 ```
 Example of how to upload a whole file folder (cannot contain a folder within it):
-```console
+```bash
 $ rucio -v upload --register-after-upload --rse CERN-EOS --scope ATLAS_LAPP_SP --recursive ./folder_name/
 ```
 To inspect all the datasets within a scope:
-```console
+```bash
 $ rucio list-dids --filter 'type=all' ATLAS_LAPP_SP:*
 ```
 To display changes of files within one dataset:
-```console
+```bash
 $ rucio list-files ATLAS_LAPP_SP:DM.LeptonResonance.Data20015_10TeV
 ```
 To see which rule protects your files:
-```console
+```bash
 $ rucio list-rules --account=<your_account>
 ```
 To delete the files, either set a --lifetime flag when you upload data, or delete the replication rules associated to the data (the expiration wil be set in 1 hr time):
-```console
+```bash
 $ rucio delete-rule --purge-replicas --all rule_id
 ```
 To add and look for metadata associated to a file or data set:
-```console
+```bash
 $ rucio set-metadata --did ATLAS_LAPP_SP:DM.LeptonResonance.Data20015_10TeV --key KEY --value VALUE
 $ rucio get-metadata --plugin JSON ATLAS_LAPP_SP:DM.LeptonResonance.Data20015_10TeV
 $ rucio list-dids-extended --filter 'type=all' --filter 'KEY=VALUE' ATLAS_LAPP_SP:*
@@ -317,7 +317,7 @@ Interacting with the client environment can be done through the Docker container
 Now that you have the VOMS in place, you will just need to add your token, which will expire and will be regenerated every hour, to your Rest API request. 
 To get the token, run the command:
 
-```console
+```bash
 $ curl -i --key ~/.globus/userkey.pem --cert ~/.globus/usercert.pem -H "X-Rucio-Account: <myrucioaccount>" -X GET https://vre-rucio-auth.cern.ch/auth/x509 | sed -n -e 's/^.*X-Rucio-Auth-Token: //p'
 ```
 The \< myrucioaccount \> instance needs to be replaced with your Rucio UI account name, the same as your IAM account (but you can also find it by navigating [here](https://vre-rucio-ui.cern.ch/) and selecting the ‘Account management’ option under the Admin scroll-down menu). 
@@ -326,14 +326,14 @@ The \< myrucioaccount \> instance needs to be replaced with your Rucio UI accoun
 
 Create a variable by copying the token which has been generated and running in the command line:
 
-```console
+```bash
 $ token="<your_token>"
 ```
 Do not forget the `“` symbol. 
 
 After the token has been saved, you can run any Rest Api command, for example listing all the available RSEs or all the scopes:
 
-```console
+```bash
 $ curl -X GET -H "X-Rucio-Auth-Token: $token" https://vre-rucio.cern.ch/rses/
 $ curl -X GET -H "X-Rucio-Auth-Token: $token" https://vre-rucio.cern.ch/scopes/
 ```
@@ -342,7 +342,7 @@ $ curl -X GET -H "X-Rucio-Auth-Token: $token" https://vre-rucio.cern.ch/scopes/
 
 The proxy generation with the x509 certificate works in the same way, the only difference is the command to get the token: 
 
-```console
+```bash
 $ curl -i --key ~/.globus/userkey.pem --cert ~/.globus/usercert.pem -H "X-Rucio-Account: <myrucioaccount>" -X GET https://vre-rucio-auth.cern.ch/auth/x509_proxy | sed -n -e 's/^.*X-Rucio-Auth-Token: //p'
 ```
 Again, using curl with the --insecure option might be useful. Follow the same steps as above to make Rest API requests. 

@@ -37,7 +37,7 @@ Once the certificate has been imported, restart your browser. Then log into the 
 
 Separate out the .p12 object into a separate key (.key) and certificate (.crt). 
 Place the .p12 certificate file in the .globus directory in your home area. If the directory doesn’t exist, create it:
-```console
+```bash
 $ cd ~
 $ mkdir .globus
 $ cd ~/.globus
@@ -45,7 +45,7 @@ $ mv /path/to/<your_cert>.p12 .
 ```
 From the .globus directory, execute the following shell commands:
 
-```console
+```bash
 $ rm -f client.crt
 $ rm -f client.key
 $ openssl pkcs12 -in <your_cert>.p12 -clcerts -nokeys -out usercert.pem
