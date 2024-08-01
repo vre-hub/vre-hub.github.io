@@ -1,13 +1,8 @@
-name: Deploy static content to Pages
+name: Test build
 on:
   push:
     branches: 
-      - 'main'
-    paths-ignore:
-      - 'README.md'
-  pull_requests:
-    branches: 
-      - 'main'
+      - '*'
     paths-ignore:
       - 'README.md'
 
@@ -28,7 +23,7 @@ env:
 
 jobs:
   # Single deploy job since we're just deploying
-  deploy:
+  build:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -45,13 +40,3 @@ jobs:
         run: yarn install --frozen-lockfile --non-interactive
       - name: Build
         run: yarn build
-      - name: Setup Pages
-        uses: actions/configure-pages@v3
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
-        with:
-          # Upload entire repository
-          path: build
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
