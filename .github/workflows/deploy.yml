@@ -5,7 +5,7 @@ on:
       - 'main'
     paths-ignore:
       - 'README.md'
-  pull_requests:
+  pull_request:
     branches: 
       - 'main'
     paths-ignore:
