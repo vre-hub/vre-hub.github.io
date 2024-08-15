@@ -47,6 +47,50 @@ const sidebars = {
     //   ],
     // },
   ],
+
+  ReanaJupyterlab: [
+    {
+      type: 'doc',
+      id: 'extensions/reana-jupyterlab/index',
+      label: 'Home',
+    },
+    {
+      type: 'category',
+      label: 'Getting started',
+      items: [
+        'extensions/reana-jupyterlab/introduction/about',
+        {
+          type: 'category',
+          label: 'Installation',
+          items: [
+            'extensions/reana-jupyterlab/introduction/installation/users',
+            'extensions/reana-jupyterlab/introduction/installation/developers',
+          ],
+        },
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Usage',
+      items: [
+        'extensions/reana-jupyterlab/usage/connection',
+        'extensions/reana-jupyterlab/usage/workflows',
+        'extensions/reana-jupyterlab/usage/create',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Implementation',
+      link: {
+        type: 'doc',
+        id: 'extensions/reana-jupyterlab/implementation/index',
+      },
+      items: [
+        'extensions/reana-jupyterlab/implementation/frontend',
+        'extensions/reana-jupyterlab/implementation/backend',
+      ],
+    },
+  ],
 };
 
 export default sidebars;
