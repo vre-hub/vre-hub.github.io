@@ -1,48 +1,4 @@
 # Frontend
-
-<!-- src/
-│   ├── components/
-│   │   ├── Box.tsx
-│   │   ├── Button.tsx
-│   │   ├── Dropdown.tsx
-│   │   ├── FileBrowser.tsx
-│   │   ├── Header.tsx
-│   │   ├── HorizontalHeading.tsx
-│   │   ├── InlineDropdown.tsx
-│   │   ├── Loading.tsx
-│   │   ├── MenuBar.tsx
-│   │   ├── Pagination.tsx
-│   │   ├── ReanaLogo.tsx
-│   │   ├── Spinning.tsx
-│   │   ├── TextField.tsx
-│   │   ├── TooltipIfTruncated.tsx
-│   │   ├── @Connection/
-│   │   │   └── ConnectionForm.tsx
-│   │   ├── @Create/
-│   │   │   └── CreateForm.tsx
-│   │   └── @Workflows/
-│   │       ├── WorkflowDetails.tsx
-│   │       ├── WorkflowEngineLogs.tsx
-│   │       ├── WorkflowJobLogs.tsx
-│   │       ├── WorkflowOverview.tsx
-│   │       ├── WorkflowSpecification.tsx
-│   │       ├── WorkflowWorkspaceFile.tsx
-│   │       ├── WorkflowsFilters.tsx
-│   │       └── WorkflowsList.tsx
-│   ├── images/
-│   │   └── reana-icon.svg
-│   ├── stores/
-│   │   └── UIStore.ts   
-│   ├── utils/
-│   │   └── ApiRequest.ts     
-│   ├── widgets/
-│   │   └── SidebarPanel.tsx
-│   ├── const.ts
-│   ├── index.tsx
-│   ├── svg.d.tsx
-│   ├── types.ts
-│   └── utils.ts
--->
 The frontend of Reana JupyterLab extension is implemented as a JupyterLab plugin that provides a set of tools to interact with the REANA workflow management system from within JupyterLab. The frontend is implemented using TypeScript and React, and it consists of a set of components that are used to build the user interface of the extension.
 
 ## Components {#components}
