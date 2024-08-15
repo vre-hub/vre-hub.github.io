@@ -113,6 +113,18 @@ const config = {
           //   position: 'left',
           //   label: 'Dev documentation', // The title that will appear on the menu
           // },
+          {
+            type: 'dropdown',
+            label: 'JupyterLab Extensions', // The ID of the corresponding document. This should match with what you wrote in the document header.
+            position: 'left',
+            items: [
+              {
+                type: 'docSidebar',
+                sidebarId: 'ReanaJupyterlab',
+                label: 'Reana Jupyterlab',
+              },
+            ],
+          },
         ],
       },
       footer: {
