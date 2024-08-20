@@ -20,7 +20,7 @@ jlpm run build
 
 Install the extension
 ```bash
-python -m pip install .
+python -m pip install .[dev]
 ```
 
 Enable the server extension

@@ -7,6 +7,11 @@ To install the extension, run the following command:
 pip install reana-jupyterlab
 ```
 
+In case you want to run the tests, install the extension with the following command:
+```bash
+pip install reana-jupyterlab[dev]
+```
+
 ## Docker image
 It is possible to run the extension in a Docker container. To download and run the image, use the following commands:
 ```bash
