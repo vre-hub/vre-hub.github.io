@@ -6,3 +6,4 @@ List of contributors in alphabetical order:
 - Elena Gazzarrini <elena.gazzarrini@cern.ch>
 - Domenic Gosein <domenic.gosein@cern.ch>
 - Giovanni Guerrieri <giovanni.guerrieri@cern.ch>
+- Ruben Perez Mercado <ruben.perez.mercado@cern.ch>
