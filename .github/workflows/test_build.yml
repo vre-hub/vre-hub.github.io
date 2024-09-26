@@ -2,7 +2,7 @@ name: Test build
 on:
   pull_request:
     branches: 
-      - 'main'
+      - **
     paths-ignore:
       - 'README.md'
 
