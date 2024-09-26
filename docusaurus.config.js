@@ -119,6 +119,11 @@ const config = {
             position: 'left',
             items: [
               {
+                type: 'doc',
+                label: 'Rucio Jupyterlab',
+                docId: 'extensions/rucio-jupyterlab/index',
+              },
+              {
                 type: 'docSidebar',
                 sidebarId: 'ReanaJupyterlab',
                 label: 'Reana Jupyterlab',
