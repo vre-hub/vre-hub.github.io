@@ -8,7 +8,7 @@ By default the extension is configured to use the `OIDC` tokens as default authe
 
 Whenever a user logs into the VRE, the `JupyterHub` deployment exchanges an access token with the the ESCAPE INDIGO IAM service, authenticating the user to the ESCAPE Rucio instance.
 
-This means that the user does not need re-authenticate when landing in the JupyterLab environment and can start using the Rucio JupyterLab extension and/or the interact with Rucio via the CLI.
+Therefore, the user does not need re-authenticate when accessing the JupyterLab environment, and can start using the Rucio JupyterLab extension and/or the interact with Rucio via the CLI.
 
 :::tip
 
