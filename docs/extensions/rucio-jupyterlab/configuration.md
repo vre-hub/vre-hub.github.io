@@ -12,7 +12,7 @@ Therefore, the user does not need re-authenticate when accessing the JupyterLab 
 
 :::tip
 
-Check that the authentication has happened successfuly by opening a `Terminal` window and typing 
+Check that the authentication was successful by opening a `Terminal` window and typing
 ```bash=
 rucio whoami
 ```
