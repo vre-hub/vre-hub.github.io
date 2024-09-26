@@ -22,7 +22,7 @@ This interface is meant to mimic the record entries on `zenodo.org`.
 Upon searching for a community, when clicked, the user will be able to search for specific records within that community, and a banner will display which community is being searched through above the results. Note: the community searching can be canceled by either pressing the `X` next to this community banner or searching for a new community.
 
 ### Potential Future Features
-Depending on the usefulness of the feature in terms of the scope of this extension, advanced search settings might be added in future updates. These would mimic those on <zenodo.org>: restrict file type, resource type, access level, ...
+Depending on the usefulness of the feature in terms of the scope of this extension, advanced search settings might be added in future updates. These would mimic those on `zenodo.org`: restrict file type, resource type, access level, ...
 
 
 ## ZenodoAPI interactions {#zenodoAPI}

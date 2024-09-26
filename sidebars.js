@@ -116,8 +116,8 @@ const sidebars = {
         id: 'extensions/zenodo-jupyterlab/implementation/index',
       },
       items: [
-        'extensions/zenodo-jupyterlab/frontend',
-        'extensions/zenodo-jupyterlab/backend',
+        'extensions/zenodo-jupyterlab/implementation/frontend',
+        'extensions/zenodo-jupyterlab/implementation/backend',
       ],
     },
   ],
