@@ -59,7 +59,7 @@ To configure the extension to use `x509` Proxy certificates :
 
 :::tip
 
-You can click on the `Show Advance Setting` and `Purge Cache` to erase any saved configuration in case the extension shows the followin message:
+You can click on the `Show Advance Setting` and `Purge Cache` to erase any saved configuration in case the extension shows the following message:
 ```bash=
 Authentication error. Perhaps you set an invalid credential?
 ```
