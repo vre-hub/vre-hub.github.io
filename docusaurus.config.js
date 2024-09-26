@@ -123,6 +123,11 @@ const config = {
                 sidebarId: 'ReanaJupyterlab',
                 label: 'Reana Jupyterlab',
               },
+              {
+                type: 'docSidebar',
+                sidebarId: 'ZenodoJupyterlab',
+                label: 'Zenodo Jupyterlab',
+              },
             ],
           },
         ],

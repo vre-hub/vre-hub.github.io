@@ -91,6 +91,37 @@ const sidebars = {
       ],
     },
   ],
+
+  ZenodoJupyterlab: [
+    {
+      type: 'doc',
+      label: 'Home',
+      id: 'extensions/zenodo-jupyterlab/index',
+    },
+    {
+      type: 'doc',
+      label: 'Installation',
+      id: 'extensions/zenodo-jupyterlab/install',
+    },
+    {
+      type: 'doc',
+      label: 'Extension usage',
+      id: 'extensions/zenodo-jupyterlab/extension-usage',
+    },
+    {
+      type: 'category',
+      label: 'Implementation',
+      link: {
+        type: 'doc',
+        id: 'extensions/zenodo-jupyterlab/implementation/index',
+      },
+      items: [
+        'extensions/zenodo-jupyterlab/implementation/frontend',
+        'extensions/zenodo-jupyterlab/implementation/backend',
+      ],
+    },
+  ],
+
 };
 
 export default sidebars;
