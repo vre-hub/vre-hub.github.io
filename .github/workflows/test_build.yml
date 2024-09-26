@@ -1,8 +1,6 @@
 name: Test build
 on:
   pull_request:
-    branches: 
-      - **
     paths-ignore:
       - 'README.md'
 
