@@ -31,7 +31,7 @@ If you think that your Jupyter session has been opened for more than 2h, or you 
 
 ## Authenticate via `x509` Proxy certificates 
 
-The Rucio JupyterLab extension also allows `x509` certificates to authenticate to the ESCAPE Rucio instance. The first thing you will need to do is to run the `voms-proxy-init` command to create a valid proxy.
+The Rucio JupyterLab extension also allows `x509` certificates to authenticate to the ESCAPE Rucio instance. The first thing you will need to do is setup the proper access permission on the certificate and key, and then run the `voms-proxy-init` command to create a valid proxy.
 
 ```
 chmod 644 ~/.globus/usercert.pem
