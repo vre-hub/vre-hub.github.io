@@ -4,7 +4,7 @@
 [![Build and Publish Extension](https://github.com/rucio/jupyterlab-extension/actions/workflows/build-and-publish-tagged.yml/badge.svg)](https://github.com/rucio/jupyterlab-extension/actions/workflows/build-and-publish-tagged.yml)
 
 :::tip[IMPORTANT]
-Please note that this documentation is specific for the deployment of the Rucio extension in the 
+Please note that this documentation is specific to the deployment of the Rucio extension within the 
 CERN VRE analysis platform.
 
 For details on the configuration of the extension, please visit the [rucio/jupyterlab-extension](https://github.com/rucio/jupyterlab-extension) GitHub repository, and refer to the extension [configuration guide](https://github.com/rucio/jupyterlab-extension/blob/master/CONFIGURATION.md).
