@@ -48,6 +48,19 @@ const sidebars = {
     // },
   ],
 
+  RucioJuputerlab: [
+    {
+      type: 'doc',
+      label: 'Home',
+      id: 'extensions/rucio-jupyterlab/index',
+    },
+    {
+      type: 'doc',
+      label: 'Configuration',
+      id: 'extensions/rucio-jupyterlab/configuration',
+    }
+  ],
+
   ReanaJupyterlab: [
     {
       type: 'doc',
