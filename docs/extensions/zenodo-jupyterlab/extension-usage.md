@@ -37,7 +37,7 @@ The entered access token and choice of whether or not to work within the main or
 The sandbox checkbox at the top of the Upload page is readonly and indicates whether of not the user logged in to the main software or the sandbox version. This is to inform the user of in which software their deposit will be made.
 
 In order to continue, the user had to fill in the necessary information:
-* Select at least one file to upload (the file browser initially shows the contents of the `$Home` directory in the Jupyter Session)
+* Select at least one file to upload (the file browser initially shows the contents of the `$HOME` directory in the Jupyter Session)
 * Title
 * Select a Resource Type
 * Include at least one Creator's name
