@@ -9,7 +9,7 @@ zenodo-jupyterlab-extension/
 ├── pyproject.toml
 ├── requirements.txt
 ├── setup.py
-├── src/                     #frontend
+├── src/                        #frontend
 │   ├── API/
 │   │   ├── API_functions.tsx
 │   │   ├── handler.tsx
@@ -32,7 +32,7 @@ zenodo-jupyterlab-extension/
 │   │   ├── build_log.json
 │   │   ├── package.json
 │   │   └── static/
-│   └── server/         #backend
+│   └── server/                 #backend
 │       ├── __init__.py
 │       ├── extension.py
 │       ├── handlers.py
