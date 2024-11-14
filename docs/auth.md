@@ -57,7 +57,7 @@ This completes the X.509 certificate set-up for ESCAPE.
 
 ### OpenID token 
 
-If you find it hard to obtain a X509 certificate, you can communicate with Rucio through the OpenID [token](http://rucio.cern.ch/documentation/using_the_client/#open-id-connect-authentication-examples) authentication. The downside of this method is that many storage elements do not support this authentication, so your 'power' to upload and download data will be limited. You will find all instructions to interact with the client in this (easier) way in the following section. 
+If you find it hard to obtain a X509 certificate, you can communicate with Rucio through the OpenID [token](https://rucio.cern.ch/documentation/user/using_the_client/#open-id-connect-authentication-examples) authentication. The downside of this method is that many storage elements do not support this authentication, so your 'power' to upload and download data will be limited. You will find all instructions to interact with the client in this (easier) way in the following section. 
 
 
 

@@ -306,7 +306,7 @@ You should keep in mind that the scope will not get deleted from the Rucio memor
 
 You can visualize which data and rules are associated to your account by navigating to the [Rucio UI](https://vre-rucio-ui.cern.ch) platform. 
 
-Have a look at the [rucio client documentation](https://rucio.readthedocs.io/en/latest/man/rucio.html) to perform more actions on your recently uploaded data. 
+Have a look at the [rucio client documentation](https://rucio.cern.ch/documentation/user/using_the_client/) to perform more actions on your recently uploaded data. 
 You can also upload your data in a more user-friendly way using the [Jupyterhub interface](notebook.md###1. File Browser).   
 
 ## Rucio RESTful APIs    
