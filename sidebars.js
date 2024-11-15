@@ -150,8 +150,8 @@ const sidebars = {
           type: 'category',
           label: 'Cluster',
           items: [
-            'tech-docs/cluster-setup/cluster/openstack',
-            'tech-docs/cluster-setup/cluster/kubernetes'
+            'tech-docs/cluster/openstack',
+            'tech-docs/cluster/kubernetes'
           ],
         },
       ]
@@ -168,7 +168,6 @@ const sidebars = {
       ],
     },
   ]
-
 };
 
 export default sidebars;
