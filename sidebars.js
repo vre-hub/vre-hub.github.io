@@ -135,6 +135,42 @@ const sidebars = {
     },
   ],
 
+  TechnicalDocumentation: [
+    {
+      type: 'doc',
+      label: 'Home',
+      id: 'tech-docs/home' ,
+    },
+    {
+      type: 'category',
+      label: 'Cluster Setup',
+      items: [
+        'tech-docs/cluster/cluster-setup',
+        {
+          type: 'category',
+          label: 'Cluster',
+          items: [
+            'tech-docs/cluster-setup/cluster/openstack',
+            'tech-docs/cluster-setup/cluster/kubernetes'
+          ],
+        },
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Services',
+      items: [
+        'tech-docs/services/services',
+        'tech-docs/services/aai',
+        'tech-docs/services/data-management',
+        'tech-docs/services/jupyterhub',
+        'tech-docs/services/computing-resources',
+      ],
+
+      id: 'tech-docs/services',
+    },
+  ]
+
 };
 
 export default sidebars;
