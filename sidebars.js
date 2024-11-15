@@ -166,8 +166,6 @@ const sidebars = {
         'tech-docs/services/jupyterhub',
         'tech-docs/services/computing-resources',
       ],
-
-      id: 'tech-docs/services',
     },
   ]
 
