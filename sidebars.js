@@ -138,7 +138,7 @@ const sidebars = {
   TechnicalDocumentation: [
     {
       type: 'doc',
-      label: 'Home',
+      label: 'CERN VRE Technical Documentation',
       id: 'tech-docs/home' ,
     },
     {
