@@ -135,6 +135,12 @@ const config = {
               },
             ],
           },
+          {
+            type: 'doc',
+            docId: 'tech-docs/home',
+            position: 'left',
+            label: 'Technical Documentation'
+          }
         ],
       },
       footer: {
