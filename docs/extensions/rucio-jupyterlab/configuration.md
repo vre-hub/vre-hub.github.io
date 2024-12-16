@@ -6,7 +6,7 @@ The Rucio JupyterLab extension is installed in most of the CERN VRE environments
 
 By default the extension is configured to use `OIDC` tokens as the default authentication type. 
 
-Whenever a user logs into the VRE, the `JupyterHub` deployment exchanges an access token with the the ESCAPE INDIGO IAM service, authenticating the user to the ESCAPE Rucio instance.
+Whenever a user logs into the VRE, the JupyterHub deployment exchanges an access token with the the ESCAPE INDIGO IAM service, authenticating the user to the ESCAPE Rucio instance.
 
 Therefore, the user does not need to re-authenticate when accessing the JupyterLab environment, and can start using the Rucio JupyterLab extension and/or the interact with Rucio via the CLI.
 
@@ -29,7 +29,12 @@ If you think that your Jupyter session has been opened for more than 2h, or you 
 
 :::
 
-## Authenticate via `x509` Proxy certificates 
+
+### Token exchange with the Jupyter Hub
+
+To authomatise the token exchange when an user Jupyter Session is spawned, see the VRE technical documentation [missing linkt jhub/token exchange]().
+
+## Authentication via `x509` Proxy certificates 
 
 The Rucio JupyterLab extension also allows `x509` certificates to authenticate to the ESCAPE Rucio instance. The first thing you will need to do is setup the proper access permission on the certificate and key, and then run the `voms-proxy-init` command to create a valid proxy.
 
