@@ -3,7 +3,7 @@
 The JupyterHub service is deployed on the VRE cluster using the upstream [Zero to JupyterHub](https://github.com/jupyterhub/zero-to-jupyterhub-k8s) (z2jh) `helm` charts. The cluster and the manifest are kept synchronised via `Flux`.
 
 * The current z2jh version deployed on the CERN VRE is [`v3.3.7`](https://hub.jupyter.org/helm-chart/#jupyterhub).
-* To check the deployed k8s manifests on the VRE, visit the VRE GitHub repository ([#jhub deployment](https://github.com/vre-hub/vre/blob/main/infrastructure/cluster/flux/jhub/jhub-release.yaml)).
+* To check the deployed k8s manifests on the VRE, visit the VRE GitHub repository ([jupyterhub deployment](https://github.com/vre-hub/vre/blob/main/infrastructure/cluster/flux/jhub/jhub-release.yaml)).
 
 For general details on the deployment of JupyterHub, we refer the user to the official documentation of [Zero to JupyterHub with Kubernetes](https://z2jh.jupyter.org/en/stable/index.html).
 
@@ -11,12 +11,12 @@ For general details on the deployment of JupyterHub, we refer the user to the of
 
 ### User Authentication and Authorization
 
-The VRE uses the ESCAPE Indico IAM [instance](https://iam-escape.cloud.cnaf.infn.it/) as Identity Provider (Id) - For further details, please also vivisit the ESCAPE IAM [GitHub repository](https://github.com/indigo-iam/escape-docs). Registration to the ESCAPE IAM instance can be done via IAM credentials, EduGAIN or Google. 
+The VRE uses the ESCAPE Indico IAM [instance](https://iam-escape.cloud.cnaf.infn.it/) as Identity Provider (IdP) - For further details, please also vivisit the ESCAPE IAM [GitHub repository](https://github.com/indigo-iam/escape-docs). Registration to the ESCAPE IAM instance can be done via IAM credentials, EduGAIN or Google. 
 :::info
 We advise users to register using their institutional email.
 :::
 
-To configure the hub and the Jupyter authenticator with Indico IAM, please follow the following instructions for OpenID connect - an identity layer on top of the OAuth 2.0 protocol.
+To configure the hub and the Jupyter authenticator with Indico IAM, please follow the instructions for OpenID connect - an identity layer on top of the OAuth 2.0 protocol.
 * [z2jh A&A](https://z2jh.jupyter.org/en/stable/administrator/authentication.html#genericoauthenticator-openid-connect).
 * [Generic OAuth JupyterHub Documentation](https://oauthenticator.readthedocs.io/en/latest/tutorials/provider-specific-setup/providers/generic.html#setup-for-an-openid-connect-oidc-based-identity-provider).
 
@@ -47,11 +47,11 @@ values:
 #### OIDC token exchange - Rucio JupyterLab extension configuration
 
 The Rucio JupyterLab extension configuration documentation can be found 
-[here](../../extensions/rucio-jupyterlab/configuration.md).
+on the JupyterLab Extensions [tab](../../extensions/rucio-jupyterlab/configuration.md).
 
 To use OIDC tokens as the authentication method for the extension, the Jupyter 
-server needs to exchange an access token with the IdP. This is configured on 
-the hub side as shown below.
+server needs to exchange an access token with the IdP. This would need to be  
+configured on the hub side, as shown below.
 
 VRE `hub.extraConfig` manifests for the OIDC token exchange:
 ```yaml
@@ -82,8 +82,6 @@ values:
                     'audience': 'rucio'
                 }
                 response = requests.post(self.token_url, data=params)
-                print("EXCHANGE TOKEN")
-                print(response.json())
                 rucio_token = response.json()['access_token']
 
                 return rucio_token
@@ -98,7 +96,6 @@ values:
                 
                 # define token environment variable from auth_state
                 spawner.environment['RUCIO_ACCESS_TOKEN'] = self.exchange_token(auth_state['access_token'])
-                spawner.environment['EOS_ACCESS_TOKEN'] = auth_state['access_token']
         
         # set the above authenticator as the default
         c.JupyterHub.authenticator_class = RucioAuthenticator
@@ -108,8 +105,11 @@ values:
 ```
 
 Finally, some extra environment variables can be set on the hub side to 
-configure the Rucio extension (see and example of how this variables
-are propagated [here](https://github.com/vre-hub/environments/blob/d4d4892d9b2646dfe31ab176cdc23b50080f298a/vre-singleuser-py311/configure-vre.py#L27)).
+configure the Rucio extension 
+:::tip
+Check an example of how these variables
+are propagated from the hub side to the user environmnet side [here](https://github.com/vre-hub/environments/blob/d4d4892d9b2646dfe31ab176cdc23b50080f298a/vre-singleuser-py311/configure-vre.py#L27).
+:::
 
 VRE `singleuser.extraEnv` example:
 ```yaml

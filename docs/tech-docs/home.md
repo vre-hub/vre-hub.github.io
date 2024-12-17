@@ -7,6 +7,6 @@ In these pages you will be able to find detailed documentation of how the VRE in
 
 If you are looking for the GitHub repository of VRE infrastructure visit this [page](https://github.com/vre-hub/vre). If you want to improve the content of this documentation and you are looking for the VRE documentation repository, click [here](https://github.com/vre-hub/vre-hub.github.io).
 
-:::info
+:::warning
 Please note that this Documentation is under construction and can quickly change.
 :::

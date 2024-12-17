@@ -28,13 +28,13 @@ that shows various examples on how to add this configuration into Docker images.
 By default the extension is configured to use `OIDC` tokens as the default 
 authentication type. 
 
-Whenever a user logs into the VRE, the JupyterHub deployment exchanges an 
+Whenever a user logs into the VRE, the Jupyter hub exchanges an 
 access token with the the ESCAPE Identity provider, allowing to automatically 
 authenticate the user towards the ESCAPE Rucio instance (see below).
 
 This way, the user does not need to re-authenticate when accessing the 
 JupyterLab environment, and can start using the Rucio JupyterLab extension 
-and/or the interact with Rucio via the CLI.
+and/or interact with Rucio via the CLI.
 
 :::tip
 
@@ -57,8 +57,7 @@ by clicking on the `File` tab:
 
 :::
 
-Below you can find a configuration example.
-
+Below you can find a configuration file example:
 ```json
 # cat .jupyter/jupyter_server_config.json 
 
@@ -92,7 +91,7 @@ Below you can find a configuration example.
 ### Token exchange with Jupyter Hub
 
 To automate the token exchange when a Jupyter session is spawned, you need  
-to configure the k8s jupyterhub manifests. Find this documentation on the 
+to configure the k8s jupyter hub manifests. Find this documentation on the 
 VRE JupyterHub [technical documentation](../../tech-docs/services/jupyterhub.md#oidc-token-exchange---rucio-jupyterlab-extension-configuration).
 
 
