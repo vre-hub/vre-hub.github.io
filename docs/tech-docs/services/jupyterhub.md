@@ -9,49 +9,49 @@ For general details on the deployment of JupyterHub, we refer the user to the of
 
 ## CERN VRE Customization
 
-### CERN Resources
+### User Authentication and Authorization
 
-TBD: 
-* Storage
-* DB
-* Network
-* Ingress
-* User Management
+The VRE uses the ESCAPE Indico IAM [instance](https://iam-escape.cloud.cnaf.infn.it/) as Identity Provider (See also the ESCAPE IAM [GitHub repository](https://github.com/indigo-iam/escape-docs)). Registration can be done via IAM credentials, EduGAIN or Google. We advise users to register using their institutional email.
 
-#### User Authentication and authorization
-
-The VRE uses the ESCAPE Indico IAM [instance](https://iam-escape.cloud.cnaf.infn.it/) as Identity Provider (See also the [GitHub repository](https://github.com/indigo-iam/escape-docs)). Registration can be done via IAM credentials, EduGAIN or Google. We advise users to register using their institutional email.
-
-To configure the hub and the Jupyterh authenticator with Indico IAM, please follow the instructions for OpenID connect - an identity layer on top of the OAuth 2.0 protocol.
+To configure the hub and the Jupyter authenticator with Indico IAM, please follow the instructions for OpenID connect - an identity layer on top of the OAuth 2.0 protocol.
 * [z2jh A&A](https://z2jh.jupyter.org/en/stable/administrator/authentication.html#genericoauthenticator-openid-connect).
 * [Generic OAuth JupyterHub Documentation](https://oauthenticator.readthedocs.io/en/latest/tutorials/provider-specific-setup/providers/generic.html#setup-for-an-openid-connect-oidc-based-identity-provider).
 
+VRE `hub.config` configuration for the custom OAuth2 authenticator:
 ```yaml
 values:
+  hub:
     config:
-        JupyterHub:
-          authenticator_class: "generic-oauth"
-        RucioAuthenticator:
-          # client_id: "" # set through secret
-          # client_secret: "" # set through secret
-          authorize_url: https://iam-escape.cloud.cnaf.infn.it/authorize
-          token_url: https://iam-escape.cloud.cnaf.infn.it/token
-          userdata_url: https://iam-escape.cloud.cnaf.infn.it/userinfo
-          username_key: preferred_username
-          enable_auth_state: true
-          allow_all: true
-          scope:
-            - openid
-            - profile
-            - email
-    extraConfig:
-        (...)
+      JupyterHub:
+        authenticator_class: "generic-oauth"
+      RucioAuthenticator:
+        # client_id: "" # set through secret
+        # client_secret: "" # set through secret
+        authorize_url: https://iam-escape.cloud.cnaf.infn.it/authorize
+        token_url: https://iam-escape.cloud.cnaf.infn.it/token
+        userdata_url: https://iam-escape.cloud.cnaf.infn.it/userinfo
+        username_key: preferred_username
+        enable_auth_state: true
+        allow_all: true
+        scope:
+          - openid
+          - profile
+          - email
+  extraConfig:
+    (...)
 ```
 
-blablalba on token exchange
+#### OIDC token exchange - Rucio JupyterLab extension configuration
 
+The Rucio JupyterLab extension configuration documentation can be found 
+[here](../../extensions/rucio-jupyterlab/configuration.md).
+
+To use OIDC tokens as the authentication method for the extension, the Jupyter 
+server needs to exchange an access token with the IdP. This is configured on 
+the hub side as shown below.
+
+VRE `hub.extraConfig` manifests for the OIDC token exchange:
 ```yaml
-
       extraConfig:
         token-exchange: |
           import pprint
@@ -101,3 +101,39 @@ blablalba on token exchange
           # enable authentication state
           c.GenericOAuthenticator.enable_auth_state = True
 ```
+
+Finally, some extra environment variables can be set on the hub side to 
+for the Rucio extension configuration (see and example of how this variables
+are propagated [here](https://github.com/vre-hub/environments/blob/d4d4892d9b2646dfe31ab176cdc23b50080f298a/vre-singleuser-py311/configure-vre.py#L27)).
+
+VRE `singleuser.extraEnv` example:
+```yaml
+extraEnv:
+        RUCIO_MODE: "replica"
+        RUCIO_WILDCARD_ENABLED: "1"
+        RUCIO_BASE_URL: "https://vre-rucio.cern.ch"
+        RUCIO_AUTH_URL: "https://vre-rucio-auth.cern.ch"
+        RUCIO_WEBUI_URL: "https://vre-rucio-ui.cern.ch"
+        RUCIO_DISPLAY_NAME: "RUCIO - CERN VRE"
+        RUCIO_NAME: "vre-rucio.cern.ch"
+        RUCIO_SITE_NAME: "CERN"
+        RUCIO_OIDC_AUTH: "env"
+        RUCIO_OIDC_ENV_NAME: "RUCIO_ACCESS_TOKEN"
+        RUCIO_DEFAULT_AUTH_TYPE: "oidc"
+        RUCIO_OAUTH_ID: "rucio"
+        RUCIO_DEFAULT_INSTANCE: "vre-rucio.cern.ch"
+        RUCIO_DESTINATION_RSE: "CERN-EOSPILOT"
+        RUCIO_RSE_MOUNT_PATH: "/eos/eulake"
+        RUCIO_PATH_BEGINS_AT: "5" # Substitute /eos/pilot/eulake/escape/data with /eos/eulake
+        RUCIO_CA_CERT: "/certs/rucio_ca.pem"
+        OAUTH2_TOKEN: "FILE:/tmp/eos_oauth.token"
+```
+
+### Connection to CERN Resources
+
+TBD: 
+* Storage
+* DB
+* Network
+* Ingress
+* User Management
