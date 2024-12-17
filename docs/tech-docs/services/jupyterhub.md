@@ -2,18 +2,21 @@
 
 The JupyterHub service is deployed on the VRE cluster using the upstream [Zero to JupyterHub](https://github.com/jupyterhub/zero-to-jupyterhub-k8s) (z2jh) `helm` charts. The cluster and the manifest are kept synchronised via `Flux`.
 
-* The current version deployed on the CERN VRE is version [`3.3.7`](https://hub.jupyter.org/helm-chart/#jupyterhub).
-* To check the deployed k8s manifests on the VRE, visit the  GitHub repository ([jhub deployment](https://github.com/vre-hub/vre/blob/main/infrastructure/cluster/flux/jhub/jhub-release.yaml)).
+* The current z2jh version deployed on the CERN VRE is [`v3.3.7`](https://hub.jupyter.org/helm-chart/#jupyterhub).
+* To check the deployed k8s manifests on the VRE, visit the VRE GitHub repository ([#jhub deployment](https://github.com/vre-hub/vre/blob/main/infrastructure/cluster/flux/jhub/jhub-release.yaml)).
 
-For general details on the deployment of JupyterHub, we refer the user to the official documentation of [Zero to JupyterHub with Kuberneter](https://z2jh.jupyter.org/en/stable/index.html).
+For general details on the deployment of JupyterHub, we refer the user to the official documentation of [Zero to JupyterHub with Kubernetes](https://z2jh.jupyter.org/en/stable/index.html).
 
 ## CERN VRE Customization
 
 ### User Authentication and Authorization
 
-The VRE uses the ESCAPE Indico IAM [instance](https://iam-escape.cloud.cnaf.infn.it/) as Identity Provider (See also the ESCAPE IAM [GitHub repository](https://github.com/indigo-iam/escape-docs)). Registration can be done via IAM credentials, EduGAIN or Google. We advise users to register using their institutional email.
+The VRE uses the ESCAPE Indico IAM [instance](https://iam-escape.cloud.cnaf.infn.it/) as Identity Provider (Id) - For further details, please also vivisit the ESCAPE IAM [GitHub repository](https://github.com/indigo-iam/escape-docs). Registration to the ESCAPE IAM instance can be done via IAM credentials, EduGAIN or Google. 
+:::info
+We advise users to register using their institutional email.
+:::
 
-To configure the hub and the Jupyter authenticator with Indico IAM, please follow the instructions for OpenID connect - an identity layer on top of the OAuth 2.0 protocol.
+To configure the hub and the Jupyter authenticator with Indico IAM, please follow the following instructions for OpenID connect - an identity layer on top of the OAuth 2.0 protocol.
 * [z2jh A&A](https://z2jh.jupyter.org/en/stable/administrator/authentication.html#genericoauthenticator-openid-connect).
 * [Generic OAuth JupyterHub Documentation](https://oauthenticator.readthedocs.io/en/latest/tutorials/provider-specific-setup/providers/generic.html#setup-for-an-openid-connect-oidc-based-identity-provider).
 
@@ -52,81 +55,85 @@ the hub side as shown below.
 
 VRE `hub.extraConfig` manifests for the OIDC token exchange:
 ```yaml
-      extraConfig:
-        token-exchange: |
-          import pprint
-          import os
-          import warnings
-          import requests
-          from oauthenticator.generic import GenericOAuthenticator
+values:
+  hub:
+    extraConfig:
+      token-exchange: |
+        import pprint
+        import os
+        import warnings
+        import requests
+        from oauthenticator.generic import GenericOAuthenticator
 
-          # custom authenticator to enable auth_state and get access token to set as env var for rucio extension
-          class RucioAuthenticator(GenericOAuthenticator):
-              def __init__(self, **kwargs):
-                  super().__init__(**kwargs)
-                  self.enable_auth_state = True
+        # custom authenticator to enable auth_state and get access token to set as env var for rucio extension
+        class RucioAuthenticator(GenericOAuthenticator):
+            def __init__(self, **kwargs):
+                super().__init__(**kwargs)
+                self.enable_auth_state = True
 
-              def exchange_token(self, token):
-                  params = {
-                      'client_id': self.client_id,
-                      'client_secret': self.client_secret,
-                      'grant_type': 'urn:ietf:params:oauth:grant-type:token-exchange',
-                      'subject_token_type': 'urn:ietf:params:oauth:token-type:access_token',
-                      'subject_token': token,
-                      'scope': 'openid profile',
-                      'audience': 'rucio'
-                  }
-                  response = requests.post(self.token_url, data=params)
-                  print("EXCHANGE TOKEN")
-                  print(response.json())
-                  rucio_token = response.json()['access_token']
+            def exchange_token(self, token):
+                params = {
+                    'client_id': self.client_id,
+                    'client_secret': self.client_secret,
+                    'grant_type': 'urn:ietf:params:oauth:grant-type:token-exchange',
+                    'subject_token_type': 'urn:ietf:params:oauth:token-type:access_token',
+                    'subject_token': token,
+                    'scope': 'openid profile',
+                    'audience': 'rucio'
+                }
+                response = requests.post(self.token_url, data=params)
+                print("EXCHANGE TOKEN")
+                print(response.json())
+                rucio_token = response.json()['access_token']
 
-                  return rucio_token
-                  
-              async def pre_spawn_start(self, user, spawner):
-                  auth_state = await user.get_auth_state()
-                  #print("AUTH_state")
-                  #pprint.pprint(auth_state)
-                  if not auth_state:
-                      # user has no auth state
-                      return False
-                  
-                  # define token environment variable from auth_state
-                  spawner.environment['RUCIO_ACCESS_TOKEN'] = self.exchange_token(auth_state['access_token'])
-                  spawner.environment['EOS_ACCESS_TOKEN'] = auth_state['access_token']
-          
-          # set the above authenticator as the default
-          c.JupyterHub.authenticator_class = RucioAuthenticator
+                return rucio_token
+                
+            async def pre_spawn_start(self, user, spawner):
+                auth_state = await user.get_auth_state()
+                #print("AUTH_state")
+                #pprint.pprint(auth_state)
+                if not auth_state:
+                    # user has no auth state
+                    return False
+                
+                # define token environment variable from auth_state
+                spawner.environment['RUCIO_ACCESS_TOKEN'] = self.exchange_token(auth_state['access_token'])
+                spawner.environment['EOS_ACCESS_TOKEN'] = auth_state['access_token']
+        
+        # set the above authenticator as the default
+        c.JupyterHub.authenticator_class = RucioAuthenticator
 
-          # enable authentication state
-          c.GenericOAuthenticator.enable_auth_state = True
+        # enable authentication state
+        c.GenericOAuthenticator.enable_auth_state = True
 ```
 
 Finally, some extra environment variables can be set on the hub side to 
-for the Rucio extension configuration (see and example of how this variables
+configure the Rucio extension (see and example of how this variables
 are propagated [here](https://github.com/vre-hub/environments/blob/d4d4892d9b2646dfe31ab176cdc23b50080f298a/vre-singleuser-py311/configure-vre.py#L27)).
 
 VRE `singleuser.extraEnv` example:
 ```yaml
-extraEnv:
-        RUCIO_MODE: "replica"
-        RUCIO_WILDCARD_ENABLED: "1"
-        RUCIO_BASE_URL: "https://vre-rucio.cern.ch"
-        RUCIO_AUTH_URL: "https://vre-rucio-auth.cern.ch"
-        RUCIO_WEBUI_URL: "https://vre-rucio-ui.cern.ch"
-        RUCIO_DISPLAY_NAME: "RUCIO - CERN VRE"
-        RUCIO_NAME: "vre-rucio.cern.ch"
-        RUCIO_SITE_NAME: "CERN"
-        RUCIO_OIDC_AUTH: "env"
-        RUCIO_OIDC_ENV_NAME: "RUCIO_ACCESS_TOKEN"
-        RUCIO_DEFAULT_AUTH_TYPE: "oidc"
-        RUCIO_OAUTH_ID: "rucio"
-        RUCIO_DEFAULT_INSTANCE: "vre-rucio.cern.ch"
-        RUCIO_DESTINATION_RSE: "CERN-EOSPILOT"
-        RUCIO_RSE_MOUNT_PATH: "/eos/eulake"
-        RUCIO_PATH_BEGINS_AT: "5" # Substitute /eos/pilot/eulake/escape/data with /eos/eulake
-        RUCIO_CA_CERT: "/certs/rucio_ca.pem"
-        OAUTH2_TOKEN: "FILE:/tmp/eos_oauth.token"
+values:
+  singleuser:
+    extraEnv:
+      RUCIO_MODE: "replica"
+      RUCIO_WILDCARD_ENABLED: "1"
+      RUCIO_BASE_URL: "https://vre-rucio.cern.ch"
+      RUCIO_AUTH_URL: "https://vre-rucio-auth.cern.ch"
+      RUCIO_WEBUI_URL: "https://vre-rucio-ui.cern.ch"
+      RUCIO_DISPLAY_NAME: "RUCIO - CERN VRE"
+      RUCIO_NAME: "vre-rucio.cern.ch"
+      RUCIO_SITE_NAME: "CERN"
+      RUCIO_OIDC_AUTH: "env"
+      RUCIO_OIDC_ENV_NAME: "RUCIO_ACCESS_TOKEN"
+      RUCIO_DEFAULT_AUTH_TYPE: "oidc"
+      RUCIO_OAUTH_ID: "rucio"
+      RUCIO_DEFAULT_INSTANCE: "vre-rucio.cern.ch"
+      RUCIO_DESTINATION_RSE: "CERN-EOSPILOT"
+      RUCIO_RSE_MOUNT_PATH: "/eos/eulake"
+      RUCIO_PATH_BEGINS_AT: "5" # Substitute /eos/pilot/eulake/escape/data with /eos/eulake
+      RUCIO_CA_CERT: "/certs/rucio_ca.pem"
+      OAUTH2_TOKEN: "FILE:/tmp/eos_oauth.token"
 ```
 
 ### Connection to CERN Resources
