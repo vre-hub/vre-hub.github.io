@@ -47,13 +47,13 @@ values:
 #### OIDC token exchange - Rucio JupyterLab extension configuration
 
 The Rucio JupyterLab extension configuration documentation can be found 
-on the JupyterLab Extensions [tab](../../extensions/rucio-jupyterlab/configuration.md).
+on the JupyterLab Extensions [section](../../extensions/rucio-jupyterlab/configuration.md).
 
 To use OIDC tokens as the authentication method for the extension, the Jupyter 
 server needs to exchange an access token with the IdP. This would need to be  
 configured on the hub side, as shown below.
 
-VRE `hub.extraConfig` manifests for the OIDC token exchange:
+VRE `hub.extraConfig` configuration for the OIDC token exchange:
 ```yaml
 values:
   hub:
@@ -133,7 +133,41 @@ values:
       RUCIO_RSE_MOUNT_PATH: "/eos/eulake"
       RUCIO_PATH_BEGINS_AT: "5" # Substitute /eos/pilot/eulake/escape/data with /eos/eulake
       RUCIO_CA_CERT: "/certs/rucio_ca.pem"
-      OAUTH2_TOKEN: "FILE:/tmp/eos_oauth.token"
+```
+
+:::tip[PRO TIP]
+
+Because both the Rucio and Jupyter hub authentication use the same IdP, you
+could automate the creation of a `rucio.cfg` file at the start of an user 
+session.
+
+:::
+
+CERN VRE example to automatically create a `rucio.cfg` file (`singleuser.lifecycleHooks.postStart` configuration):
+```yaml
+values:
+  singleuser:
+    lifecycleHooks:
+      postStart:
+        exec:
+          command:
+            - "sh"
+            - "-c"
+            - |
+              mkdir -p /tmp;
+              echo -n $RUCIO_ACCESS_TOKEN > /tmp/rucio_oauth.token;
+              mkdir -p /opt/rucio/etc;
+              echo "[client]" >> /opt/rucio/etc/rucio.cfg;
+              echo "rucio_host = https://vre-rucio.cern.ch" >> /opt/rucio/etc/rucio.cfg;
+              echo "auth_host = https://vre-rucio-auth.cern.ch" >> /opt/rucio/etc/rucio.cfg;
+              echo "ca_cert = /certs/rucio_ca.pem" >> /opt/rucio/etc/rucio.cfg;
+              echo "account = $JUPYTERHUB_USER" >> /opt/rucio/etc/rucio.cfg;
+              echo "auth_type = oidc" >> /opt/rucio/etc/rucio.cfg;
+              echo "oidc_audience = rucio" >> /opt/rucio/etc/rucio.cfg;
+              echo "oidc_polling = true" >> /opt/rucio/etc/rucio.cfg;
+              echo "oidc_issuer = escape" >> /opt/rucio/etc/rucio.cfg;
+              echo "oidc_scope = openid profile offline_access" >> /opt/rucio/etc/rucio.cfg;
+              echo "auth_token_file_path = /tmp/rucio_oauth.token" >> /opt/rucio/etc/rucio.cfg;
 ```
 
 ### Connection to CERN Resources
