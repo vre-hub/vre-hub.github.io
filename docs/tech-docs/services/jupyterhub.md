@@ -11,14 +11,13 @@ For general details on the deployment of JupyterHub, we refer the user to the of
 
 ### User Authentication and Authorization
 
-The VRE uses the ESCAPE Indico IAM [instance](https://iam-escape.cloud.cnaf.infn.it/) as Identity Provider (IdP) - For further details, please also vivisit the ESCAPE IAM [GitHub repository](https://github.com/indigo-iam/escape-docs). Registration to the ESCAPE IAM instance can be done via IAM credentials, EduGAIN or Google. 
-:::info
-We advise users to register using their institutional email.
-:::
+The VRE uses the ESCAPE Indico IAM [instance](https://iam-escape.cloud.cnaf.infn.it/) as Identity Provider (IdP) - For further details, please go to the [AAI section](../services/aai.md) or visit the official ESCAPE IAM [documentation](https://indigo-iam.github.io/escape-docs/). 
 
-To configure the hub and the Jupyter authenticator with Indico IAM, please follow the instructions for OpenID connect - an identity layer on top of the OAuth 2.0 protocol.
-* [z2jh A&A](https://z2jh.jupyter.org/en/stable/administrator/authentication.html#genericoauthenticator-openid-connect).
-* [Generic OAuth JupyterHub Documentation](https://oauthenticator.readthedocs.io/en/latest/tutorials/provider-specific-setup/providers/generic.html#setup-for-an-openid-connect-oidc-based-identity-provider).
+To configure the jupyter hub with the ESCAPE IAM, you will need to:
+  1. [Register a new client](https://indigo-iam.github.io/docs/v/current/user-guide/client-registration.html) on the ESCAPE IAM instance.  
+  2. Configure the the Jupyter hub authenticator to use the previously registered client, that makes use of an OIDC based IdP.
+      * [z2jh A&A](https://z2jh.jupyter.org/en/stable/administrator/authentication.html#genericoauthenticator-openid-connect).
+      * [Generic OAuth JupyterHub Documentation](https://oauthenticator.readthedocs.io/en/latest/tutorials/provider-specific-setup/providers/generic.html#setup-for-an-openid-connect-oidc-based-identity-provider).
 
 VRE `hub.config` configuration for the custom OAuth2 authenticator:
 ```yaml

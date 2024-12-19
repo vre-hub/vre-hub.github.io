@@ -4,7 +4,7 @@ The Rucio JupyterLab extension is installed in most of the CERN VRE
 environments and allows any VRE user to access, explore and trigger 
 replicas within the ESCAPE Data Lake content. 
 
-## Configuration file extension
+## Extension configuration file
 
 The configuration of the Rucio extension is done via a `.json` file, usually 
 located in `$HOME/.jupyter/` and named `jupyter_server_config.json`. This file must be 
@@ -92,7 +92,7 @@ Below you can find a configuration file example:
 
 To automate the token exchange when a Jupyter session is spawned, you need  
 to configure the k8s jupyter hub manifests. Find this documentation on the 
-VRE JupyterHub [technical documentation](../../tech-docs/services/jupyterhub.md#oidc-token-exchange---rucio-jupyterlab-extension-configuration).
+VRE [JupyterHub technical documentation](../../tech-docs/services/jupyterhub.md#oidc-token-exchange---rucio-jupyterlab-extension-configuration).
 
 
 ## Authentication via `x509` Proxy certificates 
