@@ -4,7 +4,7 @@ The Rucio JupyterLab extension is installed in most of the CERN VRE
 environments and allows any VRE user to access, explore and trigger 
 replicas within the ESCAPE Data Lake content. 
 
-## Configuration file extension
+## Extension configuration file
 
 The configuration of the Rucio extension is done via a `.json` file, usually 
 located in `$HOME/.jupyter/` and named `jupyter_server_config.json`. This file must be 
