@@ -145,22 +145,14 @@ const sidebars = {
       type: 'category',
       label: 'Cluster Setup',
       items: [
-        'tech-docs/cluster/cluster-setup',
-        {
-          type: 'category',
-          label: 'Cluster',
-          items: [
-            'tech-docs/cluster/openstack',
-            'tech-docs/cluster/kubernetes'
-          ],
-        },
+        'tech-docs/cluster-setup/openstack',
+        'tech-docs/cluster-setup/kubernetes',
       ]
     },
     {
       type: 'category',
       label: 'Services',
       items: [
-        'tech-docs/services/services',
         'tech-docs/services/aai',
         'tech-docs/services/data-management',
         'tech-docs/services/jupyterhub',

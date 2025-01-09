@@ -35,7 +35,7 @@ If you are a scientist or a new user curious to use the above resources, please 
 If you want to deploy the VRE on your own infrastructure, of you want to submit an issue to help us improve the platform, please follow the [developer documentation](/docs/developer). 
  
 ## Contact
-To contact the CERN VRE team with questions, doubts, problems accessing the meetings Indico category or the monitoring dashboards, please join the **[Slack channel](https://join.slack.com/t/vre-cern/shared_invite/zt-281r0dyw2-gDuDzDaNcaKfIM_Sf2T9OA)**. For more formal requests, i.e. conferences, webinars and events presentations, please email us at *escape-cern-ops@cern.ch*. 
+To contact the CERN VRE team with questions, doubts, problems accessing the meetings Indico category or the monitoring dashboards, please join the **[Mattermost channel](https://mattermost.web.cern.ch/signup_user_complete/?id=zqaa9p5fqfd9bnnc64at4b5aye&md=link&sbr=su)**. For more formal requests, i.e. conferences, webinars and events presentations, please email us at *escape-cern-ops 'at' cern.ch*. 
 
 ## Join the community 
 There are two recurrent meetings open to all scientists/researchers/developers interested in the VRE. 
