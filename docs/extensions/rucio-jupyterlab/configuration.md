@@ -122,7 +122,7 @@ To configure the extension to use `x509` Proxy certificates :
 5. Add your Rucio account in the `Account` field.
 6. Click on the `Save Settings`, change to the `Explore` tab and start using the extension.
 
-![rucio-extension](../../../images/rucio_ext_x509config.png)
+![rucio-extension](../../../static/img/rucio_ext_x509config.png)
 
 :::tip
 

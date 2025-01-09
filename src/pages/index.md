@@ -13,14 +13,14 @@ The platform's development is aimed at demonstrating how sciences spanning from 
 
 The Virtual Research Environment’s main components are:
 
-![image](../../images/vre-bubble.png)
+![image](../../static/img/vre-bubble.png)
 
 1. A federated and reliable **Authentication and Authorization** layer 
 2. A **federated distributed storage** solution (the Data Lake), providing functionalities for data injection and replication through a Data Management framework (Rucio) 
 3. A **computing** cluster supplying the processing power to run full analyses with Reana, a re-analysis software
 4. An enhanced **notebook interface** with containerised environments to hide the infrastructure’s complexity from the user. 
 
-![image](../../images/VRE-diagram.png)
+![image](../../static/img/VRE-diagram.png)
 
 The deployment of the Virtual Research Environment is open-source and modular, in order to make it easily reproducible by partner institutions; it is publicly accessible and kept up to date by taking advantage of state of the art IT-infrastructure technologies.
 
