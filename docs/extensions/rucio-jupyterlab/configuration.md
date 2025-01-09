@@ -1,18 +1,18 @@
 # CERN VRE Rucio JupyterLab extension configuration
 
-The Rucio JupyterLab extension is installed in most of the CERN VRE 
-environments and allows any VRE user to access, explore and trigger 
+The Rucio JupyterLab extension is installed in most of the CERN VRE
+environments and allows any VRE user to access, explore and trigger
 replicas within the ESCAPE Data Lake content. 
 
 ## Extension configuration file
 
-The configuration of the Rucio extension is done via a `.json` file, usually 
-located in `$HOME/.jupyter/` and named `jupyter_server_config.json`. This file must be 
-present before the Jupyter server session starts and can be added via Jupyter 
+The configuration of the Rucio extension is done via a `.json` file, usually
+located in `$HOME/.jupyter/` and named `jupyter_server_config.json`. This file must be
+present before the Jupyter server session starts and can be added via Jupyter
 `before-notebook.d` hooks, or by running a script via the Docker `CMD` instruction.
 
-Check the [upstream repository](https://github.com/rucio/jupyterlab-extension/blob/master/CONFIGURATION.md#configuration) 
-documentation for further details about the compulsory and optional fields of 
+Check the [upstream repository](https://github.com/rucio/jupyterlab-extension/blob/master/CONFIGURATION.md#configuration)
+documentation for further details about the compulsory and optional fields of
 the configuration file.
 
 :::tip
@@ -25,15 +25,15 @@ that shows various examples on how to add this configuration into Docker images.
 
 ## Default Authentication - `OIDC` tokens
 
-By default the extension is configured to use `OIDC` tokens as the default 
+By default the extension is configured to use `OIDC` tokens as the default
 authentication type. 
 
-Whenever a user logs into the VRE, the Jupyter hub exchanges an 
-access token with the the ESCAPE Identity provider, allowing to automatically 
+Whenever a user logs into the VRE, the Jupyter hub exchanges an
+access token with the the ESCAPE Identity provider, allowing to automatically
 authenticate the user towards the ESCAPE Rucio instance (see below).
 
-This way, the user does not need to re-authenticate when accessing the 
-JupyterLab environment, and can start using the Rucio JupyterLab extension 
+This way, the user does not need to re-authenticate when accessing the
+JupyterLab environment, and can start using the Rucio JupyterLab extension
 and/or interact with Rucio via the CLI.
 
 :::tip
@@ -49,8 +49,8 @@ rucio whoami
 
 ESCAPE OIDC access tokens have been configured with a lifetime of 2 hours. 
 
-If you think that your Jupyter session has been opened for more than 2h, or you 
-cannot further access the Rucio instance, please close and restart your session 
+If you think that your Jupyter session has been opened for more than 2h, or you
+cannot further access the Rucio instance, please close and restart your session
 by clicking on the `File` tab:
 
 `File` > `Hub Control Panel` > `Stop My Server` > `Start My Server`.
@@ -90,14 +90,17 @@ Below you can find a configuration file example:
 
 ### Token exchange with Jupyter Hub
 
-To automate the token exchange when a Jupyter session is spawned, you need  
-to configure the k8s jupyter hub manifests. Find this documentation on the 
+To automate the token exchange when a Jupyter session is spawned, you need
+to configure the k8s jupyter hub manifests. Find this documentation on the
 VRE [JupyterHub technical documentation](../../tech-docs/services/jupyterhub.md#oidc-token-exchange---rucio-jupyterlab-extension-configuration).
 
 
 ## Authentication via `x509` Proxy certificates 
 
-The Rucio JupyterLab extension also allows `x509` certificates to authenticate to the ESCAPE Rucio instance. The first thing you will need to do is setup the proper access permission on the certificate and key, and then run the `voms-proxy-init` command to create a valid proxy.
+The Rucio JupyterLab extension also allows `x509` certificates to authenticate
+to the ESCAPE Rucio instance. The first thing you will need to do is setup the
+proper access permission on the certificate and key, and then run the
+`voms-proxy-init` command to create a valid proxy.
 
 ```
 chmod 644 ~/.globus/usercert.pem

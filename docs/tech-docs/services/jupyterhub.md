@@ -11,7 +11,7 @@ For general details on the deployment of JupyterHub, we refer the user to the of
 
 ### User Authentication and Authorization
 
-The VRE uses the ESCAPE Indico IAM [instance](https://iam-escape.cloud.cnaf.infn.it/) as Identity Provider (IdP) - For further details, please go to the [AAI section](../services/aai.md) or visit the official ESCAPE IAM [documentation](https://indigo-iam.github.io/escape-docs/). 
+The VRE uses the ESCAPE Indico IAM [instance](https://iam-escape.cloud.cnaf.infn.it/) as Identity Provider (IdP). For further details, please go to the [AAI section](../services/aai.md) or visit the official ESCAPE IAM [documentation](https://indigo-iam.github.io/escape-docs/). 
 
 To configure the jupyter hub with the ESCAPE IAM, you will need to:
   1. [Register a new client](https://indigo-iam.github.io/docs/v/current/user-guide/client-registration.html) on the ESCAPE IAM instance.  
@@ -45,12 +45,11 @@ values:
 
 #### OIDC token exchange - Rucio JupyterLab extension configuration
 
-The Rucio JupyterLab extension configuration documentation can be found 
-on the JupyterLab Extensions [section](../../extensions/rucio-jupyterlab/configuration.md).
+The Rucio JupyterLab extension configuration documentation can be found on the JupyterLab Extensions [section](../../extensions/rucio-jupyterlab/configuration.md).
 
-To use OIDC tokens as the authentication method for the extension, the Jupyter 
-server needs to exchange an access token with the IdP. This would need to be  
-configured on the hub side, as shown below.
+To use OIDC tokens as the authentication method for the extension, the Jupyter server (the user session) needs to exchange an access token with the IdP. To do so:
+1. Enable the `token-exchange` grant type on the registered client (requires admin privileges).
+2. Add the token exchange configuration on the jupyterhub deployment (see below).
 
 VRE `hub.extraConfig` configuration for the OIDC token exchange:
 ```yaml
@@ -103,11 +102,9 @@ values:
         c.GenericOAuthenticator.enable_auth_state = True
 ```
 
-Finally, some extra environment variables can be set on the hub side to 
-configure the Rucio extension 
+Finally, some extra environment variables can be set on the hub side to configure the Rucio extension:
 :::tip
-Check an example of how these variables
-are propagated from the hub side to the user environmnet side [here](https://github.com/vre-hub/environments/blob/d4d4892d9b2646dfe31ab176cdc23b50080f298a/vre-singleuser-py311/configure-vre.py#L27).
+Check an example of how these variables are propagated from the hub to the user environmnet [here](https://github.com/vre-hub/environments/blob/d4d4892d9b2646dfe31ab176cdc23b50080f298a/vre-singleuser-py311/configure-vre.py#L27).
 :::
 
 VRE `singleuser.extraEnv` example:
@@ -136,9 +133,7 @@ values:
 
 :::tip[PRO TIP]
 
-Because both the Rucio and Jupyter hub authentication use the same IdP, you
-could automate the creation of a `rucio.cfg` file at the start of an user 
-session.
+Because both the Rucio and Jupyter hub authentication use the same IdP, you could automate the creation of a `rucio.cfg` file at the start of an user session.
 
 :::
 
