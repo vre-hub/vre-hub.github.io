@@ -5,6 +5,11 @@ slug: /
 
 **🟩 Experiencing issues? Check the [service uptime status page](https://vre-hub.github.io/status) 🟩**
 
+![Dynamic YAML Badge](https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fvre-hub%2Fvre%2Frefs%2Fheads%2Fmain%2Finfrastructure%2Fcluster%2Fflux%2Fjhub%2Fjhub-release.yaml&query=%24.spec.chart.spec.version&label=JupyterHub%20release&color=%23e66a2d)
+![Dynamic YAML Badge](https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fvre-hub%2Fvre%2Frefs%2Fheads%2Fmain%2Finfrastructure%2Fcluster%2Fflux%2Freana%2Freana-release.yaml&query=%24.spec.chart.spec.version&label=Reana%20release&color=%23fd3337)
+![Dynamic YAML Badge](https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fvre-hub%2Fvre%2Frefs%2Fheads%2Fmain%2Finfrastructure%2Fcluster%2Fflux%2Frucio%2Frucio-servers.yaml&query=%24.spec.values.image.tag&label=Rucio%20release&color=%23474986)
+![Dynamic YAML Badge](https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fvre-hub%2Fvre%2Frefs%2Fheads%2Fmain%2Finfrastructure%2Fcluster%2Fflux%2Frucio%2Frucio-servers.yaml&query=%24.spec.chart.spec.version&label=Rucio%20helm%20charts)
+
 # The Virtual Research Environment
 
 The Virtual Research Environment is an analysis platform developed at **CERN** serving the needs of scientific communities involved in European Projects. 
@@ -13,14 +18,14 @@ The platform's development is aimed at demonstrating how sciences spanning from 
 
 The Virtual Research Environment’s main components are:
 
-![image](../../images/vre-bubble.png)
+![image](../../static/img/vre-bubble.png)
 
 1. A federated and reliable **Authentication and Authorization** layer 
 2. A **federated distributed storage** solution (the Data Lake), providing functionalities for data injection and replication through a Data Management framework (Rucio) 
 3. A **computing** cluster supplying the processing power to run full analyses with Reana, a re-analysis software
 4. An enhanced **notebook interface** with containerised environments to hide the infrastructure’s complexity from the user. 
 
-![image](../../images/VRE-diagram.png)
+![image](../../static/img/VRE-diagram.png)
 
 The deployment of the Virtual Research Environment is open-source and modular, in order to make it easily reproducible by partner institutions; it is publicly accessible and kept up to date by taking advantage of state of the art IT-infrastructure technologies.
 
@@ -35,7 +40,7 @@ If you are a scientist or a new user curious to use the above resources, please 
 If you want to deploy the VRE on your own infrastructure, of you want to submit an issue to help us improve the platform, please follow the [developer documentation](/docs/developer). 
  
 ## Contact
-To contact the CERN VRE team with questions, doubts, problems accessing the meetings Indico category or the monitoring dashboards, please join the **[Slack channel](https://join.slack.com/t/vre-cern/shared_invite/zt-281r0dyw2-gDuDzDaNcaKfIM_Sf2T9OA)**. For more formal requests, i.e. conferences, webinars and events presentations, please email us at *escape-cern-ops@cern.ch*. 
+To contact the CERN VRE team with questions, doubts, problems accessing the meetings Indico category or the monitoring dashboards, please join the **[Mattermost channel](https://mattermost.web.cern.ch/signup_user_complete/?id=zqaa9p5fqfd9bnnc64at4b5aye&md=link&sbr=su)**. For more formal requests, i.e. conferences, webinars and events presentations, please email us at *escape-cern-ops 'at' cern.ch*. 
 
 ## Join the community 
 There are two recurrent meetings open to all scientists/researchers/developers interested in the VRE. 

@@ -3,9 +3,9 @@
 The Data Lake infrastructure is made up of distributed Storage Elements and of a reliable framework to upload and transfer data between them. 
 An overview of the available Rucio Storage Elements (RSEs) can be found in the [Grafana monitoring dashboard](https://monit-grafana-open.cern.ch/d/PJ65OqBVz/vre-rucio-events?orgId=16), which are useful to inspect the RSE transfer details. 
 
-![image](../images/monit.png)
+![image](../static/img/monit.png)
 
-If you do not have access to the dashboard, register with a CERN SSO account, please get in touch through the **[Slack channel](https://eosc-escape.slack.com/archives/C03Q65M1U5V)**.
+If you do not have access to the dashboard, login with a CERN account, or please get in touch through the **[Mattermost channel](https://mattermost.web.cern.ch/signup_user_complete/?id=zqaa9p5fqfd9bnnc64at4b5aye&md=link&sbr=su)**.
 The location of the storage elements, which are provided and maintained by European partner institutions, is shown on the map, and a list of them is reported in the table. 
 
 | _Rucio Storage Element (site-technology)_ | Location |
@@ -19,7 +19,7 @@ The location of the storage elements, which are provided and maintained by Europ
 | **INFN_NAPOLI-DCACHE**  | Istituto Nazionale di Fisica Nucleare, Napoli, IT |
 | **PIC-DCACHE**  |  Port d’Informació Científica, Barcelona, ES |
 
-![image](../images/rses.png)
+![image](../static/img/rses.png)
 
 This guide takes a look at how to install the Rucio client environment in two different ways. 
 

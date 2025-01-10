@@ -159,12 +159,16 @@ const config = {
             title: 'Community',
             items: [
               {
-                label: 'VRE monthly meetings',
+                label: 'VRE WG monthly meetings',
                 href: 'https://indico.cern.ch/category/17065/',
               },
               {
                 label: 'VRE bi-weekly meetings',
                 href: 'https://indico.in2p3.fr/category/1033/',
+              },
+              {
+                label: 'VRE Mattermost channel invitation link',
+                href: 'https://mattermost.web.cern.ch/signup_user_complete/?id=zqaa9p5fqfd9bnnc64at4b5aye&md=link&sbr=su',
               },
               // {
               //   label: 'Twitter',

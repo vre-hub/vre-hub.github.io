@@ -37,7 +37,7 @@ rucio-admin scopes list
 ```
 
 Alternatively, you could specify the most general `--account=root` tag, but you might not have the privileges to do so. 
-Otherwise, contact the VRE team on the **[Slack channel](https://eosc-escape.slack.com/archives/C03Q65M1U5V)** to ask for the creation of a new scope that fits your needs. 
+Otherwise, contact the VRE team on the **[Mattermost channel](https://mattermost.web.cern.ch/signup_user_complete/?id=zqaa9p5fqfd9bnnc64at4b5aye&md=link&sbr=su)** to ask for the creation of a new scope that fits your needs. 
 If you have multiple files that you would like to organise into a dataset, click on the 'Add files to a dataset' option, choose the correct scope name and a name for your data set. The data set name should identify what kind of data is inside, so please use this format: _ProjectType.DataDescription.DataType_ (DM.LeptonResonance.Data20015_10TeV, the ProjectType for EOSC-Future is either DM or EU). 
 
 **There are two directories which allow you to store files in the DLaaS, and you should be aware of their memeory limitations.**

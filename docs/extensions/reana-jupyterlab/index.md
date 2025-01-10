@@ -9,7 +9,7 @@
 
 Reana JupyterLab plugin provides a set of tools to interact with the [Reana](https://reanahub.io/) workflow management system from within JupyterLab. 
 
-![](../../../images/reana-demo.gif)
+![](../../../static/img/reana-demo.gif)
 
 ## Requirements
 - JupyterLab{'>=4'},{'<'}5
