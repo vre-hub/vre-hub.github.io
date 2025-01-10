@@ -5,7 +5,7 @@ An overview of the available Rucio Storage Elements (RSEs) can be found in the [
 
 ![image](../static/img/monit.png)
 
-If you do not have access to the dashboard, register with a CERN SSO account, please get in touch through the **[Mattermost channel](https://mattermost.web.cern.ch/signup_user_complete/?id=zqaa9p5fqfd9bnnc64at4b5aye&md=link&sbr=su)**.
+If you do not have access to the dashboard, login with a CERN account, or please get in touch through the **[Mattermost channel](https://mattermost.web.cern.ch/signup_user_complete/?id=zqaa9p5fqfd9bnnc64at4b5aye&md=link&sbr=su)**.
 The location of the storage elements, which are provided and maintained by European partner institutions, is shown on the map, and a list of them is reported in the table. 
 
 | _Rucio Storage Element (site-technology)_ | Location |
