@@ -1,5 +1,7 @@
 # Authentication and Authorization Infrastructure 
 
+## ESCAPE INDIGO IAM
+
 The VRE uses the [INDIGO Identity and Access Management (IAM)](https://indigo-iam.github.io/) service as Authentication and Authorization Infrastructure (AAI). The ESCAPE project has its own IAM instance, available via the following links
 * Link to the [ESCAPE IAM instance](https://iam-escape.cloud.cnaf.infn.it/).
 * Check the instance [documentation](https://indigo-iam.github.io/escape-docs/).

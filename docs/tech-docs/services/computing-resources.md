@@ -2,7 +2,19 @@
 
 ![Dynamic YAML Badge](https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fvre-hub%2Fvre%2Frefs%2Fheads%2Fmain%2Finfrastructure%2Fcluster%2Fflux%2Freana%2Freana-release.yaml&query=%24.spec.chart.spec.version&label=Reana%20release&color=%23fd3337)
 
-Reana is a software developed at CERN that focuses on the reproducibility and reanalysis of scientific results. 
+Reana is a software developed at CERN that focuses on the reproducibility and reanalysis of scientific results. It is deployed on the CERN VRE allowing users to run (and re-run) analysis pipelines on the VRE compute resources. 
+
+Reana supports various workflow systems (`CWL`, `Serial`, `Snakemake` and `Yadage`) and can be configured to offload the workflow to different compute backend (`HTCondor`, `Kubernetes` and `Slurm`). We refer the reader to the
+[official Reana documentation](https://docs.reana.io/) for futher details.
+
+:::warning[note]
+
+The VRE computing resources are limited and are designed to host the VRE services.
+
+Please make responsible use of the computing power of the cluster. For heavy computing workflows, please use the official Reana deployment. 
+
+:::
+
 
 ## CERN VRE Reana deployment
 
