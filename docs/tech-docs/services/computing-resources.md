@@ -34,7 +34,7 @@ openstack server set --property landb-alias=jhub-vre--load-3-,reana-vre--load-3-
 5. Configure Reana to use your identity provider. For this, follow the instructions on the [Reana official docs](https://github.com/reanahub/docs.reana.io/pull/151/files).
 For the ESCAPE IAM idP the OpenID configuration is can be found [here](https://iam-escape.cloud.cnaf.infn.it/.well-known/openid-configuration).
 The secrets of the IAM client acting on behalf of the application are stored in the `reana-vre-iam-client` secrets, deployed by the `create-reana-secrets.sh` ([link](https://github.com/vre-hub/vre/blob/main/infrastructure/scripts/reana_secrets.sh) to the script on the VRE repo).
-You can then see that the users get created in the DB, also the charts has an option to specify email notification whenever a new user requests a token. 
+You can then see that the users get created in the DB, also the charts has an option to specify email notification whenever a new user requests a token.
 
 Some useful Reana commands to deal with users:
 ```bash=
@@ -52,3 +52,4 @@ kubectl exec -i -t deployment/reana-server -n reana -- flask reana-admin token-g
 ```
 
 6. Navigate to `reana-vre.cern.ch` and log in with your IAM credentials.
+
