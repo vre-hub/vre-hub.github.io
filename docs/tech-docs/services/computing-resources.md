@@ -15,7 +15,11 @@ Reana is a software developed at CERN that focuses on the reproducibility and re
 
 1. Apply the Reana hel charts (the `reana-release.yaml` manifest on our repository. Please note that they are adapted to be compliant with flux" helm chart via flux), keeping the ingress
 disabled as the default Reana ingress is Traefik, while at CERN Openstack already deploys nginx as the ingress controller.
+<<<<<<< HEAD
 2. If you are using your own DB instance, change the configuration with DB name, host and port in the Helm chart, delete the secret `<your-reana-helm-release>`-db-secrets which contains the
+=======
+2. If you are using your own DB instance, change the configuration with DB name, host and port in the Helm chart, delete the secret <your-reana-helm-release>-db-secrets which contains the
+>>>>>>> 1c1f6c42d1a918974cccae74207e9edfebbad575
 username and password and re-apply your own as in the `infrastructure/scripts/create-reana-secrets.sh`. 
 :::note
 
@@ -52,3 +56,4 @@ kubectl exec -i -t deployment/reana-server -n reana -- flask reana-admin token-g
 ```
 
 6. Navigate to `reana-vre.cern.ch` and log in with your IAM credentials.
+
