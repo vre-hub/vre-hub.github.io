@@ -1,9 +1,12 @@
 # JupyterHub
 
-The JupyterHub service is deployed on the VRE cluster using the upstream [Zero to JupyterHub](https://github.com/jupyterhub/zero-to-jupyterhub-k8s) (z2jh) `helm` charts. The cluster and the manifest are kept synchronised via `Flux`.
+![Dynamic YAML Badge](https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fvre-hub%2Fvre%2Frefs%2Fheads%2Fmain%2Finfrastructure%2Fcluster%2Fflux%2Fjhub%2Fjhub-release.yaml&query=%24.spec.chart.spec.version&label=JupyterHub%20release&color=%23e66a2d)
 
-* The current z2jh version deployed on the CERN VRE is [`v3.3.7`](https://hub.jupyter.org/helm-chart/#jupyterhub).
-* To check the deployed k8s manifests on the VRE, visit the VRE GitHub repository ([jupyterhub deployment](https://github.com/vre-hub/vre/blob/main/infrastructure/cluster/flux/jhub/jhub-release.yaml)).
+The JupyterHub service is deployed on the VRE cluster using the upstream [Zero to JupyterHub](https://github.com/jupyterhub/zero-to-jupyterhub-k8s) (`z2jh`) Helm charts. The cluster and the manifest are kept synchronised via Flux.
+
+* The current `z2jh` Helm chart version deployed on the CERN VRE is depicted on the badge at the top of this page.
+  * The Application version can be checked on the [official `z2jh` Helm chart repository](https://hub.jupyter.org/helm-chart/#jupyterhub).
+* The JupyterHub manifest deployed on the VRE can be found on the VRE repository - [JupyterHub deployment](https://github.com/vre-hub/vre/blob/main/infrastructure/cluster/flux/jhub/jhub-release.yaml).
 
 For general details on the deployment of JupyterHub, we refer the user to the official documentation of [Zero to JupyterHub with Kubernetes](https://z2jh.jupyter.org/en/stable/index.html).
 
@@ -13,9 +16,9 @@ For general details on the deployment of JupyterHub, we refer the user to the of
 
 The VRE uses the ESCAPE Indico IAM [instance](https://iam-escape.cloud.cnaf.infn.it/) as Identity Provider (IdP). For further details, please go to the [AAI section](../services/aai.md) or visit the official ESCAPE IAM [documentation](https://indigo-iam.github.io/escape-docs/). 
 
-To configure the jupyter hub with the ESCAPE IAM, you will need to:
+To use the ESCAPE IAM as the JupyterHub authenticator, you will need to:
   1. [Register a new client](https://indigo-iam.github.io/docs/v/current/user-guide/client-registration.html) on the ESCAPE IAM instance.  
-  2. Configure the the Jupyter hub authenticator to use the previously registered client, that makes use of an OIDC based IdP.
+  2. Configure the the JupyterHub authenticator to use the previously registered client, that makes use of an OIDC based IdP.
       * [z2jh A&A](https://z2jh.jupyter.org/en/stable/administrator/authentication.html#genericoauthenticator-openid-connect).
       * [Generic OAuth JupyterHub Documentation](https://oauthenticator.readthedocs.io/en/latest/tutorials/provider-specific-setup/providers/generic.html#setup-for-an-openid-connect-oidc-based-identity-provider).
 
@@ -45,9 +48,9 @@ values:
 
 #### OIDC token exchange - Rucio JupyterLab extension configuration
 
-The Rucio JupyterLab extension configuration documentation can be found on the JupyterLab Extensions [section](../../extensions/rucio-jupyterlab/configuration.md).
+The configuration of the Rucio JupyterLab extension can be found in the eponymous extension [section](../../extensions/rucio-jupyterlab/configuration.md).
 
-To use OIDC tokens as the authentication method for the extension, the Jupyter server (the user session) needs to exchange an access token with the IdP. To do so:
+To use OIDC tokens as the authentication method for the extension, the Jupyter server (i.e., the user session) needs to exchange an access token with the IdP. To do so:
 1. Enable the `token-exchange` grant type on the registered client (requires admin privileges).
 2. Add the token exchange configuration on the jupyterhub deployment (see below).
 
@@ -133,7 +136,7 @@ values:
 
 :::tip[PRO TIP]
 
-Because both the Rucio and Jupyter hub authentication use the same IdP, you could automate the creation of a `rucio.cfg` file at the start of an user session.
+Because both the Rucio and JupyterHub authentication use the same IdP, you could automate the creation of a `rucio.cfg` file at the start of an user session.
 
 :::
 
