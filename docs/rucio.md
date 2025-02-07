@@ -1,6 +1,6 @@
 # The Rucio Data Lake 
 
-The Data Lake infrastructure is made up of distributed Storage Elements and of a reliable framework to upload and transfer data between them. 
+The ESCAPE Data Lake infrastructure is made up of distributed Storage Elements and of a reliable framework to upload and transfer data between them. 
 An overview of the available Rucio Storage Elements (RSEs) can be found in the [Grafana monitoring dashboard](https://monit-grafana-open.cern.ch/d/PJ65OqBVz/vre-rucio-events?orgId=16), which are useful to inspect the RSE transfer details. 
 
 ![image](../static/img/monit.png)
@@ -11,51 +11,45 @@ The location of the storage elements, which are provided and maintained by Europ
 | _Rucio Storage Element (site-technology)_ | Location |
 | ------------ | ----------- |
 | **CC_DCACHE**  | Centre de Calcul, (IN2P3), Lyon, FR    |
-| **CERN-EOS**  | European Organization for Nuclear Research, Meyrin, CH  |
-| **CESNET-S3**  |  Czech Education and Scientific NETwork, Prague, CZ  | 
+| **CERN-EOSPILOT**  | European Organization for Nuclear Research, Meyrin, CH  |
 | **CNAF-STORM**  |  Istituto Nazionale di Fisica Nucleare, Bologna, IT |
 | **DESY-DCACHE**  | Deutsches Elektronen-Synchrotron, Hamburg, DE |
 | **IN2P3_LAPP-DCACHE**  | Laboratoire d'Annecy de Physique des Particules (CNRS/IN2P3), Annecy, FR |
 | **INFN_NAPOLI-DCACHE**  | Istituto Nazionale di Fisica Nucleare, Napoli, IT |
 | **PIC-DCACHE**  |  Port d’Informació Científica, Barcelona, ES |
+| **CESNET-S3**  |  Czech Education and Scientific NETwork, Prague, CZ  | 
 
 ![image](../static/img/rses.png)
 
-This guide takes a look at how to install the Rucio client environment in two different ways. 
+## Interacting with the Rucio Data Lake
+
+This guide takes a look at how to interact with the Rucio instance in two different ways. 
 
 1. Installing the required packages on your local machine.
-2. Using a Docker container. Docker technologies mitigate dependency and platform specific issues, and are therefore recommended; however, if you want to upload large data that are present on your system, you will need to copy them inside the Docker container, and then upload them on the Rucio Data Lake. This might be cumbersome, especially if you are dealing with large files. 
+2. Using a Docker container. Docker technologies mitigate dependency and platform specific issues, and are therefore recommended; however, if you want to upload large data that are present on your system, you will need to copy them inside the Docker container, and then upload them on the Rucio Data Lake. This might be cumbersome, especially if you are dealing with large files.
 
+In any case, you will have to set up a configuration file to tell rucio who you are, specifying an authentication method.
 
-In general, there are two main ways to authenticate to the Rucio instance: via X509 certificates and via OIDC tokens. These two ways require different configuration files for Rucio. 
+### `rucio.cfg` file configuration
 
-### X509 Rucio configuration 
+In general, there are two main ways to authenticate to the Rucio instance: via X.509 certificates and via OIDC tokens. These two ways require different configuration files for Rucio. 
+The `rucio.cfg` file is usually placed in the `/opt/rucio/etc/` directory. The Rucio client looks at this location first by default.
 
-The X509 certificate is placed in the `.globus/` directory. 
-The `rucio.cfg` file is usually placed in the `/opt/rucio/etc/` directory. 
+:::tip[Pro Tip]
+You can also change the default location of your `rucio.cfg` by doing
+```bash
+export RUCIO_CONFIG=<PATH/TO/FILE/rucio.cfg>
+```
+:::
 
-```yaml
-[client]
-rucio_host = https://vre-rucio.cern.ch
-auth_host = https://vre-rucio-auth.cern.ch
-ca_cert = /etc/pki/tls/certs/CERN-bundle.pem
-auth_type = x509_proxy
-account = <myrucioaccount>
-client_cert = .globus/usercert.pem
-client_key = .globus/userkey.pem
-client_x509_proxy = /tmp/x509up_u0 #(or check where the voms-proxy-init command saves the proxy file!)
-
-[policy]
-permission = escape 
-schema = escape  
-lfn2pfn_algorithm_default = hash 
-support = https://github.com/rucio/rucio/issues/
-support_rucio = https://github.com/rucio/rucio/issues/
+Once you have ready you `rucio.cfg` file, and the sofware environment with the rucio client (see next section), you can identify towards rucio by doing a 
+```bash
+rucio whoami
 ```
 
-### OIDC token Rucio configuration 
+If the authentication was successful, you will see a message with you rucio user crendential. Now you should be able to interact with the Rucio instance.
 
-The `rucio.cfg` file is usually placed in the `/opt/rucio/etc/` directory. 
+#### OIDC token Rucio authentication 
 
 ```yaml
 [client]
@@ -63,9 +57,9 @@ rucio_host = https://vre-rucio.cern.ch
 auth_host = https://vre-rucio-auth.cern.ch
 ca_cert = /etc/pki/tls/certs/CERN-bundle.pem
 auth_type = oidc
-account = <myrucioaccount>
+account = <MY_RUCIO_ACCOUNT>
 oidc_audience = rucio
-oidc_scope = openid profile offline_access wlcg wlcg.groups fts:submit-transfer
+oidc_scope = openid profile offline_access 
 request_retries = 3
 oidc_issuer = escape
 oidc_polling = true
@@ -77,75 +71,91 @@ schema = escape
 lfn2pfn_algorithm_default = hash 
 ```
 
-## 1. Manual installation 
-
-We assume you are running the commands from a CentOS Linux distribution, in our case a `CS8 - x86_64` image. Run the commands in the following order:
+ESCAPE OIDC tokens have a lifetime of 2 hours. Whether you identify for the first time or every time your rucio session has expired, click on the link shown after typing `rucio whoami`, and follow it to get identified towards the ESCAPE IAM service.
 
 ```bash
-yum install -y epel-release.noarch && \
-    yum clean all && \
-    rm -rf /var/cache/yum
-    
-yum upgrade -y && \
-    yum clean all && \
-    rm -rf /var/cache/yum
-    
-yum -y install wget gfal2*
+# Rucio response when login using OIDC tokens
 
-yum -y install https://repo.ius.io/ius-release-el7.rpm && \
-    yum install -y voms-clients-java gfal2-all gfal2-util python3-gfal2 xrootd-client\
-                   nordugrid-arc-client nordugrid-arc-plugins-gfal \
-                   nordugrid-arc-plugins-globus nordugrid-arc-plugins-s3 \
-                   nordugrid-arc-plugins-xrootd && \
-    yum clean all && \
-    rm -rf /var/cache/yum
+Please use your internet browser, go to:
 
+    https://vre-rucio-auth.cern.ch/auth/oidc_redirect?XXXXXXXXXXXXXXXX
+
+and authenticate with your Identity Provider.
+In the next 3 minutes, Rucio Client will be polling
+the Rucio authentication server for a token.
+----------------------------------------------
+```
+
+#### X.509 Rucio authentication 
+
+The X.509 usercert and userkey are usually placed in the `.globus/` directory. Visit the [AAI](auth.md#extract-the-usercertpem-and-userkeypem-from-the-p12-file) section to check how to obtain an usercert and an userkey from a X.509 certificate.
+Also, prior to the `rucio whoami` command, you should run a `voms-proxy-init` command to create proxy file:
+
+```bash
+voms-proxy-init --cert ~/.globus/usercert.pem --key ~/.globus/userkey.pem --voms escape --out /tmp/x509up_u0
+```
+
+:::tip
+You can use the `--out` argument to change the destination and the output filename of the proxy if needed.
+:::
+
+```yaml
+[client]
+rucio_host = https://vre-rucio.cern.ch
+auth_host = https://vre-rucio-auth.cern.ch
+ca_cert = /etc/pki/tls/certs/CERN-bundle.pem
+account = <MY_RUCIO_ACCOUNT>
+auth_type = x509_proxy
+client_x509_proxy = /tmp/x509up_u0 #(or check where the voms-proxy-init command saves the proxy file!)
+
+[policy]
+permission = escape 
+schema = escape  
+lfn2pfn_algorithm_default = hash 
+support = https://github.com/rucio/rucio/issues/
+support_rucio = https://github.com/rucio/rucio/issues/
+```
+
+
+### 1. Manual installation
+
+We suggest to follow these steps in a fresh virtual environment. 
+
+Install the Rucio client via pip:
+
+```bash
+pip install rucio-clients==<VERSION>
+# or
+python -m pip install rucio-clients==<VERSION>
+```
+
+Use the version depicted on the following badge **without** the `release-` prefix ![Dynamic YAML Badge](https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fvre-hub%2Fvre%2Frefs%2Fheads%2Fmain%2Finfrastructure%2Fcluster%2Fflux%2Frucio%2Frucio-servers.yaml&query=spec.values.image.tag&label=rucio-clients%20version).
+
+Despite the rucio client package should install most of the software dependencies on your system, you would need to install certain packages manually.
+
+```bash
+# For a Alma9 - x86_64 distrubution
+> dnf install -y epel-release.noarch
+> dnf upgrade -y
+> dnf install -y wget gfal2*        # To install the gfal2 libraries
+> dnf install -y voms-clients-java  # To install the `voms-proxy-init` client
 ```
 Then, install the certificates for the VOMS validation:
-
-
 ```bash
-curl -Lo /etc/yum.repos.d/EGI-trustanchors.repo https://repository.egi.eu/sw/production/cas/1/current/repo-files/EGI-trustanchors.repo && yum -y update && yum -y install ca-certificates ca-policy-egi-core fetch-crl && yum clean all && rm -rf /var/cache/yum
-
-curl -Lo /etc/pki/tls/certs/CERN-bundle.pem https://gitlab.cern.ch/plove/rucio/-/raw/7121c7200257a4c537b56ce6e7e438f0b35c6e48/etc/web/CERN-bundle.pem
-
-mkdir -p /etc/vomses \
+# Install the LCG trust anchos for X.509 authentication - what brings the CERN-bundle.pem file needed on the rucio.cfg
+> curl -Lo /etc/yum.repos.d/lcg-trustanchors.repo https://lcg-ca.web.cern.ch/distribution/current/repo-files/lcg-trustanchors.repo \
+    && dnf -y update \
+    && dnf -y install ca-policy-lcg 
+# Download the VOMS configuration files for the ESCAPE instance
+> mkdir -p /etc/vomses \
     && wget https://indigo-iam.github.io/escape-docs/voms-config/voms-escape.cloud.cnaf.infn.it.vomses -O /etc/vomses/voms-escape.cloud.cnaf.infn.it.vomses
-mkdir -p /etc/grid-security/vomsdir/escape \
+> mkdir -p /etc/grid-security/vomsdir/escape \
     && wget https://indigo-iam.github.io/escape-docs/voms-config/voms-escape.cloud.cnaf.infn.it.lsc -O /etc/grid-security/vomsdir/escape/voms-escape.cloud.cnaf.infn.it.lsc
 ```
 
-Next, you need the python rucio-client. We suggest to do this in a fresh virtual environment. 
-
-```bash
-# Latest version of Rucio 
-export RUCIO_LATEST=1.30.0
-
-python3 -m pip install --user virtualenv
-python3 -m venv rucio --system-site-packages
-source rucio/bin/activate
-python3.6 -m pip install --no-cache-dir --upgrade pip && \
-python3.6 -m pip install  --no-cache-dir --upgrade setuptools && \
-python3.6 -m pip install --no-cache-dir --pre rucio-clients==${RUCIO_LATEST} && \
-python3.6 -m pip install --no-cache-dir jinja2 j2cli pyyaml
-```   
-Have your `rucio.cfg` file ready in `/opt/rucio/etc/` and run:
-```bash
-export RUCIO_CONFIG=/opt/rucio/etc/rucio.cfg
-```
-If you use X509 verification, you will also need the command: 
-
-```bash
-voms-proxy-init --voms escape --cert .globus/usercert.pem --key .globus/userkey.pem 
-```
-Otherwise, if you use tokens, you are good to go. 
-
-By typing in the terminal:
-
-```bash
-$ rucio whoami
-```
-you should see your username being recognised. If it is your first time using tokens, you will be redirected to a link starting with  'https://escape-rucio-auth.cern.ch/auth/...'; click on it and choose the duration of your token. You should be all set up to run your rucio commands!
+:::info[developers]
+If you need extra functionalities when interacting with rucio, please visit rucio section of the [Technical Documentation](./tech-docs/services/data-management.md#developers-software-environment) for further details on the software environment.
+:::
 
 ## 2. Docker image installation 
 

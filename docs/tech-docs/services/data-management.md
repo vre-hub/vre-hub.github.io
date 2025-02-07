@@ -18,3 +18,20 @@ A detailed tutorial on how to deploy Rucio (the servers, the daemons and the UI 
 
 * The CERN VRE Rucio user documentation can be found on the top `Rucio` tab of this website or [here](../../rucio.md).
 * For further and more detailed information, please visit the [official Rucio documentation](https://rucio.cern.ch/documentation/).
+
+### Developers software environment
+
+This section suggest a list of software packages that could be useful when dealing with rucio transfers between different data centers.
+For normal user interactio please go to the [VRE rucio users section](../../rucio.md#1-manual-installation)
+
+```bash
+dnf install wget curl \
+            voms-clients-java \
+            gfal2* python3-gfal2 \
+            xrootd-client\
+            nordugrid-arc-client \
+            nordugrid-arc-plugins-gfal \
+            nordugrid-arc-plugins-globus \
+            nordugrid-arc-plugins-s3 \
+            nordugrid-arc-plugins-xrootd
+```

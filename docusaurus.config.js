@@ -159,7 +159,7 @@ const config = {
               },
               {
                 label: 'How to contribute',
-                to: '/tech-docs/home#how-to-contribute',
+                to: '/tech-docs/home',
               }
             ],
           },
