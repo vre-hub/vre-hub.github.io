@@ -150,9 +150,17 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Get Started',
+                label: 'VRE User documentation',
                 to: '/',
               },
+              {
+                label: 'VRE Technical documentation',
+                to: '/tech-docs/home',
+              },
+              {
+                label: 'How to contribute',
+                to: '/tech-docs/home#how-to-contribute',
+              }
             ],
           },
           {
@@ -162,10 +170,10 @@ const config = {
                 label: 'VRE WG monthly meetings',
                 href: 'https://indico.cern.ch/category/17065/',
               },
-              {
-                label: 'VRE bi-weekly meetings',
-                href: 'https://indico.in2p3.fr/category/1033/',
-              },
+              // {
+              //   label: 'VRE bi-weekly meetings',
+              //   href: 'https://indico.in2p3.fr/category/1033/',
+              // },
               {
                 label: 'VRE Mattermost channel invitation link',
                 href: 'https://mattermost.web.cern.ch/signup_user_complete/?id=zqaa9p5fqfd9bnnc64at4b5aye&md=link&sbr=su',

@@ -1,25 +1,43 @@
 # Authentication
 
-The interaction with the Data Lake requires authentication.
-It is required to register to the INDIGO Identity and Access Management (IAM) service and obtain a X.509 Grid certificate. Follow the instructions in the next sections.
+The interaction with the VRE platform requires authentication.
+It is required to register to the ESCAPE INDIGO Identity and Access Management (IAM) service to be able to access the VRE. Follow the instructions in the next sections.
 
 ### ESCAPE IAM registration
 
 Navigate [here](https://iam-escape.cloud.cnaf.infn.it/login) and register for a new account, filling in the required details.
-After the account has been approved, you will need to log in and add the Escape group to your Groups. To do this, click on the green **Join a group** button in the **Group requests** panel. Enter 'escape' in the group box, adding a brief motivation for the request. You will need to wait in order for this to be manually approved by site admins. If your request is urgent, please email the admins at _escape-cern-ops@cern.ch_.
+
+After the account has been approved, you will need to log in and add the `escape` group to your Groups. To do this, click on the **Home** button of the lateral bar and then click on the green **+ Add to group** button in the **Groups** panel. Enter 'escape' in the group box, and click `Add group(s)`. You can request access to various groups at the same time. You will need to wait in order for this to be manually approved by site administrators. If your request is urgent, please email the admins at _escape-cern-ops'at'cern.ch_.
+
+Once your account is approved, and you have confirmed your email address, you will be able to get identified towards the ESCAPE IAM service via username and password and access the VRE platform.
+
+:::info
+
+All the underlaying VRE services are compatible and connected with the ESCAPE IAM service. 
+Once you have an ESCAPE IAM account, you will be able to interact with the different services and resources available in the platform.
+
+:::
+
+### OpenID token 
+
+The ESCAPE INDIGO Iam support OpenID tokens. 
+
+Most of the token interactions between the different component of the VRE are and should stay hidden to standard users of the platorm. Visit the [Tecnical Documentation](./tech-docs/home.md) section or the [IAM documentation](https://indigo-iam.github.io/v/v1.10.0/docs/reference/configuration/external-authentication/oidc/) for further details.
+
 
 ### X.509 Grid certificate    
 
 #### *Getting the certificate*    
 
-The following procedure is described for a UK CA/RA, but it is different depending on the country you are located in. Check this [link](https://www.eugridpma.org/members/worldmap/) to see what you need.  
+Requesting a X.509 ceritiface is not straightforward and might get a bit tedious depending on your institution.
 
-An X.509 grid certificate is sought by first contacting the appropriate certificate authority (CA). This can be done [here](https://portal.ca.grid-support.ac.uk/). Make a note of both the pin and key password, as they will be required later.
+:::tip
 
-After your request, you will receive an email asking for further information to be passed to the registration authority (RA). 
-You will need some form of I.D. (e.g. site I.D., driver’s licence, passport) in addition to the pin that was entered in the request to the CA. You will need to pass these to one of the contacts listed in the email, as instructed, who will likely want to arrange a brief video call to confirm your identity against your provided documents.
+Please contact your institute system administrator to understand the way to request one.
 
-Once your identity has been confirmed, you will be emailed a link to download your certificate in .p12 format (PKCS 12). Download the file and store it in a safe place on your computer, where it is always easily accessible. 
+::: 
+
+A X.509 certificate exists in the form of a `.p12` format (PKCS 12) file. Download the file and store it in a safe place on your computer, where it is always easily accessible. 
 
  -  For **CERN** members, the request can be made [here](https://ca.cern.ch/ca/), under the ‘Grid Certificates’ section with ‘New Grid User Certificate’.
 
@@ -29,35 +47,31 @@ Before linking the Grid certificate to your IAM account, you will need to add th
 
 Be aware that the browser is configured to store all your uploaded certificates. You should therefore check whether the browser is not already using an old certificate, which might be expired. If this is the case, delete old certificates and upload your new one. 
 
- - **Chrome**: For Chrome, this can be done by navigating to `chrome://settings/security` and following the instructions presented upon selecting `Advanced > Manage Certificates > Import`. 
+ - **Chrome**: Navigate to `chrome://settings/security` and following the instructions presented upon selecting `Advanced > Manage Certificates > Import`. 
+ - **Firefox**: Navigate to `Settings`, search for `Certificates` and clicl on the `View Certificates...` button. Import the X.509 certificate under the `Your Certificates` tab by finding its location on your local computer.
 
 Once the certificate has been imported, restart your browser. Then log into the [ESCAPE IAM](https://iam-escape.cloud.cnaf.infn.it/login). A pop-up window allowing you to select the certificate you want to identify with should appear. If the pop-up window has appeared, click on the green button `Link certificate` button in the `X.509 certificates` panel. 
 
-#### *Changing the certificate* 
+#### Extract the `usercert.pem` and `userkey.pem` from the `.p12` file
 
-Separate out the .p12 object into a separate key (.key) and certificate (.crt). 
-Place the .p12 certificate file in the .globus directory in your home area. If the directory doesn’t exist, create it:
+In specific situations, for example when performing a `voms-proxy-init` command, you would need to have the X.509 certificate separated into two the user-key and user-certificate.
+
+Place the `.p12` file in the `.globus` directory in your home area. If the directory doesn’t exist, create it:
 ```bash
 $ cd ~
-$ mkdir .globus
+$ mkdir -p .globus
 $ cd ~/.globus
 $ mv /path/to/<your_cert>.p12 .
 ```
-From the .globus directory, execute the following shell commands:
+From the `.globus` directory, execute the following shell commands:
 
 ```bash
-$ rm -f client.crt
-$ rm -f client.key
+$ rm -f usercert.pem
+$ rm -f userkey.pem
 $ openssl pkcs12 -in <your_cert>.p12 -clcerts -nokeys -out usercert.pem
 $ openssl pkcs12 -in <your_cert>.p12 -nocerts -nodes -out userkey.pem
 $ chmod 644 usercert.pem
 $ chmod 400 userkey.pem
 ```
 This completes the X.509 certificate set-up for ESCAPE.
-
-### OpenID token 
-
-If you find it hard to obtain a X509 certificate, you can communicate with Rucio through the OpenID [token](https://rucio.cern.ch/documentation/user/using_the_client/#open-id-connect-authentication-examples) authentication. The downside of this method is that many storage elements do not support this authentication, so your 'power' to upload and download data will be limited. You will find all instructions to interact with the client in this (easier) way in the following section. 
-
-
 
