@@ -79,9 +79,7 @@ lfn2pfn_algorithm_default = hash
 ESCAPE OIDC tokens have a lifetime of 2 hours. Whether you identify for the first time or every time your rucio session has expired, click on the link shown after typing `rucio whoami`, and follow it to get identified towards the ESCAPE IAM service.
 ::: 
 
-```yaml
-# Rucio response when login using OIDC tokens
-
+```bash title='Rucio response when login using OIDC tokens'
 Please use your internet browser, go to:
 
     https://vre-rucio-auth.cern.ch/auth/oidc_redirect?XXXXXXXXXXXXXXXX
@@ -140,8 +138,6 @@ python -m pip install rucio-clients==<VERSION>
 ```
 
 Please rely on the version indicated on the badge at the beggining of the section (without the `release-` prefix).
-
-Use the version depicted on the following badge **without** the `release-` prefix.
 
 Despite the rucio client package should install most of the software dependencies on your system, you would need to install certain packages manually.
 
@@ -284,7 +280,7 @@ You can either upload single files, create a dataset, and attach the files to th
 
 Example of how to upload single files to the CERN RSE:
 ```bash
-rucio upload --register-after-upload --scope ATLAS_LAPP_SP --rse CERN-EOS DM.LeptonResonance.Data20015_10TeV.root
+rucio upload --register-after-upload --scope ATLAS_LAPP_SP --rse CERN-EOSPILOT DM.LeptonResonance.Data20015_10TeV.root
 ```
 The `--register-after-upload` flag is important; if you omit it and the upload fails, you will not be able to use the same file name to upload it, you will have to rename it. 
 
@@ -298,7 +294,7 @@ rucio attach ATLAS_LAPP_SP:DM.LeptonResonance.Data20015_10TeV ATLAS_LAPP_SP:DM.L
 ```
 Example of how to upload a whole file folder (cannot contain a folder within it):
 ```bash
-rucio -v upload --register-after-upload --rse CERN-EOS --scope ATLAS_LAPP_SP --recursive ./folder_name/
+rucio -v upload --register-after-upload --rse CERN-EOSPILOT --scope ATLAS_LAPP_SP --recursive ./folder_name/
 ```
 To inspect all the datasets within a scope:
 ```bash
