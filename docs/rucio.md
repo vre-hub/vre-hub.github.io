@@ -82,7 +82,6 @@ ESCAPE OIDC tokens have a lifetime of 2 hours. Whether you identify for the firs
 ```yaml
 # Rucio response when login using OIDC tokens
 
-$ rucio whoami
 Please use your internet browser, go to:
 
     https://vre-rucio-auth.cern.ch/auth/oidc_redirect?XXXXXXXXXXXXXXXX
