@@ -30,7 +30,7 @@ This section describes how to interact with the Rucio instance in two different 
 1. Installing the required packages on your local machine.
 2. Using a Docker container. Docker technologies mitigate dependency and platform specific issues, and are therefore recommended; however, if you want to upload large data that are present on your system, you will need to copy them inside the Docker container, and then upload them on the Rucio Data Lake. This might be cumbersome, especially if you are dealing with large files.
 
-In any case, you will have to set up a configuration file to tell Rucio who you are, specifying an authentication method.
+In general, you will have to setup a Rucio configuration file that includes among others the user's identity and authentication method.
 
 ### The `rucio.cfg` configuration file
 
