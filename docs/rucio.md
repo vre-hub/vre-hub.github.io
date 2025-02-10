@@ -34,7 +34,7 @@ In general, you will have to setup a Rucio configuration file that includes amon
 
 ### The `rucio.cfg` configuration file
 
-In general, there are two main ways to authenticate to the Rucio instance: via X.509 certificates and via OIDC tokens. These two ways require setting up a `rucio.cfg` file. 
+In general, there are two main ways to authenticate to the Rucio instance: X.509 certificates and OIDC tokens. These two ways require setting up a `rucio.cfg` file. 
 This file is usually placed in the `/opt/rucio/etc/` directory, as the Rucio client looks at this location first by default.
 
 :::tip[Pro Tip]
