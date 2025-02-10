@@ -25,7 +25,7 @@ The location of the storage elements, which are provided and maintained by Europ
 
 ## Interacting with the Rucio Data Lake
 
-This guide takes a look at how to interact with the Rucio instance in two different ways. 
+This section describes how to interact with the Rucio instance in two different ways. 
 
 1. Installing the required packages on your local machine.
 2. Using a Docker container. Docker technologies mitigate dependency and platform specific issues, and are therefore recommended; however, if you want to upload large data that are present on your system, you will need to copy them inside the Docker container, and then upload them on the Rucio Data Lake. This might be cumbersome, especially if you are dealing with large files.
