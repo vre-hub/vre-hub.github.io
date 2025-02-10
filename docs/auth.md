@@ -35,7 +35,7 @@ Fur further details about these exchange, visit the [IAM documentation](https://
 
 #### *Getting the certificate*    
 
-Requesting a X.509 ceritiface is not straightforward and might get a bit tedious depending on your institution.
+Requesting a X.509 certificate is heavily dependent on your institution's certification authority.
 
 :::tip
 
