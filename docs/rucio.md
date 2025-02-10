@@ -127,6 +127,8 @@ support_rucio = https://github.com/rucio/rucio/issues/
 
 ### 1. Manual installation
 
+![Dynamic YAML Badge](https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fvre-hub%2Fvre%2Frefs%2Fheads%2Fmain%2Finfrastructure%2Fcluster%2Fflux%2Frucio%2Frucio-servers.yaml&query=spec.values.image.tag&label=rucio-clients%20version)
+
 We recommend to follow these steps in a fresh virtual environment. 
 
 Install the Rucio client via pip:
@@ -137,7 +139,9 @@ pip install rucio-clients==<VERSION>
 python -m pip install rucio-clients==<VERSION>
 ```
 
-Use the version depicted on the following badge **without** the `release-` prefix ![Dynamic YAML Badge](https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fvre-hub%2Fvre%2Frefs%2Fheads%2Fmain%2Finfrastructure%2Fcluster%2Fflux%2Frucio%2Frucio-servers.yaml&query=spec.values.image.tag&label=rucio-clients%20version).
+Please rely on the version indicated on the badge at the beggining of the section (without the `release-` prefix).
+
+Use the version depicted on the following badge **without** the `release-` prefix.
 
 Despite the rucio client package should install most of the software dependencies on your system, you would need to install certain packages manually.
 

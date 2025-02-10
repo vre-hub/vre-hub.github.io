@@ -39,7 +39,7 @@ Requesting a X.509 certificate is heavily dependent on your institution's certif
 
 :::tip
 
-Please contact your institute system administrator to understand the best way to request one.
+Please contact your institute system administrator to understand how to request one.
 
 ::: 
 
