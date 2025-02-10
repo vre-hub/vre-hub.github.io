@@ -127,7 +127,7 @@ support_rucio = https://github.com/rucio/rucio/issues/
 
 ### 1. Manual installation
 
-We suggest to follow these steps in a fresh virtual environment. 
+We recommend to follow these steps in a fresh virtual environment. 
 
 Install the Rucio client via pip:
 
