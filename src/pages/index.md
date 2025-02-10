@@ -39,7 +39,7 @@ If you are a scientist or a new user curious to use the above resources, please 
 
 ## Developers
 
-If you want to deploy the VRE on your own infrastructure, or if you want to submit an issue to help us improve the platform, please follow the [developer documentation](../../docs/tech-docs/home.md#how-to-contribute). 
+If you want to deploy the VRE on your own infrastructure, or if you want to submit an issue to help us improve the platform, please follow the [developer documentation](https://vre-hub.github.io/docs/tech-docs/home#how-to-contribute). 
  
 ## Contact
 To contact the CERN VRE team with questions, doubts, problems accessing the meetings Indico category or the monitoring dashboards, please join the **[Mattermost channel](https://mattermost.web.cern.ch/signup_user_complete/?id=zqaa9p5fqfd9bnnc64at4b5aye&md=link&sbr=su)**. For more formal requests, i.e. conferences, webinars and events presentations, please email us at *escape-cern-ops 'at' cern.ch*. 

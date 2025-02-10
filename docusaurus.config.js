@@ -155,11 +155,11 @@ const config = {
               },
               {
                 label: 'VRE Technical documentation',
-                to: '/tech-docs/home',
+                to: 'https://vre-hub.github.io/docs/tech-docs/home',
               },
               {
                 label: 'How to contribute',
-                to: '/tech-docs/home',
+                to: 'https://vre-hub.github.io/docs/tech-docs/home#how-to-contribute',
               }
             ],
           },
