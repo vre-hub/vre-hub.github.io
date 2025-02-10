@@ -5,24 +5,30 @@ It is required to register to the ESCAPE INDIGO Identity and Access Management (
 
 ### ESCAPE IAM registration
 
-Navigate [here](https://iam-escape.cloud.cnaf.infn.it/login) and register for a new account, filling in the required details.
+Navigate to the [ESCAPE IAM instance](https://iam-escape.cloud.cnaf.infn.it/login) and register for a new account, filling in the required details.
 
 After the account has been approved, you will need to log in and add the `escape` group to your Groups. To do this, click on the **Home** button of the lateral bar and then click on the green **+ Add to group** button in the **Groups** panel. Enter 'escape' in the group box, and click `Add group(s)`. You can request access to various groups at the same time. You will need to wait in order for this to be manually approved by site administrators. If your request is urgent, please email the admins at _escape-cern-ops'at'cern.ch_.
 
 Once your account is approved, and you have confirmed your email address, you will be able to get identified towards the ESCAPE IAM service via username and password and access the VRE platform.
 
-:::info
+:::note
 
-All the underlaying VRE services are compatible and connected with the ESCAPE IAM service. 
-Once you have an ESCAPE IAM account, you will be able to interact with the different services and resources available in the platform.
+All the underlaying VRE services and resources are connected through the ESCAPE IAM service. 
+Once you have an account, you will be able to interact seamlessly with any of them.
 
 :::
 
 ### OpenID token 
 
-The ESCAPE INDIGO Iam support OpenID tokens. 
+The ESCAPE INDIGO IAM support OpenID tokens. 
 
-Most of the token interactions between the different component of the VRE are and should stay hidden to standard users of the platorm. Visit the [Tecnical Documentation](./tech-docs/home.md) section or the [IAM documentation](https://indigo-iam.github.io/v/v1.10.0/docs/reference/configuration/external-authentication/oidc/) for further details.
+:::info
+
+Most of the token interactions between the different component of the VRE are and should stay hidden to standard users of the platorm. 
+
+Fur further details about these exchange, visit the [IAM documentation](https://indigo-iam.github.io/v/v1.10.0/docs/reference/configuration/external-authentication/oidc/) or navigate through the different sections of the [VRE Tecnical Documentation](./tech-docs/home.md).
+
+:::
 
 
 ### X.509 Grid certificate    
@@ -33,7 +39,7 @@ Requesting a X.509 ceritiface is not straightforward and might get a bit tedious
 
 :::tip
 
-Please contact your institute system administrator to understand the way to request one.
+Please contact your institute system administrator to understand the best way to request one.
 
 ::: 
 
@@ -50,11 +56,11 @@ Be aware that the browser is configured to store all your uploaded certificates.
  - **Chrome**: Navigate to `chrome://settings/security` and following the instructions presented upon selecting `Advanced > Manage Certificates > Import`. 
  - **Firefox**: Navigate to `Settings`, search for `Certificates` and clicl on the `View Certificates...` button. Import the X.509 certificate under the `Your Certificates` tab by finding its location on your local computer.
 
-Once the certificate has been imported, restart your browser. Then log into the [ESCAPE IAM](https://iam-escape.cloud.cnaf.infn.it/login). A pop-up window allowing you to select the certificate you want to identify with should appear. If the pop-up window has appeared, click on the green button `Link certificate` button in the `X.509 certificates` panel. 
+Once the certificate has been imported, restart your browser and log into the [ESCAPE IAM](https://iam-escape.cloud.cnaf.infn.it/login). A pop-up window allowing you to select the certificate you want to identify with should appear. If the pop-up window has appeared, go to your IAM user home page and click on the green `Link certificate` button in the `X.509 certificates` panel. 
 
-#### Extract the `usercert.pem` and `userkey.pem` from the `.p12` file
+#### Extract the `usercert.pem` and `userkey.pem` from a `.p12` file
 
-In specific situations, for example when performing a `voms-proxy-init` command, you would need to have the X.509 certificate separated into two the user-key and user-certificate.
+In specific situations, for example when performing a `voms-proxy-init` command, you would need to have the X.509 certificate separated into the user-key and the user-certificate.
 
 Place the `.p12` file in the `.globus` directory in your home area. If the directory doesn’t exist, create it:
 ```bash
