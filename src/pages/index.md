@@ -21,7 +21,7 @@ The Virtual Research Environment’s main components are:
 ![image](../../static/img/vre-bubble.png)
 
 1. A federated and reliable **Authentication and Authorization** layer 
-2. A **federated distributed storage** solution (the Data Lake), providing functionalities for data injection and replication through a Data Management framework (Rucio) 
+2. A **federated distributed storage** solution (the ESCAPE Data Lake), providing functionalities for data injection and replication through a Data Management framework (Rucio) 
 3. A **computing** cluster supplying the processing power to run full analyses with Reana, a re-analysis software
 4. An enhanced **notebook interface** with containerised environments to hide the infrastructure’s complexity from the user. 
 
@@ -37,16 +37,17 @@ If you are a scientist or a new user curious to use the above resources, please 
 3. **[Reana cluster](/docs/reana)**
 4. **[Notebook service](/docs/notebook)**
 
-If you want to deploy the VRE on your own infrastructure, of you want to submit an issue to help us improve the platform, please follow the [developer documentation](/docs/developer). 
+## Developers
+
+If you want to deploy the VRE on your own infrastructure, or if you want to submit an issue to help us improve the platform, please follow the [developer documentation](https://vre-hub.github.io/docs/tech-docs/home#how-to-contribute). 
  
 ## Contact
 To contact the CERN VRE team with questions, doubts, problems accessing the meetings Indico category or the monitoring dashboards, please join the **[Mattermost channel](https://mattermost.web.cern.ch/signup_user_complete/?id=zqaa9p5fqfd9bnnc64at4b5aye&md=link&sbr=su)**. For more formal requests, i.e. conferences, webinars and events presentations, please email us at *escape-cern-ops 'at' cern.ch*. 
 
 ## Join the community 
-There are two recurrent meetings open to all scientists/researchers/developers interested in the VRE. 
+There are is a recurrent meetings open to all scientists/researchers/developers interested in the VRE. 
 
 - The **VRE working-group monthly meetings** are intended for developers and system administrators who are supporting scientific infrastructures. They constitute an informal space to stimulate discussion and keep all the members up to date with the latest news and hot topics on the development and deployment of tools and services within the broad field of scientific analysis platforms. Join [here](https://indico.cern.ch/category/17065/). 
-- The **VRE users bi-weekly meetings on Tuesdays at 14 CET** are intended for users of the VRE who are experiencing technical issues, want to learn more about the VRE deployment, are in need of extra resources or want their software to be included in the VRE. Join [here](https://indico.in2p3.fr/category/1033/). 
 
 ## Resources 
 - Gazzarrini, E., Garcia, E., Gosein, D., Vendrell Moya, A., Kounelis, A., and Espinal, X., “The Virtual Research Environment: towards a comprehensive analysis platform”, <i>arXiv e-prints</i>, 2023. [doi:10.48550/arXiv.2305.10166](https://arxiv.org/abs/2305.10166).
