@@ -79,9 +79,7 @@ lfn2pfn_algorithm_default = hash
 ESCAPE OIDC tokens have a lifetime of 2 hours. Whether you identify for the first time or every time your rucio session has expired, click on the link shown after typing `rucio whoami`, and follow it to get identified towards the ESCAPE IAM service.
 ::: 
 
-```yaml
-# Rucio response when login using OIDC tokens
-
+```bash title='Rucio response when login using OIDC tokens'
 Please use your internet browser, go to:
 
     https://vre-rucio-auth.cern.ch/auth/oidc_redirect?XXXXXXXXXXXXXXXX
@@ -140,8 +138,6 @@ python -m pip install rucio-clients==<VERSION>
 ```
 
 Please rely on the version indicated on the badge at the beggining of the section (without the `release-` prefix).
-
-Use the version depicted on the following badge **without** the `release-` prefix.
 
 Despite the rucio client package should install most of the software dependencies on your system, you would need to install certain packages manually.
 
