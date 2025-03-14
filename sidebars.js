@@ -58,6 +58,11 @@ const sidebars = {
       type: 'doc',
       label: 'Configuration',
       id: 'extensions/rucio-jupyterlab/configuration',
+    },
+    {
+      type: 'doc',
+      label: 'Monitoring',
+      id: 'extensions/rucio-jupyterlab/monitoring',
     }
   ],
 
