@@ -50,7 +50,13 @@ There are is a recurrent meetings open to all scientists/researchers/developers 
 - The **VRE working-group monthly meetings** are intended for developers and system administrators who are supporting scientific infrastructures. They constitute an informal space to stimulate discussion and keep all the members up to date with the latest news and hot topics on the development and deployment of tools and services within the broad field of scientific analysis platforms. Join [here](https://indico.cern.ch/category/17065/). 
 
 ## Resources 
-- Gazzarrini, E., Garcia, E., Gosein, D., Vendrell Moya, A., Kounelis, A., and Espinal, X., “The Virtual Research Environment: towards a comprehensive analysis platform”, <i>arXiv e-prints</i>, 2023. [doi:10.48550/arXiv.2305.10166](https://arxiv.org/abs/2305.10166).
-- [plenary talk](https://indico.jlab.org/event/459/contributions/11671/) at *26th International Conference on Computing in High Energy & Nuclear Physics (CHEP2023)*
-- [presentation](https://indico.cern.ch/event/1106990/contributions/4991200/) at *21st International Workshop on Advanced Computing and Analysis Techniques in Physics Research, Bari 2022*
-- [presentation](https://projectescape.eu/sites/default/files/1.EnriqueGarcia_VRE_ESCAPE-Bruxels_Nov2022_v2.pdf) at *ESCAPE to the Future, Brussels 2022* 
+- Garcia-Garcia, E. Giovanni, G. et al., “Data discovery, analysis and reproducibility in Virtual Research Environments”, <i>arXiv e-prints</i>, 2024. [doi.org/10.48550/arXiv.2503.02483](https://arxiv.org/abs/2503.02483).
+- Gazzarrini, E., Garcia, E., Gosein, D., and Espinal, X., “The Virtual Research Environment: towards a comprehensive analysis platform”, <i>EPJ Web Conf.</i> [    doi.org/10.1051/epjconf/202429508023](https://doi.org/10.1051/epjconf/202429508023) & <i>arXiv e-prints</i>, 2023. [doi:10.48550/arXiv.2305.10166](https://arxiv.org/abs/2305.10166).
+- [Presentation](https://indico.cern.ch/event/1466101/contributions/6363705/) at *(Re)interpretation of the LHC results for new physics workshop (2025)*
+- [Presentation](https://indico.global/event/9331/contributions/90757/) at *AstroORDAS Workshop (2025)*
+- [Presentation](https://indico.cern.ch/event/1338689/contributions/6010696/) at *27th International Conference on Computing in High Energy & Nuclear Physics (CHEP 2024)*
+- [Plenary talk](https://indico.jlab.org/event/459/contributions/11671/) at *26th International Conference on Computing in High Energy & Nuclear Physics (CHEP 2023)*
+- [Presentation](https://indico.obspm.fr/event/1714/contributions/1004/) at *IHDEA Cloud Meeting (2023)*
+- [Presentation](https://indico.cern.ch/event/1230107/), *CERN IT Technical Forum (ITTF) (2023)*
+- [Presentation](https://indico.cern.ch/event/1106990/contributions/4991200/) at *21st International Workshop on Advanced Computing and Analysis Techniques in Physics Research, Bari (ACAT 2022)*
+- [Presentation](https://projectescape.eu/sites/default/files/1.EnriqueGarcia_VRE_ESCAPE-Bruxels_Nov2022_v2.pdf) at *ESCAPE to the Future, Brussels (2022)* 
