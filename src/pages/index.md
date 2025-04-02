@@ -12,6 +12,8 @@ slug: /
 
 # The Virtual Research Environment
 
+Access the VRE platform at https://jhub-vre.cern.ch!
+
 The Virtual Research Environment is an analysis platform developed at **CERN** serving the needs of scientific communities involved in European Projects. 
 Its scope is to facilitate the development of **end-to-end physics workflows**, providing researchers with access to an **infrastructure** and to the digital content necessary to produce and preserve a scientific result in compliance with **FAIR** principles. 
 The platform's development is aimed at demonstrating how sciences spanning from High Energy Physics to Astrophysics could benefit from the usage of common technologies, initially born to satisfy CERN’s **exabyte-scale data** management needs. 
