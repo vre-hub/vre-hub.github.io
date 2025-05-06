@@ -67,6 +67,8 @@ const config = {
       prism: {
         // theme: prismThemes.dracula,
         additionalLanguages: ['bash','ini'],
+        theme: prismThemes.github,
+        darkTheme: prismThemes.dracula,
       },
       // Replace with your project's social card
       image: 'img/logo.png',
@@ -83,6 +85,11 @@ const config = {
           //   position: 'left',
           //   label: 'Get started',
           // },
+          {
+            to: '/team',
+            label: 'About us',
+          },
+
           {
             type: 'doc', // This is a preset regarding the type of document, please update if needed
             docId: 'auth', // The ID of the corresponding document. This should match with what you wrote in the document header.
@@ -211,10 +218,6 @@ const config = {
           },
         ],
         copyright: `Copyright © ${new Date().getFullYear()} VRE-Hub. Built with Docusaurus.`,
-      },
-      prism: {
-        theme: prismThemes.github,
-        darkTheme: prismThemes.dracula,
       },
     }),
 };

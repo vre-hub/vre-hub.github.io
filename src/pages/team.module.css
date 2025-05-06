@@ -1,0 +1,45 @@
+
+.teamSection {
+    padding: 2rem;
+  }
+  
+  .container {
+    max-width: 960px;
+    margin: auto;
+  }
+  
+  .title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  /* .personCard {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    gap: 1rem;
+  } */
+  .personCard {
+    display: grid;
+    grid-template-columns: 160px 1fr; /* Fixed image, flexible text */
+    gap: 1rem;
+    margin-bottom: 2rem;
+    align-items: start; /* Top-align */
+  }
+  
+  .personImage img {
+    width: 200px;
+    border-radius: 8px;
+  }
+  
+  .personInfo h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .personInfo a {
+    margin-left: 0.5rem;
+    font-size: 1rem;
+  }  
