@@ -84,6 +84,11 @@ const config = {
           //   label: 'Get started',
           // },
           {
+            to: '/team',
+            label: 'About us',
+          },
+
+          {
             type: 'doc', // This is a preset regarding the type of document, please update if needed
             docId: 'auth', // The ID of the corresponding document. This should match with what you wrote in the document header.
             position: 'left',
