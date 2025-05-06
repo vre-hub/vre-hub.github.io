@@ -42,6 +42,54 @@ const pastMembers = [
               extension. Her contributions to the Rucio code were therefore mainly targeted at the jupyterlab extension, 
               along with enabling access to Rucio from, CERN's reproducible analysis platform.`,
   },
+  {
+    name: 'Ruben Perez',
+    image: require('@site/static/img/team/neutral.jpg').default,
+    // linkedin: 'https://www.linkedin.com/in/rubenperezmercado/',
+    // github: 'https://github.com/rubenperezm',
+    description: `Ruben contributed to the VRE by developing the Reana Jupyterlab extension.`
+  },
+  {
+    name: 'Michael Zenguell',
+    image: require('@site/static/img/team/neutral.jpg').default,
+    // linkedin: 'https://www.linkedin.com/in/michaelzenguell/',
+    // github: 'https://github.com/mrzengel',
+    description: `Michael is the main contributor to the Zenodo Jupyterlab extension.`
+  },
+  {
+    name: 'Domenic Gosein',
+    image: require('@site/static/img/team/neutral.jpg').default,
+    // linkedin: 'https://www.linkedin.com/in/goseind/',
+    // github: 'https://github.com/goseind',
+    description: ``    
+  },
+  {
+    name: 'Alba Vendrell',
+    image: require('@site/static/img/team/neutral.jpg').default,
+    // linkedin: 'https://www.linkedin.com/in/alba-v-0092471a0/',
+    // github: 'https://github.com/albavemo'
+    description: ``
+  },
+  {
+    name: 'Agisilaos Kounelis',
+    image: require('@site/static/img/team/neutral.jpg').default,
+    // linkedin: 'https://www.linkedin.com/in/kounelisagis/',
+    // github: 'https://github.com/kounelisagis',
+    description: ``
+  },
+  {
+    name: 'Rizart Dona',
+    image: require('@site/static/img/team/rizart.jpg').default,
+    // linkedin: 'https://www.linkedin.com/in/rizart-dona/',
+    // github: 'https://github.com/rizart',
+    description: ``
+  },
+  {
+    name: 'Riccardo di Maria',
+    image: require('@site/static/img/team/neutral.jpg').default,
+    // linkedin: 'https://www.linkedin.com/in/riccardo-di-maria-phd-6967a1160/',
+    description: ``
+  }
 ];
 
 const TeamPage = () => {
