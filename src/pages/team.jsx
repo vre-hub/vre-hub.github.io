@@ -7,7 +7,7 @@ const teamMembers = [
   {
     name: 'Enrique Garcia',
     image: require('@site/static/img/team/enrique.jpg').default,
-    email: 'mailto:enrique.garcia.garcia@cern.ch',
+    email: 'enrique.garcia.garcia@cern.ch',
     linkedin: 'https://www.linkedin.com/in/garciagenrique/',
     github: 'https://github.com/garciagenrique',
     description: `Enrique is a CERN IT fellow working for EU-funded projects, from where the Virtual Research Environment project started. 
@@ -17,7 +17,7 @@ const teamMembers = [
   {
     name: 'Giovanni Guerrieri',
     image: require('@site/static/img/team/gio.jpg').default,
-    email: 'mailto:giovanni.guerrieri@cern.ch',
+    email: 'giovanni.guerrieri@cern.ch',
     linkedin: 'https://www.linkedin.com/in/giovanniguerrieri',
     github: 'https://github.com/soap2g',
     gitlab: 'https://gitlab.cern.ch/gguerrie',
@@ -32,10 +32,8 @@ const pastMembers = [
   {
     name: 'Elena Gazzarrini',
     image: require('@site/static/img/team/elena.jpg').default,
-    // email: 'giovanni.guerrieri@cern.ch',
-    // linkedin: 'https://www.linkedin.com/in/giovanni-guerrieri-121339189/',
-    // github: 'https://github.com/soap2g',
-    // gitlab: 'https://gitlab.cern.ch/gguerrie',
+    github: 'https://github.com/egazzarr/',
+    linkedin: 'https://www.linkedin.com/in/egazzarrini/',
     description: `Elena holds a MSci degree in Physics from King's College London and is a Fellow in the 
               CERN IT department since 2021. Her work focuses on driving the EU-funded Virtual Research Environment project, a platform to facilitate Particle Physics and Astrophysics analyses. She deploys and maintains a K8s Rucio instance 
               for the project's data management framework, accessible by scientists form the Rucio jupyterlab 
@@ -45,49 +43,60 @@ const pastMembers = [
   {
     name: 'Ruben Perez',
     image: require('@site/static/img/team/neutral.jpg').default,
-    // linkedin: 'https://www.linkedin.com/in/rubenperezmercado/',
-    // github: 'https://github.com/rubenperezm',
+    linkedin: 'https://www.linkedin.com/in/rubenperezmercado/',
+    github: 'https://github.com/rubenperezm',
     description: `Ruben contributed to the VRE by developing the Reana Jupyterlab extension.`
   },
   {
     name: 'Michael Zenguell',
     image: require('@site/static/img/team/neutral.jpg').default,
-    // linkedin: 'https://www.linkedin.com/in/michaelzenguell/',
-    // github: 'https://github.com/mrzengel',
+    linkedin: 'https://www.linkedin.com/in/michaelzenguell/',
+    github: 'https://github.com/mrzengel',
     description: `Michael is the main contributor to the Zenodo Jupyterlab extension.`
+  },
+  {
+    name: 'Elena Gazzarrini',
+    image: require('@site/static/img/team/elena.jpg').default,
+    github: 'https://github.com/egazzarr/',
+    linkedin: 'https://www.linkedin.com/in/egazzarrini/',
+    description: `Elena holds a MSci degree in Physics from King's College London and is a Fellow in the 
+              CERN IT department since 2021. Her work focuses on driving the EU-funded Virtual Research Environment project, a platform to facilitate Particle Physics and Astrophysics analyses. She deploys and maintains a K8s Rucio instance 
+              for the project's data management framework, accessible by scientists form the Rucio jupyterlab 
+              extension. Her contributions to the Rucio code were therefore mainly targeted at the jupyterlab extension, 
+              along with enabling access to Rucio from, CERN's reproducible analysis platform.`,
   },
   {
     name: 'Domenic Gosein',
     image: require('@site/static/img/team/neutral.jpg').default,
-    // linkedin: 'https://www.linkedin.com/in/goseind/',
-    // github: 'https://github.com/goseind',
+    linkedin: 'https://www.linkedin.com/in/goseind/',
+    github: 'https://github.com/goseind',
     description: ``    
   },
   {
     name: 'Alba Vendrell',
     image: require('@site/static/img/team/neutral.jpg').default,
-    // linkedin: 'https://www.linkedin.com/in/alba-v-0092471a0/',
-    // github: 'https://github.com/albavemo'
+    linkedin: 'https://www.linkedin.com/in/alba-v-0092471a0/',
+    github: 'https://github.com/albavemo',
     description: ``
   },
   {
     name: 'Agisilaos Kounelis',
     image: require('@site/static/img/team/neutral.jpg').default,
-    // linkedin: 'https://www.linkedin.com/in/kounelisagis/',
-    // github: 'https://github.com/kounelisagis',
+    linkedin: 'https://www.linkedin.com/in/kounelisagis/',
+    github: 'https://github.com/kounelisagis',
     description: ``
   },
   {
     name: 'Rizart Dona',
     image: require('@site/static/img/team/rizart.jpg').default,
-    // linkedin: 'https://www.linkedin.com/in/rizart-dona/',
-    // github: 'https://github.com/rizart',
+    linkedin: 'https://www.linkedin.com/in/rizart-dona/',
+    github: 'https://github.com/rizart',
     description: ``
   },
   {
     name: 'Riccardo di Maria',
     image: require('@site/static/img/team/neutral.jpg').default,
-    // linkedin: 'https://www.linkedin.com/in/riccardo-di-maria-phd-6967a1160/',
+    linkedin: 'https://www.linkedin.com/in/riccardo-di-maria-phd-6967a1160/',
     description: ``
   }
 ];

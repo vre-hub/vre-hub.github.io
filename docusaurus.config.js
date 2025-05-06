@@ -67,6 +67,8 @@ const config = {
       prism: {
         // theme: prismThemes.dracula,
         additionalLanguages: ['bash','ini'],
+        theme: prismThemes.github,
+        darkTheme: prismThemes.dracula,
       },
       // Replace with your project's social card
       image: 'img/logo.png',
@@ -216,10 +218,6 @@ const config = {
           },
         ],
         copyright: `Copyright © ${new Date().getFullYear()} VRE-Hub. Built with Docusaurus.`,
-      },
-      prism: {
-        theme: prismThemes.github,
-        darkTheme: prismThemes.dracula,
       },
     }),
 };
