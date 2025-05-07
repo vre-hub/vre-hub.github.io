@@ -23,9 +23,21 @@
     gap: 1rem;
     align-items: flex-start;
   }
+
+  .proceedingsItem {
+    display: flex;
+    padding-left: 2rem;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .timeline a {
+    font-weight: 600;
+    color: var(--ifm-color-primary-lightest);
+  }
   
   .icon {
-    /* width: 20px; */
+    min-width: 20px;
     height: 20px;
     /* color: var(--ifm-atlas-color); */
     border-radius: 50%;

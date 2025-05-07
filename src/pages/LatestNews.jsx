@@ -9,8 +9,8 @@ const newsItems = [
   },
   {
     date: 'March 17th-18th 2025',
-    description: 'The VRE start its journey into EOSC',
-    links: [{ text: 'event', url: 'https://eosc.eu/news/2025/04/the-eosc-federations-build-up-phase-is-underway/' }],
+    description: 'The VRE start its journey into the EOSC Federation',
+    links: [{ text: 'communication', url: 'https://eosc.eu/news/2025/04/the-eosc-federations-build-up-phase-is-underway/' }],
     iconType: 'calendar-days',
   },
   {
@@ -26,10 +26,11 @@ const newsItems = [
     iconType: 'person-chalkboard',
   },
   {
-    date: 'Data discovery, analysis and reproducibility in Virtual Research Environments ', // this is what I would see indented below its parent contribution. NOT IMPORTANT !
-    description: 'Garcia-Garcia, E. Giovanni, G. et al.',
-    links: [{ text: 'CHEP 2024 proceeding', url: 'https://arxiv.org/abs/2503.02483/' }],
+    title: 'Data discovery, analysis and reproducibility in Virtual Research Environments ', // this is what I would see indented below its parent contribution. NOT IMPORTANT !
+    authors: 'E. Garcia-Garcia, G. Guerrieri, et al.',
+    links: [{ text: 'CHEP 2024 proceedings', url: 'https://arxiv.org/abs/2503.02483/' }],
     iconType: 'file',
+    type: 'proceedings',
   },
   {
     date: 'February 5th-6th 2024',
@@ -44,10 +45,12 @@ const newsItems = [
     iconType: 'person-chalkboard',
   },
   {
-    date: 'The Virtual Research Environment: A multi-science analysis platform',
-    description: 'Gazzarrini, E., Garcia Garcia, E., Gosein, D., and Espinal, X. EPJ Web of Conferences 295, 08023 (2024)',
-    links: [{ text: 'CHEP 2023 proceeding', url: 'https://doi.org/10.1051/epjconf/202429508023/' }],
+    title: 'The Virtual Research Environment: A multi-science analysis platform',
+    authors: 'E. Gazzarrini, E. Garcia Garcia, D. Gosein, and X. Espinal',
+    journal: 'EPJ Web of Conferences 295, 08023 (2024)',
+    links: [{ text: 'CHEP 2023 proceedings', url: 'https://doi.org/10.1051/epjconf/202429508023/' }],
     iconType: 'file',
+    type: 'proceedings',
   },
   {
     date: 'July 10th-13th 2023',
@@ -68,10 +71,11 @@ const newsItems = [
     iconType: 'person-chalkboard',
   },
   {
-    date: 'The Virtual Research Environment: towards a comprehensive analysis platform',
-    description: 'Gazzarrini, E., Garcia, E., Gosein, D., Vendrell Moya, A., Kounelis, A., and Espinal, X.',
-    links: [{ text: 'ACAT 2022 proceeding', url: 'https://indico.cern.ch/event/1106990/papers/4991200/files/12795-The_VRE___ACAT22_Proceedings.pdf' }],
+    title: 'The Virtual Research Environment: towards a comprehensive analysis platform',
+    authors: 'E. Gazzarrini, E. Garcia, D. Gosein, A. Vendrell Moya, A. Kounelis, and X. Espinal',
+    links: [{ text: 'ACAT 2022 proceedings', url: 'https://indico.cern.ch/event/1106990/papers/4991200/files/12795-The_VRE___ACAT22_Proceedings.pdf' }],
     iconType: 'file',
+    type: 'proceedings',
   },
   {
     date: 'October 25th-26th 2022',
@@ -88,12 +92,20 @@ export default function LatestNews() {
       <div></div>
       <div className={styles.timeline}>
         {newsItems.map((item) => (
-          <div className={styles.timelineItem} key={`${item.date}-${item.description}`}>
+          <div
+            className={`${styles.timelineItem} ${item.type === 'proceedings' ? styles.proceedingsItem : ''}`}
+            key={`${item.title}-${item.authors}`}
+          >
             <div className={styles.icon}>
               <i className={`fa-solid fa-${item.iconType}`} title={item.iconType}></i>
             </div>
             <div>
-              <strong>{item.date}</strong>: {item.description}{' '}
+              {item.date ? (
+                <strong>{item.date}</strong>
+              ) : (
+                <em>{item.title}</em>
+              )}{' '}
+              - {item.description}{item.authors}{' '} - <strong>{item.journal}{' '}</strong>
               {item.links.map((link) => (
                 <a key={link.url} href={link.url} className={styles.link} target="_blank" rel="noopener noreferrer">
                   [{link.text}]
