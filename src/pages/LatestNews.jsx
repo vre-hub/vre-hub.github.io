@@ -22,7 +22,7 @@ const newsItems = [
   {
     date: 'October 19th-24th 2024',
     description: 'Enrique presents the VRE at CHEP 2024',
-    links: [{ text: 'slides', url: 'https://indico.cern.ch/event/1338689/contributions/6010696/' }, { text: 'proceedings', url: 'https://arxiv.org/abs/2503.02483/' }],
+    links: [{ text: 'event', url: 'https://indico.cern.ch/event/1338689/' }, { text: 'slides', url: 'https://indico.cern.ch/event/1338689/contributions/6010696/' }],
     iconType: 'person-chalkboard',
   },
   {

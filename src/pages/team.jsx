@@ -21,14 +21,21 @@ const teamMembers = [
     linkedin: 'https://www.linkedin.com/in/giovanniguerrieri',
     github: 'https://github.com/soap2g',
     gitlab: 'https://gitlab.cern.ch/gguerrie',
-    description: `Giovanni Guerrieri is a physicist managing the infrastructure and the development of the ATLAS Open Data project.
-    He's part of the CERN-IT department, working on Distributed Data Management systems, Analysis Facilities, and Open Science. 
-    He's also involved in various European initiatives, such as the ESCAPE Collaboration, the OSCARS project, and EOSC.
-    He holds a PhD in particle physics from the University of Trieste.`,
+    description: `Giovanni Guerrieri is the Data Infrastructure for Open Science coordinator for the ESCAPE collaboration, where he also maintains the ESCAPE Virtual Research Environment. He holds a Ph.D. in Particle Physics from the ATLAS Experiment at CERN.
+    At CERN, Giovanni works on large-scale data management, analysis facilities, and open data initiatives. He is also part of the CERN team contributing to the development of the EOSC Federation.`,
   },
 ];
 
 const pastMembers = [
+  {
+    name: 'Xavier Espinal',
+    image: require('@site/static/img/team/xavi.jpg').default,
+    email: 'xavier.espinal@cern.ch',
+    description: `Xavier obtained his PhD in Physics in Barcelona within the K2K long baseline neutrino experiment (Japan). 
+    In 2005, Xavier joined PIC, the Spanish Tier-1 center for LHC computing, and the ATLAS experiment collaboration where has started his career in scientific computing. 
+    Xavier held several roles in disributed operations, data processing and data management activities during the deployment and operation phase of the Worldwide LHC Computing Grid.
+    He coordinated the ESCAPE Data Infrastructure for Open Science Work Package, which, among other outcomes, led to the implementation of the VRE.`
+  },
   {
     name: 'Ruben Perez',
     image: require('@site/static/img/team/neutral.jpg').default,
@@ -59,34 +66,40 @@ const pastMembers = [
     image: require('@site/static/img/team/neutral.jpg').default,
     linkedin: 'https://www.linkedin.com/in/goseind/',
     github: 'https://github.com/goseind',
-    description: ``    
+    description: `CERN technical student working on the VRE project. He holds a MSc in computer science at the Technische Hochschule of Mannheim.`    
   },
   {
     name: 'Alba Vendrell',
     image: require('@site/static/img/team/neutral.jpg').default,
     linkedin: 'https://www.linkedin.com/in/alba-v-0092471a0/',
     github: 'https://github.com/albavemo',
-    description: ``
+    description: `Alba Vendrell is a CERN fellow working on the VRE consolidation and evolution. Alba holds a MSc in computer science at the Universitat Autònoma de Barcelona.`
   },
   {
     name: 'Agisilaos Kounelis',
     image: require('@site/static/img/team/neutral.jpg').default,
     linkedin: 'https://www.linkedin.com/in/kounelisagis/',
     github: 'https://github.com/kounelisagis',
-    description: ``
+    description: `Agisilaos Kounelis is a CERN summer student working on the VRE project, integrating cloud file fetching and saving functionality.`
   },
   {
     name: 'Rizart Dona',
     image: require('@site/static/img/team/rizart.jpg').default,
     linkedin: 'https://www.linkedin.com/in/rizart-dona/',
     github: 'https://github.com/rizart',
-    description: ``
+    description: `Rizart Dona is a CERN fellow developing the first prototype of a Data Lake as a Service for the ESCAPE VRE. Rizart holds a MSc in computer science at the University of Athens.`
   },
   {
     name: 'Riccardo di Maria',
     image: require('@site/static/img/team/neutral.jpg').default,
     linkedin: 'https://www.linkedin.com/in/riccardo-di-maria-phd-6967a1160/',
-    description: ``
+    description: `Riccardo di Maria is a CERN fellow developing the first prototype of a Data Lake as a Service for the ESCAPE VRE. Riccardo holds a PhD in High Energy Physics at the Imperial College London.`
+  },
+  {
+    name: 'Aris Fkiaras',
+    image: require('@site/static/img/team/neutral.jpg').default,
+    linkedin: 'https://www.linkedin.com/in/aris-fkiaras/',
+    description: `Aris Fkiaras is a CERN fellow developing the first prototype of a Data Lake as a Service for the ESCAPE VRE. Aris holds a BSc in Computer Science at the Athens University of Economics and Business .`
   }
 ];
 
