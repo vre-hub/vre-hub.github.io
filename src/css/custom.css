@@ -12,7 +12,7 @@
   --ifm-color-primary-darkest: #143591;
   --ifm-color-primary-light: #1653ff;
   --ifm-color-primary-lighter: #2d65ff;
-  --ifm-color-primary-lightest: #4a7aff;
+  --ifm-color-primary-lightest: #00a84c;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
@@ -25,6 +25,6 @@
   --ifm-color-primary-darkest: #375ace;
   --ifm-color-primary-light: #5c9dff;
   --ifm-color-primary-lighter: #8bb9ff;
-  --ifm-color-primary-lightest: #b8d4ff;
+  --ifm-color-primary-lightest: #4aff9b;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
