@@ -1,7 +1,3 @@
-# CERN VRE Technical Documentation
-
-
-Welcome to the CERN Virtual Research Environment (VRE) technical documentation!
 
 <center>
 <div class="vre-cern-docs"> 
@@ -9,6 +5,8 @@ Welcome to the CERN Virtual Research Environment (VRE) technical documentation!
 </div>
 </center>
 
+# CERN VRE Technical Documentation
+Welcome to the CERN Virtual Research Environment (VRE) technical documentation!
 
 In these pages you will be able to find detailed documentation of how the VRE infrastrucutre is set up. Please make use of the lateral sidebar to navigate through the different sections.
 
