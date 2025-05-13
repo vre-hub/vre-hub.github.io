@@ -89,30 +89,32 @@ const config = {
             to: '/team',
             label: 'About us',
           },
-
           {
-            type: 'doc', // This is a preset regarding the type of document, please update if needed
-            docId: 'auth', // The ID of the corresponding document. This should match with what you wrote in the document header.
-            position: 'left',
-            label: 'AAI', // The title that will appear on the menu
-          },
-          {
-            type: 'doc', // This is a preset regarding the type of document, please update if needed
-            docId: 'rucio', // The ID of the corresponding document. This should match with what you wrote in the document header.
-            position: 'left',
-            label: 'Rucio', // The title that will appear on the menu
-          },
-          {
-            type: 'doc', // This is a preset regarding the type of document, please update if needed
-            docId: 'reana', // The ID of the corresponding document. This should match with what you wrote in the document header.
-            position: 'left',
-            label: 'REANA', // The title that will appear on the menu
-          },
-          {
-            type: 'doc', // This is a preset regarding the type of document, please update if needed
-            docId: 'notebook', // The ID of the corresponding document. This should match with what you wrote in the document header.
-            position: 'left',
-            label: 'JupyterHub', // The title that will appear on the menu
+          type: 'dropdown',
+          label: 'The VRE components', // The ID of the corresponding document. This should match with what you wrote in the document header.
+          position: 'left',
+          items: [
+            {
+              type: 'doc', // This is a preset regarding the type of document, please update if needed
+              docId: 'auth', // The ID of the corresponding document. This should match with what you wrote in the document header.
+              label: 'AAI', // The title that will appear on the menu
+            },
+            {
+              type: 'doc', // This is a preset regarding the type of document, please update if needed
+              docId: 'rucio', // The ID of the corresponding document. This should match with what you wrote in the document header.
+              label: 'Rucio', // The title that will appear on the menu
+            },
+            {
+              type: 'doc', // This is a preset regarding the type of document, please update if needed
+              docId: 'reana', // The ID of the corresponding document. This should match with what you wrote in the document header.
+              label: 'REANA', // The title that will appear on the menu
+            },
+            {
+              type: 'doc', // This is a preset regarding the type of document, please update if needed
+              docId: 'notebook', // The ID of the corresponding document. This should match with what you wrote in the document header.
+              label: 'JupyterHub', // The title that will appear on the menu
+            },
+            ],
           },
           // {
           //   type: 'doc', // This is a preset regarding the type of document, please update if needed
@@ -146,7 +148,7 @@ const config = {
             type: 'doc',
             docId: 'tech-docs/home',
             position: 'left',
-            label: 'Technical Documentation'
+            label: 'Dev Documentation'
           }
         ],
       },

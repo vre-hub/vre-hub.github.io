@@ -29,7 +29,7 @@ const newsItems = [
     title: 'Data discovery, analysis and reproducibility in Virtual Research Environments ', // this is what I would see indented below its parent contribution. NOT IMPORTANT !
     authors: 'E. Garcia-Garcia, G. Guerrieri, et al.',
     links: [{ text: 'CHEP 2024 proceedings', url: 'https://arxiv.org/abs/2503.02483/' }],
-    iconType: 'file',
+    iconType: 'book-open',
     type: 'proceedings',
   },
   {
@@ -49,7 +49,7 @@ const newsItems = [
     authors: 'E. Gazzarrini, E. Garcia Garcia, D. Gosein, and X. Espinal',
     journal: 'EPJ Web of Conferences 295, 08023 (2024)',
     links: [{ text: 'CHEP 2023 proceedings', url: 'https://doi.org/10.1051/epjconf/202429508023/' }],
-    iconType: 'file',
+    iconType: 'book-open',
     type: 'proceedings',
   },
   {
@@ -74,7 +74,7 @@ const newsItems = [
     title: 'The Virtual Research Environment: towards a comprehensive analysis platform',
     authors: 'E. Gazzarrini, E. Garcia, D. Gosein, A. Vendrell Moya, A. Kounelis, and X. Espinal',
     links: [{ text: 'ACAT 2022 proceedings', url: 'https://indico.cern.ch/event/1106990/papers/4991200/files/12795-The_VRE___ACAT22_Proceedings.pdf' }],
-    iconType: 'file',
+    iconType: 'book-open',
     type: 'proceedings',
   },
   {

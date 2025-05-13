@@ -1,13 +1,16 @@
 import LatestNews from './LatestNews'
 
-**🟩 Experiencing issues? Check the [service uptime status page](https://vre-hub.github.io/status) 🟩**
+<center>
+<div class="vre-cern-docs"> 
+  <img src="/img/logo-vre-repo.png" /> 
+</div>
+</center>
 
+# The Virtual Research Environment
 ![Dynamic YAML Badge](https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fvre-hub%2Fvre%2Frefs%2Fheads%2Fmain%2Finfrastructure%2Fcluster%2Fflux%2Fjhub%2Fjhub-release.yaml&query=%24.spec.chart.spec.version&label=JupyterHub%20release&color=%23e66a2d)
 ![Dynamic YAML Badge](https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fvre-hub%2Fvre%2Frefs%2Fheads%2Fmain%2Finfrastructure%2Fcluster%2Fflux%2Freana%2Freana-release.yaml&query=%24.spec.chart.spec.version&label=Reana%20release&color=%23fd3337)
 ![Dynamic YAML Badge](https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fvre-hub%2Fvre%2Frefs%2Fheads%2Fmain%2Finfrastructure%2Fcluster%2Fflux%2Frucio%2Frucio-servers.yaml&query=%24.spec.values.image.tag&label=Rucio%20release&color=%23474986)
 ![Dynamic YAML Badge](https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fvre-hub%2Fvre%2Frefs%2Fheads%2Fmain%2Finfrastructure%2Fcluster%2Fflux%2Frucio%2Frucio-servers.yaml&query=%24.spec.chart.spec.version&label=Rucio%20helm%20charts)
-
-# The Virtual Research Environment
 
 Access the VRE platform at https://jhub-vre.cern.ch!
 
@@ -17,36 +20,33 @@ The platform's development is aimed at demonstrating how sciences spanning from 
 
 The Virtual Research Environment’s main components are:
 
-![image](../../static/img/vre-bubble.png)
-
-1. A federated and reliable **Authentication and Authorization** layer 
-2. A **federated distributed storage** solution (the ESCAPE Data Lake), providing functionalities for data injection and replication through a Data Management framework (Rucio) 
-3. A **computing** cluster supplying the processing power to run full analyses with Reana, a re-analysis software
-4. An enhanced **notebook interface** with containerised environments to hide the infrastructure’s complexity from the user. 
+1. **[AAI](/docs/auth)**: A federated and reliable **Authentication and Authorization** layer 
+2. **[The Rucio Data Lake](/docs/rucio)**: A **federated distributed storage** solution (the ESCAPE Data Lake), providing functionalities for data injection and replication through a Data Management framework (Rucio) 
+3. **[Reana](/docs/reana)**: A **computing** cluster supplying the processing power to run full analyses with Reana, a re-analysis software
+4. **[JupyterHub](/docs/notebook)**: An enhanced **notebook interface** with containerised environments to hide the infrastructure’s complexity from the user. 
 
 ![image](../../static/img/VRE-diagram.png)
 
 The deployment of the Virtual Research Environment is open-source and modular, in order to make it easily reproducible by partner institutions; it is publicly accessible and kept up to date by taking advantage of state of the art IT-infrastructure technologies.
 
-The Science Projects which are using the VRE are described [here](https://escape2020.pages.in2p3.fr/virtual-environment/home/). 
-
-If you are a scientist or a new user curious to use the above resources, please refer to the following documentation:  
-1. **[AAI](/docs/auth)**
-2. **[Rucio Data Lake](/docs/rucio)**
-3. **[Reana cluster](/docs/reana)**
-4. **[Notebook service](/docs/notebook)**
-
-## Developers
-
-If you want to deploy the VRE on your own infrastructure, or if you want to submit an issue to help us improve the platform, please follow the [developer documentation](https://vre-hub.github.io/docs/tech-docs/home#how-to-contribute). 
- 
 ## Contact
-To contact the CERN VRE team with questions, doubts, problems accessing the meetings Indico category or the monitoring dashboards, please join the **[Mattermost channel](https://mattermost.web.cern.ch/signup_user_complete/?id=zqaa9p5fqfd9bnnc64at4b5aye&md=link&sbr=su)**. For more formal requests, i.e. conferences, webinars and events presentations, please email us at *escape-cern-ops 'at' cern.ch*. 
+To contact the CERN VRE team with questions, doubts, problems accessing the meetings Indico category or the monitoring dashboards, please join the **[Mattermost channel](https://mattermost.web.cern.ch/signup_user_complete/?id=zqaa9p5fqfd9bnnc64at4b5aye&md=link&sbr=su)**. <br/>
+For more formal requests, i.e. conferences, webinars and events presentations, please email us at *escape-cern-ops 'at' cern.ch*. 
 
-## Join the community 
-There are is a recurrent meetings open to all scientists/researchers/developers interested in the VRE. 
+## Join the community
 
-- The **VRE working-group monthly meetings** are intended for developers and system administrators who are supporting scientific infrastructures. They constitute an informal space to stimulate discussion and keep all the members up to date with the latest news and hot topics on the development and deployment of tools and services within the broad field of scientific analysis platforms. Join [here](https://indico.cern.ch/category/17065/). 
+#### The ESCAPE Science projects repository
+The Science Projects which are using the VRE are described [here](https://escape2020.pages.in2p3.fr/virtual-environment/home/).
+
+#### The VRE coordination meeting
+We have a recurrent meeting open to all scientists/researchers/developers interested in the VRE or who are supporting scientific infrastructures.
+
+**What do we discuss:** 
+- Latest news and updates on the VRE technical infrastructure and use cases
+- Engagement with European projects and funding possibilities
+- Design, support, and operation of VREs for commuties involved in the ESCAPE Collaboration, and beyond!
+
+See [our meetings agenda](https://indico.cern.ch/category/17065/).
 
 ## Latest News
 <LatestNews />
