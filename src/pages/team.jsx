@@ -108,6 +108,7 @@ const TeamPage = () => {
     <Layout title="Team" description="Meet the team behind the project.">
       <section className={styles.teamSection}>
         <div className={styles.container}>
+          <img src={require('@site/static/img/vre-team.png').default} alt="VRE Team photo" />
           <h1 className={styles.title}>The ESCAPE VRE Team</h1>
           {teamMembers.map((person, idx) => (
             <div key={idx} className={styles.personCard}>
