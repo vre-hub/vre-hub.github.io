@@ -101,8 +101,13 @@ const config = {
             },
             {
               type: 'doc', // This is a preset regarding the type of document, please update if needed
-              docId: 'rucio', // The ID of the corresponding document. This should match with what you wrote in the document header.
-              label: 'Rucio', // The title that will appear on the menu
+              docId: 'cvmfs', // The ID of the corresponding document. This should match with what you wrote in the document header.
+              label: 'CVMFS', // The title that will appear on the menu
+            },
+            {
+              type: 'doc', // This is a preset regarding the type of document, please update if needed
+              docId: 'notebook', // The ID of the corresponding document. This should match with what you wrote in the document header.
+              label: 'JupyterHub', // The title that will appear on the menu
             },
             {
               type: 'doc', // This is a preset regarding the type of document, please update if needed
@@ -111,8 +116,8 @@ const config = {
             },
             {
               type: 'doc', // This is a preset regarding the type of document, please update if needed
-              docId: 'notebook', // The ID of the corresponding document. This should match with what you wrote in the document header.
-              label: 'JupyterHub', // The title that will appear on the menu
+              docId: 'rucio', // The ID of the corresponding document. This should match with what you wrote in the document header.
+              label: 'Rucio', // The title that will appear on the menu
             },
             ],
           },

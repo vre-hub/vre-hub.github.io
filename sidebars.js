@@ -159,6 +159,7 @@ const sidebars = {
       label: 'Services',
       items: [
         'tech-docs/services/aai',
+        'tech-docs/services/cvmfs',
         'tech-docs/services/data-management',
         'tech-docs/services/jupyterhub',
         'tech-docs/services/computing-resources',

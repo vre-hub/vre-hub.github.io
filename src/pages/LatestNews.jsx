@@ -48,7 +48,7 @@ const newsItems = [
     title: 'The Virtual Research Environment: A multi-science analysis platform',
     authors: 'E. Gazzarrini, E. Garcia Garcia, D. Gosein, and X. Espinal',
     journal: 'EPJ Web of Conferences 295, 08023 (2024)',
-    links: [{ text: 'CHEP 2023 proceedings', url: 'https://doi.org/10.1051/epjconf/202429508023/' }],
+    links: [{ text: 'CHEP 2023 proceedings', url: 'https://doi.org/10.1051/epjconf/202429508023' }],
     iconType: 'book-open',
     type: 'proceedings',
   },
