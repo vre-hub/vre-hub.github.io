@@ -14,7 +14,7 @@ Find more at [the official CVMFS documentation](https://cvmfs.readthedocs.io/en/
 ### Components
 The ESCAPE CVMFS infrastructure consists of three main components: 
 1. The single source, called the Stratum 0 Repository Server
-2. Public mirrors, called Strratum 1 Replica Servers
+2. Public mirrors, called Stratum 1 Replica Servers
 3. Caches, usually managed by Squid Proxy servers
 
 One protected read/write Stratum 0 instance, called `sw.escape.eu`, is feeding up the public, distributed mirror servers. <br/>
@@ -22,7 +22,7 @@ Then, a distributed hierarchy of proxy servers fetches content from the closest 
 
 Find more details about `sw.escape.eu` and how to setup CVMFS in [the developer documentation](tech-docs/services/cvmfs).
 
-A diagram of the infrastructure described is show below.
+A diagram of the infrastructure described is shown below.
 
 ![image](../static/img/CVMFS-diagram.png)
 

@@ -19,7 +19,7 @@ A set of useful information to know before submitting the request (or autonomous
 *The repository name resembles a DNS scheme, but it does not need to reflect any real server name. It is supposed to be a globally unique name that indicates where/who the publishing of content takes place. A repository name must only contain alphanumeric characters plus -, , or ., and it is limited to a length of 60 characters.*
 :::
 
-The release manager is usually a VM where oeprators can upload, modify and delete the content of the repository.
+The release manager is usually a VM where operators can upload, modify and delete the content of the repository.
 
 ## Publishing content
 
@@ -44,7 +44,7 @@ At startup, a CERN-hosted release manager will look like this:
 * Foreman hostgroup: xxxxxxx
 * #######################################################
 The CVMFS Stratum 0 for repo xxxxxx.
-Access is controled via the e-group xxxxxxx.
+Access is controlled via the e-group xxxxxxx.
 Shared local unix user for account  xxxxxxx.
 
 To become the shared user execute:
@@ -58,11 +58,11 @@ To publish a transaction
 * ********************************************************************
 ```
 
-In order to publish conent, it is necessary to switch to a dedicated user, as suggested: `sudo -i -u xxxxxxx`.
+In order to publish content, it is necessary to switch to a dedicated user, as suggested: `sudo -i -u xxxxxxx`.
 
 How to provide packages and proper versioning is left to the operators. 
 
 :::danger[Pro Tip]
-The VRE strategy for content publishing relies on the creation of a tarball contaning the necessary software and vesions, followed by a setup script to be executed at need. <br/>
+The VRE strategy for content publishing relies on the creation of a tarball containing the necessary software and versions, followed by a setup script to be executed at need. <br/>
 More details can be found in the **[ESCAPE CVMFS GitHub Repository](https://github.com/vre-hub/escape-cvmfs)**.
 :::
