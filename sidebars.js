@@ -63,6 +63,11 @@ const sidebars = {
       type: 'doc',
       label: 'Monitoring',
       id: 'extensions/rucio-jupyterlab/monitoring',
+    },
+    {
+      type: 'doc',
+      label: 'Authentication workflow',
+      id: 'extensions/rucio-jupyterlab/authentication',
     }
   ],
 
