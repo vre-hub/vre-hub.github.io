@@ -5,6 +5,30 @@ Explore Reana on the software's [official documentation](https://docs.reana.io/)
 
 You can find other examples of differen workflow languages on the [official Reana documentation](https://docs.reana.io/advanced-usage/access-control/rucio/).
 
+# Authentication with reana-client
+
+The REANA client provides a command-line interface for authenticating with the REANA server. You can use the `reana-client auth` command which initiates an OAuth 2.0 device flow authentication:
+
+```bash
+$ reana-client auth
+```
+
+This command will provide you with a URL to visit and a code to enter, allowing you to authenticate through your browser. You can read more about OAuth2.0 and the device flow authentication in the [What is OAuth2.0 docs by auth0](https://auth0.com/intro-to-iam/what-is-oauth-2).
+
+Example output:
+
+```text
+$ reana-client auth
+Go to: https://iam-escape.cloud.cnaf.infn.it/device
+Enter code: ******
+Or open: https://iam-escape.cloud.cnaf.infn.it/device?user_code=******
+Waiting for authorization...
+```
+
+:::warning[Important]
+When using the `reana-client auth` command, please note that the VRE JupyterLab extension may not be automatically updated with your new authentication token. If you're using both the command-line client and the JupyterLab extension, you may need to restart your JupyterLab session for the extension to recognize your new authentication status.
+:::
+
 # Reana - Rucio integration
 
 A functionality to directly upload files from a Rucio RSE to the Reana workspace has been implemented. In this way, users can immediately reproduce an analysis on Reana without having to first download files locally from Rucio and then upload them to the Reana workspace. 
@@ -92,4 +116,4 @@ $ reana-client upload
 $ reana-client start      
 $ reana-client status
 ```
-5. Check the state of your workflow on https://reana-vre.cern.ch/. 
+5. Check the state of your workflow on https://reana-vre.cern.ch/.
