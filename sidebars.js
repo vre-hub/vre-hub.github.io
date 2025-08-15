@@ -96,7 +96,7 @@ const sidebars = {
       type: 'category',
       label: 'Usage',
       items: [
-        'extensions/reana-jupyterlab/usage/connection',
+        'extensions/reana-jupyterlab/usage/authentication',
         'extensions/reana-jupyterlab/usage/workflows',
         'extensions/reana-jupyterlab/usage/create',
       ],

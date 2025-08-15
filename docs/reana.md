@@ -25,7 +25,9 @@ Or open: https://iam-escape.cloud.cnaf.infn.it/device?user_code=4HAL4G
 Waiting for authorization...
 ```
 
-> **Important:** When using the `reana-client auth` command, please note that the VRE JupyterLab extension may not be automatically updated with your new authentication token. If you're using both the command-line client and the JupyterLab extension, you may need to restart your JupyterLab session for the extension to recognize your new authentication status.
+:::warning[Important]
+When using the `reana-client auth` command, please note that the VRE JupyterLab extension may not be automatically updated with your new authentication token. If you're using both the command-line client and the JupyterLab extension, you may need to restart your JupyterLab session for the extension to recognize your new authentication status.
+:::
 
 # Reana - Rucio integration
 

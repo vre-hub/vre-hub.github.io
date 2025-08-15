@@ -78,7 +78,7 @@ During user pod creation the VRE spawner:
 No refresh token is stored; only the short‑lived access token is passed.
 
 ### Token storage (UI extension vs CLI)
-UI / JupyterLab extension: 
+The UI / JupyterLab extension: 
 - Reads the injected `REANA_ACCESS_TOKEN` environment variable on request.
 - Uses this token for all API calls to the REANA server.
 

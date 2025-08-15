@@ -2,7 +2,7 @@
 
 ## Token Reuse
 
-The REANA JupyterLab extension automatically reuses your existing VRE-issued JWT access token - the same one that authenticated your current JupyterLab session. **No additional login or authentication steps are required** to start using REANA through the extension.
+The REANA JupyterLab extension automatically reuses the existing JWT access token issued by the IdP, corresponding to the one that authenticated the current JupyterLab session. **No additional login or authentication steps are required** to start using REANA through the extension.
 
 ## Verifying Access
 
@@ -24,11 +24,11 @@ If you encounter authentication problems:
 
 ## Optional Connection Configuration
 
-You can manually configure the connection to a different REANA instance by:
+You can still manually configure the connection to a different REANA instance by:
 
 1. Opening the REANA sidebar tab
 2. Clicking on the connection settings icon
-3. Entering a custom server URL and/or access token
+3. Entering a custom server URL and access token
 
 This is useful if you need to connect to a different REANA instance than the default one configured for VRE.
 
