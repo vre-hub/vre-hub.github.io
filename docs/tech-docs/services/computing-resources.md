@@ -67,23 +67,23 @@ kubectl exec -i -t deployment/reana-server -n reana -- flask reana-admin token-g
 
 ## JupyterLab REANA Extension Authentication
 
-This section explains how the VRE-provided JWT used by the REANA JupyterLab extension is injected, accessed and refreshed (or not) during a user session.
+This section explains how the VRE-provided JWT used by the REANA JupyterLab extension is injected and accessed during a user session. For more information about JWTs, see the [JWT documentation](https://auth0.com/docs/secure/tokens/json-web-tokens). 
 
 ### Token injection at spawn time
 During user pod creation the VRE spawner:
 - Obtains (or reuses) the user's already validated access token.
 - Injects it as an environment variable (`REANA_ACCESS_TOKEN`).
-- Writes a lightweight config file with the token for `reana-client` CLI
+- Writes a lightweight config file with the token for `reana-client` CLI.
 
 No refresh token is stored; only the short‑lived access token is passed.
 
-### Token storage (UI extension vs CLI)
-The UI / JupyterLab extension: 
+### Token storage (Extension vs CLI)
+The JupyterLab extension: 
 - Reads the injected `REANA_ACCESS_TOKEN` environment variable on request.
 - Uses this token for all API calls to the REANA server.
 
 CLI (`reana-client`):
-- Loads the token from the REANA config file written at spawn (or later replaced by running `reana-client auth`, which performs an OAuth 2.0 device flow and rewrites the stored token).
+- Loads the token from the REANA config file written during the spawning of the user session (or later replaced by running `reana-client auth`, which performs an OAuth 2.0 device flow and rewrites the stored token).
 - Uses this token for CLI commands.
 
 :::tip[Future considerations]

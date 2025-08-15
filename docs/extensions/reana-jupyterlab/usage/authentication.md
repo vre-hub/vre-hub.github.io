@@ -2,17 +2,23 @@
 
 ## Token Reuse
 
-The REANA JupyterLab extension automatically reuses the existing JWT access token issued by the IdP, corresponding to the one that authenticated the current JupyterLab session. **No additional login or authentication steps are required** to start using REANA through the extension.
+The REANA JupyterLab extension automatically reuses the existing JWT access token issued by the Identity Provider (IdP) that authenticated the current JupyterLab session, ESCAPE INDIGO IAM in the VRE, so no additional login or authentication steps are required.
 
 ## Verifying Access
 
-You can verify that authentication is working properly by:
+You can verify that authentication is working properly:
 
-1. Opening the REANA sidebar tab in JupyterLab
-2. Checking if you can see your workflows listed
-3. Opening a workflow detail panel to see its contents
+1. Open Reana JupyterLab by clicking on the REANA icon in the JupyterLab sidebar
+2. Check if you can see your workflows listed
+3. Open a workflow detail panel to see its contents
 
 If these actions succeed, your authentication is working correctly. If you see "unauthorized" errors or empty lists where you expect content, there may be an authentication issue.
+
+## Authentication Flow
+
+![Authentication Flow](../../../../static/img/reana-extension-auth-flow.png)
+
+*Authentication flow: Your VRE login generates a token that is automatically injected into your container environment and configuration, allowing the extension to access REANA resources on your behalf.*
 
 ## Troubleshooting
 
@@ -24,16 +30,10 @@ If you encounter authentication problems:
 
 ## Optional Connection Configuration
 
-You can still manually configure the connection to a different REANA instance by:
+You can still manually configure the connection to a different REANA instance:
 
-1. Opening the REANA sidebar tab
-2. Clicking on the connection settings icon
-3. Entering a custom server URL and access token
+1. Open Reana JupyterLab by clicking on the REANA icon in the JupyterLab sidebar
+2. Click on the connection settings icon
+3. Enter a REANA server URL and the REANA access token.
 
-This is useful if you need to connect to a different REANA instance than the default one configured for VRE.
-
-## Authentication Flow
-
-![Authentication Flow](../../../../static/img/reana-extension-auth-flow.png)
-
-*Authentication flow: Your VRE login generates a token that is automatically injected into your container environment and configuration, allowing the extension to access REANA resources on your behalf.*
+After connecting to the REANA server, a notification will appear in the bottom right corner of the screen indicating that the connection was successful. You can now interact with the REANA server from within JupyterLab.

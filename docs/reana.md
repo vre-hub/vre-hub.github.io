@@ -13,15 +13,15 @@ The REANA client provides a command-line interface for authenticating with the R
 $ reana-client auth
 ```
 
-This command will provide you with a URL to visit and a code to enter, allowing you to authenticate through your browser. You will be taken through the OAuth 2.0 device flow process where you'll need to enter the provided code on the authorization page to complete the authentication.
+This command will provide you with a URL to visit and a code to enter, allowing you to authenticate through your browser. You can read more about OAuth2.0 and the device flow authentication in the [What is OAuth2.0 docs by auth0](https://auth0.com/intro-to-iam/what-is-oauth-2).
 
 Example output:
 
 ```text
 $ reana-client auth
 Go to: https://iam-escape.cloud.cnaf.infn.it/device
-Enter code: 4HAL4G
-Or open: https://iam-escape.cloud.cnaf.infn.it/device?user_code=4HAL4G
+Enter code: ******
+Or open: https://iam-escape.cloud.cnaf.infn.it/device?user_code=******
 Waiting for authorization...
 ```
 
