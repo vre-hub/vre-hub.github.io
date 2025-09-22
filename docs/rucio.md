@@ -37,12 +37,21 @@ In general, you will have to setup a Rucio configuration file that includes amon
 In general, there are two main ways to authenticate to the Rucio instance: X.509 certificates and OIDC tokens. These two ways require setting up a `rucio.cfg` file. 
 This file is usually placed in the `/opt/rucio/etc/` directory, as the Rucio client looks at this location first by default.
 
-:::tip[Pro Tip]
+::::tip[Pro Tip]
 You can also change the default location of your `rucio.cfg` by doing
 ```bash
 export RUCIO_CONFIG=<PATH/TO/FILE/rucio.cfg>
 ```
+
+:::info[Pro Tip n.2]
+If you have access to the `sw.escape.eu` [CVMFS repository](https://github.com/vre-hub/escape-cvmfs) you
+can reference the `ca_cert` provided there in your `rucio.cfg` configuration file.
+```bash
+ca_cert = /cvmfs/sw.escape.eu/etc/ssl/certs/rucio_ca.pem 
+```
 :::
+
+::::
 
 Once you have ready you `rucio.cfg` file, and the sofware environment with the Rucio client (see next section), you can identify towards Rucio by doing a 
 ```bash
@@ -59,15 +68,18 @@ If the authentication was successful, you will see a message with you Rucio user
 [client]
 rucio_host = https://vre-rucio.cern.ch
 auth_host = https://vre-rucio-auth.cern.ch
-ca_cert = /etc/pki/tls/certs/CERN-bundle.pem
+ca_cert = /etc/pki/tls/certs/CERN-bundle.pem    # Generic CA certs filepath
+#ca_cert = /certs/rucio_ca.pem                  # Use this path if you are in a VRE session
 auth_type = oidc
 account = <MY_RUCIO_ACCOUNT>
 oidc_audience = rucio
+oidc_polling = true
+oidc_issuer = escape
 oidc_scope = openid profile offline_access 
 request_retries = 3
-oidc_issuer = escape
-oidc_polling = true
 auth_oidc_refresh_activate = true
+auth_token_file_path = /tmp/rucio_oauth.token   # Path in where OIDC tokens will be stored upon authN
+
 
 [policy]
 permission = escape 
@@ -145,9 +157,20 @@ Despite the rucio client package should install most of the software dependencie
 # For a Alma9 - x86_64 distrubution
 dnf install -y epel-release.noarch
 dnf upgrade -y
-dnf install -y wget gfal2*        # To install the gfal2 libraries
+dnf install -y "gfal2*"           # To install the gfal2 libraries
 dnf install -y voms-clients-java  # To install the `voms-proxy-init` client
 ```
+:::info[developers]
+The command `dnf search gfal2*` will list all the `gfal2` tools and plugins.
+:::
+
+:::warning[Debian distributions]
+Gfal2 can be also installed via [`conda-forge`](https://anaconda.org/search?q=gfal2).
+```bash
+conda install -c conda-forge gfal2 gfal-util python-gfal2
+```
+:::
+
 Then, install the certificates for the VOMS validation:
 ```python
 # Install the LCG trust anchos for X.509 authentication - what brings the CERN-bundle.pem file needed on the rucio.cfg
